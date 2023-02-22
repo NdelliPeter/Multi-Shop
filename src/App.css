@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+ /* Nav Styles */
+
+.navLink {
+  text-decoration: none;
+  color: rgb(77, 76, 76);
+}
+.account_lang_curret{
+  display:inline-flex;
+  justify-content: space-around;
+  padding-block: 3px;
+}
+
+#dropdown-basic{
+  background-color: white;
+  padding-block: 0px;
+  border-radius: 0px;
+}
+
+#dropdown-basic:hover {
+  background-color: darkgrey;
+}

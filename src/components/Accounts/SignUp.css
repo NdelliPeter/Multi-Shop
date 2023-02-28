@@ -1,0 +1,14 @@
+
+
+.signUpBtn{
+    border: none;
+    color: white;
+    border-radius: 3px;
+    background-color: blue;
+    padding: 5px;
+}
+.signUpBtn:hover{
+    background-color: gold;
+}
+
+

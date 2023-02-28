@@ -46,6 +46,7 @@
   text-decoration: none;
   color: rgb(77, 76, 76);
 }
+
 .account_lang_curret{
   display:inline-flex;
   justify-content: space-around;
@@ -83,6 +84,9 @@
 }
 .nestedlink:hover{
   color: rgb(235, 182, 7);
+}
+.nestedlink :active {
+  color: gold;
 }
 
 .dropdown-categories{

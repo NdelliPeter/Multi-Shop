@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -85,7 +86,7 @@
 .nestedlink:hover{
   color: rgb(235, 182, 7);
 }
-.nestedlink :active {
+.nestedlink .active {
   color: gold;
 }
 
@@ -152,4 +153,12 @@
   width: 20px;
   height: 20px;
   margin: 3px;
+}
+
+.icon{
+  font-size: 60px;
+}
+
+.catego-hieght{
+  height: 100px;
 }

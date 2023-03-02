@@ -12,13 +12,13 @@ footer{
     text-decoration: underline;
 }
 
-.inputSearch{
-    border: 1px solid rgb(167, 167, 167);
+.EmailAdress{
+    border: none;
     height: 35px;
 }
 
 .searchbtn{
-    border: 1px solid rgb(167, 167, 167);
+    border: none;
     border-left: 0px;
     /* width: 40px; */
     height: 35px;

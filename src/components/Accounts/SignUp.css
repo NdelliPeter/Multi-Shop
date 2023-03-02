@@ -2,13 +2,17 @@
 
 .signUpBtn{
     border: none;
-    color: white;
+    color: black;
     border-radius: 3px;
-    background-color: blue;
+    background-color: gold;
     padding: 5px;
 }
 .signUpBtn:hover{
-    background-color: gold;
+    background-color: blue;
+    color: white;
+}
+.rounded{
+    margin: 5.1rem;
 }
 
 

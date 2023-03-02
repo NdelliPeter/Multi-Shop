@@ -7,89 +7,92 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 
-const Schema = yup.object().shape({
+const SignUpSchema = yup.object().shape({
     firstName:yup.string().required("Please input first name"),
     lastName:yup.string().required("Please input last name"),
     email: yup.string().email("please input a valid email").required("email canot be empty"),
     password: yup.string().min(4).max(15).required("password cannot be empty"),
-    confirmPassword: yup.string().required().oneOf([yup.ref('password'), "password should match"])
+    confirmPassword: yup.string().test('passwords-match', 'Passwords must match', function (value) {
+        return this.parent.password === value
+    }) 
+
 })
 
 
 
-export default function SignUp () {
+export default function SignUp() {
 
-    const { register, handleSubmit, reset,formState: {errors} } = useForm({
-        resolver: yupResolver(Schema)
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
+        resolver: yupResolver(SignUpSchema)
     });
 
-    const SignInSubmit = (data) => {
+    const SignUpSubmit = (data) => {
         reset()
         console.log(data);
+        console.log('jjjjjjjjjjjjjjjjjj');
     }
 
-   return (
-       <>
+    return (
+        <>
             <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
-                <form className="col-4 p-3 m-5 bg-white rounded " onSubmit={handleSubmit(SignInSubmit)}>
+                <form className="col-11 col-sm-11 col-md-4 col-lg-3 p-3 bg-white rounded " onSubmit={handleSubmit(SignUpSubmit)}>
                     <h1>Sign Up</h1>
 
-
                     <input
-                    className="col-12 my-2"
-                    name="firstName"
-                    type="string"
-                    placeholder="FirstName"
-                    // ref={register}
-                    {...register("firstName")}
+                        className="col-12 my-2"
+                        name="firstName"
+                        type="string"
+                        placeholder="FirstName"
+                        // ref={register}
+                        {...register("firstName")}
                     />
                     <span className='text-danger font-strong'>{errors.firstName?.message}</span>
                     <input
-                    className="col-12 my-2"
-                    name="lastName"
-                    type="string"
-                    placeholder="LastName"
-                    // ref={register}
-                    {...register("lastName")}
+                        className="col-12 my-2"
+                        name="lastName"
+                        type="string"
+                        placeholder="LastName"
+                        // ref={register}
+                        {...register("lastName")}
                     />
                     <span className='text-danger font-strong'>{errors.lastName?.message}</span>
 
                     <input
-                    className="col-12 my-2"
-                    name="email"
-                    type="email"
-                    placeholder="email"
-                    // ref={register}
-                    {...register("email")}
+                        className="col-12 my-2"
+                        name="email"
+                        type="email"
+                        placeholder="email"
+                        // ref={register}
+                        {...register("email")}
                     />
                     <span className='text-danger font-strong'>{errors.email?.message}</span>
 
                     <input
-                    className="col-12 my-2"
-                    name="password"
-                    type="password"
-                    placeholder="password"
-                    // ref={register}
-                    {...register("password")}
+                        className="col-12 my-2"
+                        name="password"
+                        type="password"
+                        placeholder="password"
+                        // ref={register}
+                        {...register("password")}
                     />
                     <span className='text-danger font-strong'>{errors.password?.message}</span>
 
                     <input
-                    name="confirmPassword"
-                    className="col-12 my-2"
-                    type="password"
-                    placeholder="confirm password"
-                    // ref={register}
-                    {...register("cofirmPassword")}
+                        name="confirmPassword"
+                        className="col-12 my-2"
+                        type="password"
+                        placeholder="confirm password"
+                        // ref={register}
+                        {...register("confirmPassword")}
                     />
-                    <span className='text-danger font-strong'>{errors.confirmPassword && "Paswords should match"}</span>
+                    <span className='text-danger font-strong'>{errors.confirmPassword?.message}</span>
 
                     <button
-                    className="col-12 mt-4 signUpBtn"
-                    type="submit"
+                        className="col-12 mt-4 signUpBtn"
+                        type="submit"
                     > SIGN UP</button>
                 </form>
             </div>
-       </>
-   )
+        </>
+    )
 }

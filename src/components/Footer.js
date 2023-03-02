@@ -17,8 +17,7 @@ import {AiOutlineInstagram} from 'react-icons/ai'
 
 export default function Footer() {
     return (
-        <footer className="bg-dark text-white p-5">
-            <div className="container-fluid">
+        <footer className="container-fluid bg-dark text-white p-5">
                 <div className="row justify-content-center ">
                     <div className="col-3">
                         <h3>GET IN TOUCH</h3>
@@ -71,7 +70,7 @@ export default function Footer() {
                             Dou stet tempor ipsum sit <br/> amet magna ipsum tempor est
                         </p>
                         <div className='row my-3 d-flex px-2'>
-                            <input className='col-7 px-1 inputSearch' placeholder='Your Email Address' />
+                            <input className='col-7 px-1 EmailAdress' placeholder='Your Email Address' />
                             <button className='col-4 p-1 searchbtn bg-warning text-black'>
                                 Sign Up
                             </button>
@@ -94,7 +93,6 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-            </div>
         </footer>
     )
 }

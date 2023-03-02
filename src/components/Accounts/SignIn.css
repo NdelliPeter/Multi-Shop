@@ -1,0 +1,16 @@
+
+
+.signInBtn{
+    border: none;
+    color: black;
+    border-radius: 3px;
+    background-color: gold;
+    padding: 5px;
+}
+.signInBtn:hover{
+    background-color: blue;
+    color: white;
+}
+.rounded{
+    margin: 5.1rem;
+}

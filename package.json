@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@coreui/react": "^4.6.0",
     "@heroicons/react": "^2.0.16",
     "@hookform/resolvers": "^2.9.11",
     "@radix-ui/react-dropdown-menu": "^2.0.2",

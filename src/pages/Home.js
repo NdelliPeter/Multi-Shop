@@ -2,6 +2,8 @@ import React from 'react';
 import logo from '../assets/logo.png';
 import camera from '../assets/download.jpeg'
 import shoes from '../assets/images.jpg'
+import girl from '../assets/dmitry-vechorko-yXhJ_eQK0mE-unsplash.jpg'
+
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink, Outlet } from 'react-router-dom';
@@ -22,7 +24,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 // import SignUp from '../components/Accounts/SignUp';
 import Footer from '../components/Footer';
 // import Header from '../components/Header';
-import { C } from '@coreui/react';
+// import { C } from '@coreui/react';
 
 export default function Home() {
   return (
@@ -249,7 +251,24 @@ export default function Home() {
         </div>
 
         <div className='col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center'>
-          <div className='row align-items-center bg-white m-2'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={shoes}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
             <div className='col-4'>
               <img
                 className='img-fluid'
@@ -264,6 +283,124 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={shoes}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={camera}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={shoes}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={girl}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center catego-hieght'>
+            <div className=''>
+              <img
+                className='img-fluid'
+                src={shoes}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={camera}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center'>
+          <div className='row align-items-center bg-white catego-hieght'>
+            <div className='col-4'>
+              <img
+                className='img-fluid'
+                src={shoes}
+                alt='camera'
+              />
+            </div>
+
+            <div className='col-7 p-3'>
+              <span><b>Category Name</b></span><br />
+              <span className='text-dark'>100 product</span>
+            </div>
+          </div>
+        </div>
+
 
       </div>
       <Outlet />

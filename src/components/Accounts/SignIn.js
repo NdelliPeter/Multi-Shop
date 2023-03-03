@@ -21,22 +21,21 @@ export default function SignIn () {
     });
 
     const SignInSubmit = (data) => {
-        // reset()
+        reset()
         console.log(data);
     }
 
    return (
        <>
-            <div className="container-fluid p-5 row justify-content-center align-items-center bg-light">
-                <form className="col-11 col-sm-11 col-md-3 col-lg-3 p-3 bg-warning rounded " onSubmit={handleSubmit(SignInSubmit)}>
+            <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
+                <form className="col-11 col-sm-11 col-md-3 col-lg-3 p-3 bg-white rounded " onSubmit={handleSubmit(SignInSubmit)}>
                     <h1>Sign In</h1>
 
                     <input
-                    className="col-12 my-2 bg-warning  "
+                    className="col-12 my-2"
                     name="email"
                     type="email"
                     placeholder="email"
-                    // ref={register}
                     {...register("email")}
                     />
                     <span className='text-danger font-strong'>{errors.email?.message}</span>
@@ -44,9 +43,8 @@ export default function SignIn () {
                     <input
                     className="col-12 my-2"
                     name="password"
-                    type="string"
+                    type="password"
                     placeholder="password"
-                    // ref={register}
                     {...register("password")}
                     />
                     <span className='text-danger font-strong'>{errors.password?.message}</span>

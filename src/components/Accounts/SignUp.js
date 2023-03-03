@@ -8,8 +8,12 @@ import * as yup from 'yup';
 
 
 const SignUpSchema = yup.object().shape({
-    firstName:yup.string().required("Please input first name"),
-    lastName:yup.string().required("Please input last name"),
+    firstName:yup.string()
+    .trim('Please input cannot contain just spaces')
+    .required("Please input first name"),
+    lastName:yup.string()
+    .trim('Please input cannot contain just spaces')
+    .required("Please input last name"),
     email: yup.string().email("please input a valid email").required("email canot be empty"),
     password: yup.string().min(4).max(15).required("password cannot be empty"),
     confirmPassword: yup.string().test('passwords-match', 'Passwords must match', function (value) {
@@ -29,7 +33,6 @@ export default function SignUp() {
     const SignUpSubmit = (data) => {
         reset()
         console.log(data);
-        console.log('jjjjjjjjjjjjjjjjjj');
     }
 
     return (
@@ -43,7 +46,6 @@ export default function SignUp() {
                         name="firstName"
                         type="string"
                         placeholder="FirstName"
-                        // ref={register}
                         {...register("firstName")}
                     />
                     <span className='text-danger font-strong'>{errors.firstName?.message}</span>
@@ -52,7 +54,6 @@ export default function SignUp() {
                         name="lastName"
                         type="string"
                         placeholder="LastName"
-                        // ref={register}
                         {...register("lastName")}
                     />
                     <span className='text-danger font-strong'>{errors.lastName?.message}</span>
@@ -62,7 +63,6 @@ export default function SignUp() {
                         name="email"
                         type="email"
                         placeholder="email"
-                        // ref={register}
                         {...register("email")}
                     />
                     <span className='text-danger font-strong'>{errors.email?.message}</span>
@@ -72,7 +72,6 @@ export default function SignUp() {
                         name="password"
                         type="password"
                         placeholder="password"
-                        // ref={register}
                         {...register("password")}
                     />
                     <span className='text-danger font-strong'>{errors.password?.message}</span>
@@ -82,7 +81,6 @@ export default function SignUp() {
                         className="col-12 my-2"
                         type="password"
                         placeholder="confirm password"
-                        // ref={register}
                         {...register("confirmPassword")}
                     />
                     <span className='text-danger font-strong'>{errors.confirmPassword?.message}</span>

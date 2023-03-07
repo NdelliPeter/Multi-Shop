@@ -1,96 +1,116 @@
 import React from "react";
-import './SignUp.css'
+import "./SignUp.css";
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 // import SignUpSchema from "../Schema/SignUpSchema";
 
-import * as yup from 'yup';
-
+import * as yup from "yup";
 
 const SignUpSchema = yup.object().shape({
-    firstName:yup.string()
-    .trim('Please input cannot contain just spaces')
+  firstName: yup
+    .string()
+    .trim("Please input cannot contain just spaces")
     .required("Please input first name"),
-    lastName:yup.string()
-    .trim('Please input cannot contain just spaces')
+  lastName: yup
+    .string()
+    .trim("Please input cannot contain just spaces")
     .required("Please input last name"),
-    email: yup.string().email("please input a valid email").required("email canot be empty"),
-    password: yup.string().min(4).max(15).required("password cannot be empty"),
-    confirmPassword: yup.string().test('passwords-match', 'Passwords must match', function (value) {
-        return this.parent.password === value
-    }) 
-
-})
-
-
+  email: yup
+    .string()
+    .email("please input a valid email")
+    .required("email canot be empty"),
+  password: yup.string().min(4).max(15).required("password cannot be empty"),
+  confirmPassword: yup
+    .string()
+    .test("passwords-match", "Passwords must match", function (value) {
+      return this.parent.password === value;
+    }),
+});
 
 export default function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(SignUpSchema),
+  });
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({
-        resolver: yupResolver(SignUpSchema)
-    });
+  const SignUpSubmit = (data) => {
+    reset();
+    console.log(data);
+  };
 
-    const SignUpSubmit = (data) => {
-        reset()
-        console.log(data);
-    }
+  return (
+    <>
+      <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
+        <form
+          className="col-11 col-sm-11 col-md-4 col-lg-3 p-3 bg-white rounded "
+          onSubmit={handleSubmit(SignUpSubmit)}
+        >
+          <h1>Sign Up</h1>
 
-    return (
-        <>
-            <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
-                <form className="col-11 col-sm-11 col-md-4 col-lg-3 p-3 bg-white rounded " onSubmit={handleSubmit(SignUpSubmit)}>
-                    <h1>Sign Up</h1>
+          <input
+            className="col-12 my-2"
+            name="firstName"
+            type="string"
+            placeholder="FirstName"
+            {...register("firstName")}
+          />
+          <span className="text-danger font-strong">
+            {errors.firstName?.message}
+          </span>
+          <input
+            className="col-12 my-2"
+            name="lastName"
+            type="string"
+            placeholder="LastName"
+            {...register("lastName")}
+          />
+          <span className="text-danger font-strong">
+            {errors.lastName?.message}
+          </span>
 
-                    <input
-                        className="col-12 my-2"
-                        name="firstName"
-                        type="string"
-                        placeholder="FirstName"
-                        {...register("firstName")}
-                    />
-                    <span className='text-danger font-strong'>{errors.firstName?.message}</span>
-                    <input
-                        className="col-12 my-2"
-                        name="lastName"
-                        type="string"
-                        placeholder="LastName"
-                        {...register("lastName")}
-                    />
-                    <span className='text-danger font-strong'>{errors.lastName?.message}</span>
+          <input
+            className="col-12 my-2"
+            name="email"
+            type="email"
+            placeholder="email"
+            {...register("email")}
+          />
+          <span className="text-danger font-strong">
+            {errors.email?.message}
+          </span>
 
-                    <input
-                        className="col-12 my-2"
-                        name="email"
-                        type="email"
-                        placeholder="email"
-                        {...register("email")}
-                    />
-                    <span className='text-danger font-strong'>{errors.email?.message}</span>
+          <input
+            className="col-12 my-2"
+            name="password"
+            type="password"
+            placeholder="password"
+            {...register("password")}
+          />
+          <span className="text-danger font-strong">
+            {errors.password?.message}
+          </span>
 
-                    <input
-                        className="col-12 my-2"
-                        name="password"
-                        type="password"
-                        placeholder="password"
-                        {...register("password")}
-                    />
-                    <span className='text-danger font-strong'>{errors.password?.message}</span>
+          <input
+            name="confirmPassword"
+            className="col-12 my-2"
+            type="password"
+            placeholder="confirm password"
+            {...register("confirmPassword")}
+          />
+          <span className="text-danger font-strong">
+            {errors.confirmPassword?.message}
+          </span>
 
-                    <input
-                        name="confirmPassword"
-                        className="col-12 my-2"
-                        type="password"
-                        placeholder="confirm password"
-                        {...register("confirmPassword")}
-                    />
-                    <span className='text-danger font-strong'>{errors.confirmPassword?.message}</span>
-
-                    <button
-                        className="col-12 mt-4 signUpBtn"
-                        type="submit"
-                    > SIGN UP</button>
-                </form>
-            </div>
-        </>
-    )
+          <button className="col-12 mt-4 signUpBtn" type="submit">
+            {" "}
+            SIGN UP
+          </button>
+        </form>
+      </div>
+    </>
+  );
 }

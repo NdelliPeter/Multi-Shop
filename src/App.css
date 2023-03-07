@@ -170,6 +170,4 @@
 .catego-hieght div img{
   transition:transform .1s;
 }
-.catego-hieght:hover {
-   transform: scale(1.3);
-}
+

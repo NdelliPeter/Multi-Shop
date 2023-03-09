@@ -1,5 +1,7 @@
 import React from "react";
 import "./SignUp.css";
+import { useState } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import SignUpSchema from "../Schema/SignUpSchema";
@@ -39,12 +41,29 @@ export default function SignUp() {
 
   const SignUpSubmit = (data) => {
     reset();
+    AddAccounts(data)
     console.log(data);
   };
 
+  const [accounts, setAccounts] = useState([])
+
+
+
+  const AddAccounts=(data)=>{
+      const currentAccount = [data, ...accounts]
+      console.log(currentAccount);
+      setAccounts(currentAccount) 
+      const accountURL = "http://localhost:4000"
+      accountURL.setItem("SignUp", JSON.stringify(currentAccount))
+    }
+
+
+
+
+
   return (
     <>
-      <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
+      <div className="container-fluid row justify-content-center align-items-center bg-warning">
         <form
           className="col-11 col-sm-11 col-md-4 col-lg-3 p-3 bg-white rounded "
           onSubmit={handleSubmit(SignUpSubmit)}
@@ -106,9 +125,13 @@ export default function SignUp() {
           </span>
 
           <button className="col-12 mt-4 signUpBtn" type="submit">
-            {" "}
             SIGN UP
           </button>
+          <div className="col-12 my-2 d-flex justify-content-between align-items-center">
+            <small>Already have an account</small>
+            <NavLink to="./signIn">SignIn</NavLink>
+          </div>
+
         </form>
       </div>
     </>

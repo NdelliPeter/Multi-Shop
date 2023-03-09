@@ -1,0 +1,10 @@
+.bord{
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+}
+
+.btn{
+    border: none;
+    border-radius: 0px;
+    font-weight: bolder;
+}

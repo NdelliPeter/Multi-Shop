@@ -1,3 +1,11 @@
 .sendBtn{
     border: none;
 }
+.message{
+    height: 10rem;
+    overflow-wrap:break-word;
+}
+.map{
+    height:18rem;
+    width: 100%;
+}

@@ -1,0 +1,53 @@
+{
+    "products":[
+        {
+            "id": 1, 
+            "productName": "camera",
+            "image": "https://www.pexels.com/photo/camera-in-black-and-white-14799851/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },        
+        {
+            "id": 2, 
+            "productName": "Male cloth",
+            "image": "https://www.pexels.com/photo/man-in-gray-suit-jacket-looking-at-camera-8371721/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },
+        {
+            "id": 3, 
+            "productName": "camera",
+            "image": "https://www.pexels.com/photo/drone-flying-against-blue-sky-336232/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },
+        {
+            "id": 4, 
+            "productName": "Ladies cloth",
+            "image": "https://www.pexels.com/photo/woman-in-white-dress-sitting-on-beige-armchair-10792732/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },        
+        {
+            "id": 5, 
+            "productName": "Male cloth",
+            "image": "https://www.pexels.com/photo/brunette-man-and-women-wearing-graphite-colour-traditional-clothing-standing-in-an-interior-with-pink-carpet-13192037/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },
+        {
+            "id": 6, 
+            "productName": "camera",
+            "image": "https://www.pexels.com/photo/black-and-silver-canon-dslr-camera-3368215/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },
+        {
+            "id": 7, 
+            "productName": "Ladies cloth",
+            "image": "https://www.pexels.com/photo/photo-of-woman-in-field-7207506/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        },        
+        {
+            "id": 8, 
+            "productName": "camera",
+            "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
+            "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+        }
+
+    ]
+}

@@ -1,0 +1,23 @@
+.shopbg{
+    background-color: rgb(240, 240, 240);
+}
+.icon {
+    font-size: xx-large;
+}
+
+#sortBtn {
+    background-color: white;
+    color: rgb(65, 64, 64);
+    border: none;
+    font-weight: 400;
+  }
+.productIcon{
+    border: 1px solid black;
+    padding: 5px;
+    font-size: xx-large;
+    font-weight: 400;
+
+}.productIcon:hover{
+    border: 1px solid gold;
+    color: gold;
+}

@@ -154,7 +154,7 @@ export default function HomeLayout() {
 
           <div className="d-flex align-items-center">
             <FaShoppingCart className="text-warning" />
-            <div className="text-white circle">0</div>
+            <div className="text-white circle ">0</div>
           </div>
         </div>
       </div>

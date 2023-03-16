@@ -1,12 +1,28 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" },
-    "accounts": [
-        
-    ]
+  "accounts": [
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "57a0f3a4-5601-51b8-79a3-00f011a98e7c"
+    },
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "705239b0-ee65-cd44-e184-24ff5c6854a7"
+    },
+    {
+      "firstName": "Peter",
+      "lastName": "Ndelli",
+      "email": "ndellipeter@yahoo.com",
+      "password": "09876",
+      "confirmPassword": "09876",
+      "id": "cdb2bb47-da79-5eb7-7594-d0c4b32a7e39"
+    }
+  ]
 }

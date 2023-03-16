@@ -1,12 +1,16 @@
 import React from "react";
 import "./SignUp.css";
-import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import SignUpSchema from "../Schema/SignUpSchema";
-
+// import { v4 as uuid} from 'uuid'
 import * as yup from "yup";
+import axios from "axios";
+import signIn from "./SignIn.js"
+import SignIn from "./SignIn.js";
+import { Button } from "react-bootstrap";
 
 const SignUpSchema = yup.object().shape({
   firstName: yup
@@ -39,24 +43,50 @@ export default function SignUp() {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const SignUpSubmit = (data) => {
-    reset();
-    AddAccounts(data)
-    console.log(data);
-  };
-
   const [accounts, setAccounts] = useState([])
 
 
+  const AddAccount = (data) => {
 
-  const AddAccounts=(data)=>{
-      const currentAccount = [data, ...accounts]
-      console.log(currentAccount);
-      setAccounts(currentAccount) 
-      const accountURL = "http://localhost:4000"
-      accountURL.setItem("SignUp", JSON.stringify(currentAccount))
+    const account = 
+    axios.post('http://localhost:4000/accounts', data)
+   .then(res => {
+    console.log(res);
+   })
+   .catch(err => {
+    console.log(err);
+   })
+   setAccounts(account)
+  }
+
+ const navigate = useNavigate();
+
+const moveToNewPage = () => navigate("signIn");
+
+
+  useEffect(() => {
+     axios.get('http://localhost:4000/accounts')
+    .then(res => setAccounts(res.accounts))
+    .catch(err => console.log(err))
+
+  }, [setAccounts])
+
+  function func() {
+    function ff(s) {
+        var pt = (Math.random().toString(16)+"000000000").substr(2,8);
+        return s ? "-" + pt.substr(0,4) + "-" + pt.substr(4,4) : pt ;
     }
+    return ff() + ff(true) + ff(true) + ff();
+}
+const id =func()
 
+
+  const SignUpSubmit = (data) => {
+    data.id = id
+    reset();
+    AddAccount(data) 
+    console.log(data);
+  };
 
 
 
@@ -124,16 +154,17 @@ export default function SignUp() {
             {errors.confirmPassword?.message}
           </span>
 
-          <button className="col-12 mt-4 signUpBtn" type="submit">
+          <button className="col-12 mt-4 signUpBtn" href='home' type="submit">
             SIGN UP
           </button>
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Already have an account</small>
-            <NavLink to="./signIn">SignIn</NavLink>
+            <Button onClick={moveToNewPage}>SignIn</Button>
           </div>
 
         </form>
       </div>
+      <Outlet />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import camera from "../assets/download.jpeg";
 import shoes from "../assets/images.jpg";
 import man from "../assets/man.jpg";
@@ -6,6 +6,7 @@ import girl from "../assets/girl.jpg";
 import kid from "../assets/kid.jpg";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 //Dropdowns
 // import Dropdown from "react-bootstrap/Dropdown";
 // import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -22,6 +23,8 @@ import { FaPhoneVolume } from "react-icons/fa";
 // import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
+  console.log("hello america");
+
   return (
     <>
       <div className="container-fluid row py-5 px-5 justify-content-between homebg gap-3 align-items">

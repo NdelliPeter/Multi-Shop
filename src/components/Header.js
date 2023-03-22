@@ -24,6 +24,7 @@ export default function Header() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
+                <NavLink to='signIn'>Sign In</NavLink>
                 <Dropdown.Item href='signIn'>Sign In</Dropdown.Item>
                 <Dropdown.Item href='signUp'>Sign Up</Dropdown.Item>
               </Dropdown.Menu>

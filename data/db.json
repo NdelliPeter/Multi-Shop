@@ -1,0 +1,110 @@
+{
+  "accounts": [
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "57a0f3a4-5601-51b8-79a3-00f011a98e7c"
+    },
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "705239b0-ee65-cd44-e184-24ff5c6854a7"
+    },
+    {
+      "firstName": "Peter",
+      "lastName": "Ndelli",
+      "email": "ndellipeter@yahoo.com",
+      "password": "09876",
+      "confirmPassword": "09876",
+      "id": "cdb2bb47-da79-5eb7-7594-d0c4b32a7e39"
+    },
+    {
+      "firstName": "P",
+      "lastName": "Ndemba",
+      "email": "benedictlifanje@gmail.com",
+      "password": "00000",
+      "confirmPassword": "00000",
+      "id": "9f976c00-b18f-0fc3-fa24-91a8a5d0d5dc"
+    },
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "id": "abe6d2cf-3608-9960-28b4-836ae4bed1f4"
+    },
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "09870987",
+      "confirmPassword": "09870987",
+      "id": "18cc1605-87fa-66ed-82aa-3e3b8ac2c91f"
+    },
+    {
+      "firstName": "Ndemba",
+      "lastName": "Ndelli",
+      "email": "ndellipetex@gmail.com",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": "131a80d2-14e7-7b97-4729-6281ae906bfa"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productName": "camera",
+      "image": "https://www.pexels.com/photo/camera-in-black-and-white-14799851/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 2,
+      "productName": "Male cloth",
+      "image": "https://www.pexels.com/photo/man-in-gray-suit-jacket-looking-at-camera-8371721/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 3,
+      "productName": "camera",
+      "image": "https://www.pexels.com/photo/drone-flying-against-blue-sky-336232/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 4,
+      "productName": "Ladies cloth",
+      "image": "https://www.pexels.com/photo/woman-in-white-dress-sitting-on-beige-armchair-10792732/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 5,
+      "productName": "Male cloth",
+      "image": "https://www.pexels.com/photo/brunette-man-and-women-wearing-graphite-colour-traditional-clothing-standing-in-an-interior-with-pink-carpet-13192037/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 6,
+      "productName": "camera",
+      "image": "https://www.pexels.com/photo/black-and-silver-canon-dslr-camera-3368215/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 7,
+      "productName": "Ladies cloth",
+      "image": "https://www.pexels.com/photo/photo-of-woman-in-field-7207506/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    },
+    {
+      "id": 8,
+      "productName": "camera",
+      "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+    }
+  ]
+}

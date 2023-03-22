@@ -8,8 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // import { v4 as uuid} from 'uuid'
 import * as yup from "yup";
 import axios from "axios";
-import signIn from "./SignIn.js"
-import SignIn from "./SignIn.js";
+// import signIn from "./SignIn.js"
+// import SignIn from "./SignIn.js";
 import { Button } from "react-bootstrap";
 
 const SignUpSchema = yup.object().shape({
@@ -43,53 +43,68 @@ export default function SignUp() {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const [accounts, setAccounts] = useState([])
+  const [accounts, setAccounts] = useState([]);
 
+  const addAccount = (data) => {
+    // data.preventDefault();
+    const email = data.email
 
-  const AddAccount = (data) => {
+    const checkEmail =  axios
+    .get("http://localhost:4000/accounts")
+    .then((res) => {
+      const emailExist = res.data.find((el) => el.email === email);
+      console.log("gghgh", emailExist);
+    })
+    .catch((err) => console.log(err));
+   
 
-    const account = 
-    axios.post('http://localhost:4000/accounts', data)
-   .then(res => {
-    console.log(res);
-   })
-   .catch(err => {
-    console.log(err);
-   })
-   setAccounts(account)
-  }
+    const add =
+    axios
+      .post("http://localhost:4000/accounts", data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      }); 
 
- const navigate = useNavigate();
+    setAccounts();
+    navigate("/");
+  };
 
-const moveToNewPage = () => navigate("signIn");
+  const navigate = useNavigate(-1);
 
+  const moveToNewPage = () => {
+    return( navigate("/signIn")
+    )};
 
   useEffect(() => {
-     axios.get('http://localhost:4000/accounts')
-    .then(res => setAccounts(res.accounts))
-    .catch(err => console.log(err))
-
-  }, [setAccounts])
+    const email = "ndellipetex@gmail.com";
+    axios
+      .get("http://localhost:4000/accounts")
+      .then((res) => {
+        const emailExist = res.data.find((el) => el.email === email);
+        console.log("gghgh", emailExist);
+      })
+      .catch((err) => console.log(err));
+    // console.log(setAccounts);
+  }, []);
 
   function func() {
     function ff(s) {
-        var pt = (Math.random().toString(16)+"000000000").substr(2,8);
-        return s ? "-" + pt.substr(0,4) + "-" + pt.substr(4,4) : pt ;
+      var pt = (Math.random().toString(16) + "000000000").substr(2, 8);
+      return s ? "-" + pt.substr(0, 4) + "-" + pt.substr(4, 4) : pt;
     }
     return ff() + ff(true) + ff(true) + ff();
-}
-const id =func()
-
+  }
+  const id = func();
 
   const SignUpSubmit = (data) => {
-    data.id = id
+    data.id = id;
     reset();
-    AddAccount(data) 
+    addAccount(data);
     console.log(data);
   };
-
-
-
 
   return (
     <>
@@ -154,17 +169,19 @@ const id =func()
             {errors.confirmPassword?.message}
           </span>
 
-          <button className="col-12 mt-4 signUpBtn" href='home' type="submit">
+          <button className="col-12 mt-4 signUpBtn" href="home" type="submit">
             SIGN UP
           </button>
+          {/* <span className="text-danger font-strong">
+            {errors.email.message}
+          </span> */}
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Already have an account</small>
             <Button onClick={moveToNewPage}>SignIn</Button>
           </div>
-
         </form>
       </div>
-      <Outlet />
+      {/* <Outlet /> */}
     </>
   );
 }

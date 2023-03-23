@@ -6,8 +6,25 @@ import {HiShoppingCart} from "react-icons/hi";
 import {AiOutlineHeart} from "react-icons/ai";
 import {TfiReload} from "react-icons/tfi";
 import {HiMagnifyingGlass} from "react-icons/hi2";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Shop() {
+
+  const [products, setProducts] = useState()
+
+
+  useEffect(() => {
+    const pro = axios
+      .get("http://localhost:4000/products")
+      .then((res) => 
+       res.data)
+      .catch((err) => console.log(err));
+    console.log(pro);
+    setProducts(pro);
+  }, []);
+
+
   return (
     <div className="container-fluid px-5 py-3 shopbg">
       <div className="row px-5">
@@ -15,7 +32,7 @@ export default function Shop() {
           <span>Home / Shop / ShopList </span>
         </div>
 
-        {/* Filter collum */}
+        {/* Filter column */}
         <div className="col-3">
           <div>
             <h4 className="my-3">FILTER BY PRICE</h4>
@@ -177,6 +194,8 @@ export default function Shop() {
           </div>
         </div>
 
+
+        {/* Products column */}
         <div className="col-9">
           <div className="col-12 d-flex justify-content-between align-items-center">
             <div className="d-flex gap-2 my-3">
@@ -217,6 +236,7 @@ export default function Shop() {
 
           <div className="col-12">
             <div className="row">
+              {
               <div className="col-4 bg-white rounded">
                 <div className="p-5">
                   <div className="d-flex gap-2 justify-content-center align-items-center">
@@ -230,7 +250,8 @@ export default function Shop() {
                   <h6>Product Name Goes Here</h6>
                   <p>$123.00 <small className="text-though">$123.00</small></p>
                 </div>
-              </div> 
+              </div>
+              }
             </div>
           </div>
 

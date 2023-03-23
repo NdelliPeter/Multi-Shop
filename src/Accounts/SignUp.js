@@ -1,7 +1,7 @@
 import React from "react";
 import "./SignUp.css";
 import { useState, useEffect } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import SignUpSchema from "../Schema/SignUpSchema";
@@ -44,29 +44,31 @@ export default function SignUp() {
   });
 
   const [accounts, setAccounts] = useState([]);
+  const [Error, setError] = useState()
 
   const addAccount = (data) => {
     // data.preventDefault();
     const email = data.email
 
-    const checkEmail =  axios
+    axios
     .get("http://localhost:4000/accounts")
     .then((res) => {
-      const emailExist = res.data.find((el) => el.email === email);
-      console.log("gghgh", emailExist);
-    })
-    .catch((err) => console.log(err));
-   
-
-    const add =
-    axios
-      .post("http://localhost:4000/accounts", data)
-      .then((res) => {
+      const emailExist = res.data.find((el) => {if(el.email === email){
+        setError("Email already exist please try signing in")
+      }else{
+        axios
+        .post("http://localhost:4000/accounts", data)
+        .then((res) => {
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
       }); 
+      }});
+      setAccounts(emailExist);
+      console.log("gghgh", emailExist);
+    })
+    .catch((err) => console.log(err));
 
     setAccounts();
     navigate("/");
@@ -79,15 +81,15 @@ export default function SignUp() {
     )};
 
   useEffect(() => {
-    const email = "ndellipetex@gmail.com";
-    axios
+    const acc = axios
       .get("http://localhost:4000/accounts")
-      .then((res) => {
-        const emailExist = res.data.find((el) => el.email === email);
-        console.log("gghgh", emailExist);
-      })
+      .then((res) => 
+        res.data
+      )
       .catch((err) => console.log(err));
     // console.log(setAccounts);
+    console.log(acc);
+    setAccounts(acc)
   }, []);
 
   function func() {
@@ -172,9 +174,7 @@ export default function SignUp() {
           <button className="col-12 mt-4 signUpBtn" href="home" type="submit">
             SIGN UP
           </button>
-          {/* <span className="text-danger font-strong">
-            {errors.email.message}
-          </span> */}
+          {Error}
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Already have an account</small>
             <Button onClick={moveToNewPage}>SignIn</Button>

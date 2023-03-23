@@ -120,7 +120,7 @@ export default function HomeLayout() {
           </DropdownMenu.Root>
 
           <div className="d-flex gap-3">
-            <NavLink className="nestedlink text-warning" to="/">
+            <NavLink className="nestedlink" to="/">
               Home
             </NavLink>
             <NavLink className="nestedlink" to="shop">

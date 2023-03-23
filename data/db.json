@@ -55,6 +55,14 @@
       "password": "1234",
       "confirmPassword": "1234",
       "id": "131a80d2-14e7-7b97-4729-6281ae906bfa"
+    },
+    {
+      "confirmPassword": "2468",
+      "password": "2468",
+      "email": "ndellipaul@gmail.com",
+      "lastName": "Paul",
+      "firstName": "Ndelli",
+      "id": "18bf7bb9-e03d-4f30-36ba-dd9cc5fd1426"
     }
   ],
   "products": [

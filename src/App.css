@@ -85,7 +85,7 @@
 .nestedlink:hover {
   color: rgb(235, 182, 7);
 }
-.nestedlink .active {
+.active {
   color: gold;
 }
 

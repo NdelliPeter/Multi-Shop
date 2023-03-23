@@ -36,22 +36,27 @@ export default function SignIn() {
   }, [setAccounts]);
 
   const checkAccount = (data) => {
-    const check = accounts.find((account) => {
-      if (account.email === data.email) {
-        navigate("/home");
-        console.log(account);
-      } else {
-        navigate("/home");
-        console.log(data);
-      }
-    });
-    setAccounts(check);
+    const email = data.email
+
+    const checkEmail =  axios
+    .get("http://localhost:4000/accounts")
+    .then((res) => {
+      const emailExist = res.data.find((el) => {if(el.email === email){
+        navigate("/")
+      }else{
+
+      }});
+      console.log("gghgh", emailExist);
+    })
+    .catch((err) => console.log(err));
+    console.log(checkEmail);
   };
 
   const SignInSubmit = (data) => {
     reset();
     checkAccount(data);
     console.log(data);
+    // navigate("/")
   };
 
   const navigate = useNavigate(-1);
@@ -64,7 +69,7 @@ export default function SignIn() {
     <>
       <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
         <form
-          className="col-11 col-xsm-11 col-md-3 col-lg-3 p-3 bg-white rounded "
+          className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 bg-white rounded "
           onSubmit={handleSubmit(SignInSubmit)}
         >
           <h1>Sign In</h1>

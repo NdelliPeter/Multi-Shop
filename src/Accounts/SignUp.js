@@ -47,49 +47,45 @@ export default function SignUp() {
   const [Error, setError] = useState()
 
   const addAccount = (data) => {
-    // data.preventDefault();
-    const email = data.email
 
-    axios
-    .get("http://localhost:4000/accounts")
-    .then((res) => {
-      const emailExist = res.data.find((el) => {if(el.email === email){
-        setError("Email already exist please try signing in")
-      }else{
+    // const pushData = axios
+    // .post("http://localhost:4000/accounts", data)
+    // .then((res) => {
+    // console.log(res);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // }); 
+    const acc = accounts.find((el) =>{ 
+    if(el.email === data.email){
+      setError("This email already exist please try Signing In")
+    }else if(el.email !== data.email) {
+      return (
         axios
         .post("http://localhost:4000/accounts", data)
         .then((res) => {
         console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      }); 
-      }});
-      setAccounts(emailExist);
-      console.log("gghgh", emailExist);
+        })
+        .catch((err) => {
+          console.log(err);
+        }) ,
+      navigate("/")
+    )}
     })
-    .catch((err) => console.log(err));
+    setAccounts(acc);
 
-    setAccounts();
-    navigate("/");
   };
 
-  const navigate = useNavigate(-1);
-
-  const moveToNewPage = () => {
-    return( navigate("/signIn")
-    )};
-
-  useEffect(() => {
-    const acc = axios
+  useEffect (() =>  {
+    axios
       .get("http://localhost:4000/accounts")
-      .then((res) => 
-        res.data
-      )
+      .then((res) => {
+        const respo =res.data
+        setAccounts(respo)
+        console.log(respo);
+      })
       .catch((err) => console.log(err));
     // console.log(setAccounts);
-    console.log(acc);
-    setAccounts(acc)
   }, []);
 
   function func() {
@@ -108,11 +104,17 @@ export default function SignUp() {
     console.log(data);
   };
 
+  const navigate = useNavigate(-1);
+
+  const moveToNewPage = () => {
+    return( navigate("/signIn")
+    )};
+
   return (
     <>
       <div className="container-fluid row justify-content-center align-items-center bg-warning">
         <form
-          className="col-11 col-sm-11 col-md-4 col-lg-3 p-3 bg-white rounded "
+          className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 bg-white rounded "
           onSubmit={handleSubmit(SignUpSubmit)}
         >
           <h1>Sign Up</h1>
@@ -174,7 +176,9 @@ export default function SignUp() {
           <button className="col-12 mt-4 signUpBtn" href="home" type="submit">
             SIGN UP
           </button>
-          {Error}
+          <span className="text-danger font-strong">
+            {Error}
+          </span>
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Already have an account</small>
             <Button onClick={moveToNewPage}>SignIn</Button>

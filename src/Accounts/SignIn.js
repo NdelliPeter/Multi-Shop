@@ -27,6 +27,8 @@ export default function SignIn() {
   });
 
   const [accounts, setAccounts] = useState([]);
+  const [Error, setError] = useState()
+
 
   useEffect(() => {
     axios
@@ -37,23 +39,28 @@ export default function SignIn() {
 
   const checkAccount = (data) => {
     const email = data.email
+    const password = data.password
 
     const checkEmail =  axios
     .get("http://localhost:4000/accounts")
     .then((res) => {
-      const emailExist = res.data.find((el) => {if(el.email === email){
-        navigate("/")
+      res.data.find((el) => {if(el.email === email){
+        if(el.password === password){
+          navigate("/")
+        }else{
+          setError("Wrong password")
+        }
       }else{
-
+        setError("Email dose not exist please try check email again or SignUp")
       }});
-      console.log("gghgh", emailExist);
+
     })
     .catch((err) => console.log(err));
     console.log(checkEmail);
   };
 
   const SignInSubmit = (data) => {
-    reset();
+    // reset();
     checkAccount(data);
     console.log(data);
     // navigate("/")
@@ -100,6 +107,9 @@ export default function SignIn() {
             {" "}
             SIGN IN
           </button>
+          <span className="text-danger font-strong">
+            {Error}
+          </span>
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Don't have an account yet?</small>
             <Button onClick={moveToNewPage}>SignUp</Button>

@@ -12,6 +12,9 @@ import ShoppingCart from './pages/ShoppingCart';
 import CheckOut from './pages/CheckOut';
 import Contact from './pages/Contact';
 import HomeLayout from './components/HomeLayout';
+import About from './components/About';
+import Help from './components/Help';
+import Faq from './components/Faq';
 
 
 const router = createBrowserRouter(
@@ -28,6 +31,10 @@ const router = createBrowserRouter(
       </Route>
       <Route path='signUp' element={<SignUp />} />
       <Route path='signIn' element={<SignIn />} />
+      <Route path='about' element={<About />} />
+      <Route path='help' element={<Help />} />
+      <Route path='faq' element={<Faq />} />
+
     </Route>
   )
 )

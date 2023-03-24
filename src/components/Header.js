@@ -11,11 +11,11 @@ export default function Header() {
       <header>
         {/* Top header */}
         <nav id='nav' className='row container-fluid d-flex px-5 justify-content-between align-items-center'>
-          <div className='col-4 d-flex gap-3 '>
-            <NavLink className='navLink'>About</NavLink>
-            <NavLink className='navLink'>Contact</NavLink>
-            <NavLink className='navLink'>Help</NavLink>
-            <NavLink className='navLink'>FAQs</NavLink>
+          <div className='col-4 d-flex gap-3 text-black'>
+            <NavLink className='navLink' to='about'>About</NavLink>
+            <NavLink className='navLink' to='contact'>Contact</NavLink>
+            <NavLink className='navLink' to='help'>Help</NavLink>
+            <NavLink className='navLink' to='faq'>FAQs</NavLink>
           </div>
           <div className='col-3 account_lang_curret'>
             <Dropdown >

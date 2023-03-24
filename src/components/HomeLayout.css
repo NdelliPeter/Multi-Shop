@@ -1,0 +1,92 @@
+
+.inputSearch {
+    border: 1px solid rgb(167, 167, 167);
+    height: 35px;
+  }
+  
+  .serchbtn {
+    border: 1px solid rgb(167, 167, 167);
+    border-left: 0px;
+    width: 40px;
+    height: 35px;
+  }
+
+.SlMagnifier {
+    font-size: x-large;
+  }
+  
+  .nestedlink {
+    text-decoration: none;
+    color: white;
+  }
+  .nestedlink:hover {
+    color: rgb(235, 182, 7);
+  }
+  .active {
+    color: gold;
+  }
+  
+  .dropdown-categories {
+    width: 15rem;
+    border: 0px;
+    padding-block: 0px;
+    border-radius: 0px;
+  }
+  
+  .DropdownMenuContent,
+  .DropdownMenuSubContent {
+    min-width: 250px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 0px;
+    box-shadow: 0px 10px 38px -10px rgba(101, 101, 101, 0.35),
+      0px 10px 20px -15px rgba(79, 80, 81, 0.2);
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+  
+  .DropdownMenuSeparator {
+    height: 1px;
+    background-color: rgb(234, 232, 232);
+  }
+  
+  .DropdownMenuItem {
+    padding: 10px;
+  }
+  
+  #pagesDrop {
+    position: relative;
+    display: inline-block;
+  }
+  #pagesBtn {
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
+  .pagesDrop-content {
+    display: block;
+    position: absolute;
+    background-color: gold;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  .pagesDrop:hover .pagesDrop-content {
+    display: block;
+  }
+  .pagesDrop:hover .pagesBtn {
+    color: gold;
+  }
+  
+  .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+  }

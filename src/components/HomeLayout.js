@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import "../App.css";
+// import "../App.css";
+import "./HomeLayout.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, Outlet } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";

@@ -17,25 +17,27 @@
     border-radius:5px;
 }
 .container_{
-    width: 18rem;
+    /* width: 18rem; */
     height: 15rem;
+    position: relative;
 }
 .img{
     height: 15rem;
-    width: 285px;
-    object-fit:contain;
-    position: absolute;
+    width: 100%;
+    object-fit:cover;
+    /* position: absolute; */
     transition: transform .2s; 
 }
 .img:hover{
-    position: absolute;
+    /* position: absolute; */
     transform: scale(1.5)
 }
 .icons{
-    position: relative;
+    position: absolute;
     /* padding-top: 5rem; */
     display: none;
-    /* width: 18rem; */
+    width: 18rem;
+    top: 0px;
     height: 15rem;
     align-self: center;
     background-color:rgba(256, 250, 250, 0.6);
@@ -55,7 +57,8 @@
 }
 .productIcon:hover{
     display: block;
-    border: 1px solid gold;
+    background-color: black;
+    /* border: 1px solid gold; */
     color: gold;
 }
 

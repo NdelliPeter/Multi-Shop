@@ -99,7 +99,7 @@ export default function Contact() {
               {errors.subject?.message}
             </span>
 
-            <input
+            <textarea
               className="col-12 my-2 p-2 message"
               name="message"
               placeholder=" Message"

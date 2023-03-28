@@ -12,11 +12,11 @@ export default function ShoppingCart() {
   const [checkout, setCheckout] = useState();
 
   const increaseQuntity = (product) => {
-    const increase = basket.find((productItem) => {
-      if(productItem.id === product.id){
-        setQuantity(quantity + 1);
-      }})
-    console.log(increase);
+    const increase = basket.find((productItem) => 
+      productItem.id === product.id)
+    const  increased = increase.quantity +1;
+    product.quantity =increased
+    console.log(increased);
   };
 
 
@@ -48,19 +48,27 @@ export default function ShoppingCart() {
       setCheckout(respo)
       console.log(respo);
     })
-  },[]);
+  },[setBasket]);
 
-  const deleteProduct = (product) =>{
-    const deleted = basket.find((productItem) =>(productItem.id === product.id))
-    axios
-    .delete("http://localhost:4000/basket",deleted.id)
-    .then((res) =>{
-      const respo = res.data;
-      setBasket(respo)
-      console.log(respo);
-    })  }
+  const deleteProduct = (productId) =>{
+    basket.map((product) => {
+      if(product.id === productId){
+        axios
+        .delete(`http://localhost:4000/basket/${productId}`)
+        .then((res) =>{
+          const respo = res.data;
+          // setBasket(respo)
+          console.log(respo);
+        }) 
+      }else{
+        setBasket(product)
+      }
+    })
+ 
+  }
 
   const clearBasket = () => {
+    setCheckout(basket)
     axios
     .get("http://localhost:4000/basket", basket)
     .then((res) => {
@@ -101,11 +109,11 @@ export default function ShoppingCart() {
                   return (
                     <div key={id} className="col-12 d-flex my-3 py-3 justify-content-between align-items-center bg-white ">
                       <div className="col-4 d-flex ps-5 align-items-center">
-                        <img className="img-fluid col-2 photo" src={product.image} alt={product.productName} />
-                        {product.productName}
+                        <img className="img-fluid col-2 photo" src={product?.image} alt={product?.productName} />
+                        {product?.productName}
                       </div>
                       <div className="col-2 d-flex justify-content-center align-items-center">
-                        ${product.price}
+                        ${product?.price}
                       </div>
                       <div className="col-2 d-flex justify-content-center align-items-center">
                         <button
@@ -114,7 +122,7 @@ export default function ShoppingCart() {
                         >
                           <FaMinus />
                         </button>
-                        <span className="mx-2 ">{quantity}</span>
+                        <span className="mx-2 ">{product?.quantity}</span>
                         <button
                           className="bg-warning d-flex align-items-center p-2 quantitybtn"
                           onClick={() => {increaseQuntity(product)}}
@@ -123,11 +131,11 @@ export default function ShoppingCart() {
                         </button>
                       </div>
                       <div className="col-2 d-flex justify-content-center align-items-center">
-                        ${product.price * quantity}
+                        ${product?.price * product?.quantity}
                       </div>
                       <div className="col-2 d-flex justify-content-center align-items-center">
                         <button className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
-                        onClick={() => {deleteProduct(product)}}
+                        onClick={() => {deleteProduct(product?.id)}}
                         >
                           <FaTimes />
                         </button>

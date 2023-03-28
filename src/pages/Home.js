@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import camera from "../assets/download.jpeg";
 import shoes from "../assets/images.jpg";
 import man from "../assets/man.jpg";
@@ -13,7 +13,10 @@ import axios from "axios";
 
 import Carousel from "react-bootstrap/Carousel";
 // Icons
-
+import { HiShoppingCart } from "react-icons/hi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { TfiReload } from "react-icons/tfi";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import { BsCheckLg } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
 import { BiTransfer } from "react-icons/bi";
@@ -23,7 +26,30 @@ import { FaPhoneVolume } from "react-icons/fa";
 // import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
-  console.log("hello america");
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/products")
+      .then((res) => {
+        const respo = res.data;
+        setProducts(respo);
+        console.log(respo);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const basketDrop = (product) => {
+    const drop = products.find((productItem) =>(products.indexOf(productItem) === products.indexOf(product)))
+    axios
+        .post("http://localhost:4000/basket", product)
+        .then((res) => {
+        console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    console.log(drop);
+  }
 
   return (
     <>
@@ -80,7 +106,7 @@ export default function Home() {
 
             <div className="col-12 mt-3 yellow">
               <div className="bgimage d-flex flex-column justify-content-center align-items-center">
-              <div className="content">
+                <div className="content">
                   <h6>SAVE 20%</h6>
                   <h4>Special Offer</h4>
                   <button className="bg-warning py-2 px-3 yellowbtn">
@@ -322,198 +348,60 @@ export default function Home() {
         <div className="col-12">
           <h2>FEATURED PRODUCTS</h2>
         </div>
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={camera} alt="camera" />
-            </div>
-
-            <div className="col-7 ">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={shoes} alt="shoes" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={camera} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={shoes} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={camera} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={shoes} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={camera} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={shoes} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={camera} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={shoes} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={camera} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-          <div className="row align-items-center bg-white catego-hieght">
-            <div className="col-4">
-              <img className="img-fluid" src={shoes} alt="camera" />
-            </div>
-
-            <div className="col-7 p-3">
-              <span>
-                <b>Category Name</b>
-              </span>
-              <br />
-              <span className="text-dark">100 product</span>
-            </div>
-          </div>
-        </div>
+        {
+                ((products?.length ?? 0) >= 1 ) ? products.map((product, id) => {
+                  return (
+                    <div key={id} className="col-3 p-1  ">
+                      <div className="bg-white round">
+                      <div className=" col-12 m-0 container_">
+                        <div className="col-12">
+                          <img src={product.image} alt='image' className="img-fluid img" />
+                        </div>
+                        <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                          <HiShoppingCart className="productIcon" onClick={() => {basketDrop(product)}} />
+                          <AiOutlineHeart className="productIcon" />
+                          <TfiReload className="productIcon" />
+                          <HiMagnifyingGlass className="productIcon" />
+                        </div> 
+                      </div>
+                      <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                        <h6>{product.productName}</h6>
+                        <p>
+                          ${product.price} <small className="text-though">$163.00</small>
+                        </p>
+                      </div>
+                      </div>
+                    </div>
+                  );
+                }): "No Product found"
+              }
       </div>
+
+      <div className="col-12 d-flex p-5 justify-content-around homebg align-items-center">
+            <div className="col-5 yellow">
+              <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                <div className="content">
+                  <h6>SAVE 20%</h6>
+                  <h4>Special Offer</h4>
+                  <button className="bg-warning py-2 px-3 yellowbtn">
+                    Shop Now
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-5 yellow">
+              <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                <div className="content">
+                  <h6>SAVE 20%</h6>
+                  <h4>Special Offer</h4>
+                  <button className="bg-warning py-2 px-3 yellowbtn">
+                    Shop Now
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
     </>
   );
 }

@@ -30,33 +30,49 @@ export default function SignIn() {
   const [Error, setError] = useState()
 
 
-  useEffect(() => {
+  useEffect (() =>  {
     axios
       .get("http://localhost:4000/accounts")
-      .then((res) => setAccounts(res.accounts))
+      .then((res) => {
+        const respo =res.data
+        setAccounts(respo)
+        console.log(respo);
+      })
       .catch((err) => console.log(err));
-  }, [setAccounts]);
+    // console.log(setAccounts);
+  }, []);
 
   const checkAccount = (data) => {
     const email = data.email
     const password = data.password
-
-    const checkEmail =  axios
-    .get("http://localhost:4000/accounts")
-    .then((res) => {
-      res.data.find((el) => {if(el.email === email){
-        if(el.password === password){
-          navigate("/")
-        }else{
-          setError("Wrong password")
-        }
+    accounts.find((account) =>{if(account.email === email){
+      if(account.password === password){
+        navigate("/")
       }else{
-        setError("Email dose not exist please try check email again or SignUp")
-      }});
-
+        setError("Wrong Password")
+      }
+    }else{
+      setError("Email dose not exist please check email again or try Signing Up")
+    }
     })
-    .catch((err) => console.log(err));
-    console.log(checkEmail);
+
+
+    // const checkEmail =  axios
+    // .get("http://localhost:4000/accounts")
+    // .then((res) => {
+    //   res.data.find((el) => {if(el.email === email){
+    //     if(el.password === password){
+    //       navigate("/")
+    //     }else{
+    //       setError("Wrong password")
+    //     }
+    //   }else{
+    //     setError("Email dose not exist please check email again or try Signing Up")
+    //   }});
+
+    // })
+    // .catch((err) => console.log(err));
+    // console.log(checkEmail);
   };
 
   const SignInSubmit = (data) => {

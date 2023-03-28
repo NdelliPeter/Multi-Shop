@@ -3,22 +3,72 @@ import "./ShoppingCart.css";
 import { BiPlusMedical } from "react-icons/bi";
 import { FaMinus } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ShoppingCart() {
   const [quantity, setQuantity] = useState(1);
+  const [basket, setBasket] = useState();
+  const [checkout, setCheckout] = useState();
 
-  const increaseQuntity = () => {
-    setQuantity(quantity + 1);
+  const increaseQuntity = (product) => {
+    const increase = basket.find((productItem) => {
+      if(productItem.id === product.id){
+        setQuantity(quantity + 1);
+      }})
+    console.log(increase);
   };
 
-  const decreaseQuantity = () => {
-    if (quantity >= 1) {
-      setQuantity(quantity - 1);
-    } else {
-      setQuantity(0);
-    }
+
+  const decreaseQuantity = (product) => {
+    const decrease = basket.find((productItem) => {
+      if(productItem.id === product.id){
+        if (quantity >= 1) {
+          setQuantity(quantity - 1);
+        } else {
+          setQuantity(0);
+        }
+      }
+    })
+    console.log(decrease);
   };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/basket")
+      .then((res) => {
+        const respo = res.data;
+        setBasket(respo);
+        console.log(respo);
+      })
+      .catch((err) => console.log(err));
+    axios.get("http://localhost:4000/Checkout")
+    .then((res) => {
+      const respo = res.data;
+      setCheckout(respo)
+      console.log(respo);
+    })
+  },[]);
+
+  const deleteProduct = (product) =>{
+    const deleted = basket.find((productItem) =>(productItem.id === product.id))
+    axios
+    .delete("http://localhost:4000/basket",deleted.id)
+    .then((res) =>{
+      const respo = res.data;
+      setBasket(respo)
+      console.log(respo);
+    })  }
+
+  const clearBasket = () => {
+    axios
+    .get("http://localhost:4000/basket", basket)
+    .then((res) => {
+      const respo = res.data;
+      setBasket(respo);
+      console.log(respo);
+    })
+  }
 
   return (
     <div className="container-fluid px-5 py-3 bg-light">
@@ -46,40 +96,49 @@ export default function ShoppingCart() {
                 Remove
               </h5>
             </div>
-
-            <div className="col-12 d-flex my-3 py-3 align-items-center bg-white ">
-              <div className="col-4 d-flex justify-content-center align-items-center">
-                Products
-              </div>
-              <div className="col-2 d-flex justify-content-center align-items-center">
-                $150
-              </div>
-              <div className="col-2 d-flex justify-content-center align-items-center">
-                <button
-                  className="bg-warning d-flex align-items-center p-2 quantitybtn"
-                  onClick={decreaseQuantity}
-                >
-                  <FaMinus />
-                </button>
-                <span className="mx-2 ">{quantity}</span>
-                <button
-                  className="bg-warning d-flex align-items-center p-2 quantitybtn"
-                  onClick={increaseQuntity}
-                >
-                  <BiPlusMedical />
-                </button>
-              </div>
-              <div className="col-2 d-flex justify-content-center align-items-center">
-                $150
-              </div>
-              <div className="col-2 d-flex justify-content-center align-items-center">
-                <button className="bg-danger text-white d-flex align-items-center p-2 quantitybtn">
-                  <FaTimes />
-                </button>
-              </div>
-            </div>
+            {(basket?.length ?? 0) >= 1
+              ? basket.map((product, id) => {
+                  return (
+                    <div key={id} className="col-12 d-flex my-3 py-3 justify-content-between align-items-center bg-white ">
+                      <div className="col-4 d-flex ps-5 align-items-center">
+                        <img className="img-fluid col-2 photo" src={product.image} alt={product.productName} />
+                        {product.productName}
+                      </div>
+                      <div className="col-2 d-flex justify-content-center align-items-center">
+                        ${product.price}
+                      </div>
+                      <div className="col-2 d-flex justify-content-center align-items-center">
+                        <button
+                          className="bg-warning d-flex align-items-center p-2 quantitybtn"
+                          onClick={() =>{ decreaseQuantity(product)}}
+                        >
+                          <FaMinus />
+                        </button>
+                        <span className="mx-2 ">{quantity}</span>
+                        <button
+                          className="bg-warning d-flex align-items-center p-2 quantitybtn"
+                          onClick={() => {increaseQuntity(product)}}
+                        >
+                          <BiPlusMedical />
+                        </button>
+                      </div>
+                      <div className="col-2 d-flex justify-content-center align-items-center">
+                        ${product.price * quantity}
+                      </div>
+                      <div className="col-2 d-flex justify-content-center align-items-center">
+                        <button className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
+                        onClick={() => {deleteProduct(product)}}
+                        >
+                          <FaTimes />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })
+              : " "}
           </div>
         </div>
+
         <div className="col-4">
           <div className="col-12 d-flex p-0 align-items-center justify-content-between bg-white">
             <h5 className="col-5 px-2 d-flex ">Coupon Code</h5>
@@ -108,7 +167,9 @@ export default function ShoppingCart() {
                 <h3>$150</h3>
               </div>
 
-              <button className="col-12 px-5 py-3 my-4 bg-warning btn">Proced to checkOut</button>
+              <button className="col-12 px-5 py-3 my-4 bg-warning btn">
+                Proced to checkOut
+              </button>
             </div>
           </div>
         </div>

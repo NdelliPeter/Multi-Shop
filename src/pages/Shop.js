@@ -1,29 +1,53 @@
 import "./Shop.css";
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from "react-bootstrap/Dropdown";
 import { BiGridSmall } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {HiShoppingCart} from "react-icons/hi";
-import {AiOutlineHeart} from "react-icons/ai";
-import {TfiReload} from "react-icons/tfi";
-import {HiMagnifyingGlass} from "react-icons/hi2";
+import { HiShoppingCart } from "react-icons/hi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { TfiReload } from "react-icons/tfi";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Shop() {
-
-  const [products, setProducts] = useState()
-
+  const [products, setProducts] = useState();
+  const [basket, setBasket] = useState();
 
   useEffect(() => {
-    const pro = axios
+    axios
       .get("http://localhost:4000/products")
-      .then((res) => 
-       res.data)
+      .then((res) => {
+        const respo = res.data;
+        setProducts(respo);
+        console.log(respo);
+      })
       .catch((err) => console.log(err));
-    console.log(pro);
-    setProducts(pro);
+
+    axios
+      .get("http://localhost:4000/basket")
+      .then((res) => {
+        const respo = res.data;
+        setBasket(respo);
+        console.log(respo);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
+  const basketDrop = (product) => {
+    const drop = products.find(
+      (productItem) =>
+        products.indexOf(productItem) === products.indexOf(product)
+    );
+    axios
+      .post("http://localhost:4000/basket", product)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(drop);
+  };
 
   return (
     <div className="container-fluid px-5 py-3 shopbg">
@@ -194,7 +218,6 @@ export default function Shop() {
           </div>
         </div>
 
-
         {/* Products column */}
         <div className="col-9">
           <div className="col-12 d-flex justify-content-between align-items-center">
@@ -204,29 +227,25 @@ export default function Shop() {
             </div>
 
             <div className="d-flex gap-2 my-3">
-              <Dropdown> 
+              <Dropdown>
                 <Dropdown.Toggle variant="light" id="sortBtn">
                   Sorting
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">
-                    Latest
-                  </Dropdown.Item>
+                  <Dropdown.Item href="#">Latest</Dropdown.Item>
                   <Dropdown.Item href="#">Popularity</Dropdown.Item>
                   <Dropdown.Item href="#">Best Rating</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
 
-              <Dropdown> 
+              <Dropdown>
                 <Dropdown.Toggle variant="light" id="sortBtn">
                   Showing
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">
-                    10
-                  </Dropdown.Item>
+                  <Dropdown.Item href="#">10</Dropdown.Item>
                   <Dropdown.Item href="#">20</Dropdown.Item>
                   <Dropdown.Item href="#">30</Dropdown.Item>
                 </Dropdown.Menu>
@@ -234,28 +253,45 @@ export default function Shop() {
             </div>
           </div>
 
-          <div className="col-12">
-            <div className="row">
-              {
-              <div className="col-4 bg-white rounded">
-                <div className="p-5">
-                  <div className="d-flex gap-2 justify-content-center align-items-center">
-                    <HiShoppingCart className="productIcon" />
-                    <AiOutlineHeart className="productIcon" />
-                    <TfiReload className="productIcon" />
-                    <HiMagnifyingGlass className="productIcon" />
-                  </div>
-                </div>
-                <div className="d-flex flex-column justify-content-center align-items-center">
-                  <h6>Product Name Goes Here</h6>
-                  <p>$123.00 <small className="text-though">$123.00</small></p>
-                </div>
-              </div>
-              }
+          <div className="col-12 ">
+            <div className="row justify-content-between align-items-center">
+              {(products?.length ?? 0) >= 1
+                ? products.map((product, id) => {
+                    return (
+                      <div key={id} className="col-4 p-1">
+                        <div className="bg-white  round">
+                          <div className="  m-0 container_">
+                            <img
+                              src={product.image}
+                              alt={product.productName}
+                              className=" col-12 img"
+                            />
+                            <div className="d-flex gap-2 justify-content-center align-items-center icons">
+                              <HiShoppingCart
+                                className="productIcon"
+                                onClick={() => {
+                                  basketDrop(product);
+                                }}
+                              />
+                              <AiOutlineHeart className="productIcon" />
+                              <TfiReload className="productIcon" />
+                              <HiMagnifyingGlass className="productIcon" />
+                            </div>
+                          </div>
+                          <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                            <h6>{product.productName}</h6>
+                            <p>
+                              ${product.price}
+                              <small className="text-though">$163.00</small>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })
+                : "No Product found"}
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

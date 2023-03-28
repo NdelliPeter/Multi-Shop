@@ -48,18 +48,7 @@ export default function SignUp() {
 
   const addAccount = (data) => {
 
-    // const pushData = axios
-    // .post("http://localhost:4000/accounts", data)
-    // .then((res) => {
-    // console.log(res);
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // }); 
-    const acc = accounts.find((el) =>{ 
-    if(el.email === data.email){
-      setError("This email already exist please try Signing In")
-    }else if(el.email !== data.email) {
+    if(accounts.length === 0){
       return (
         axios
         .post("http://localhost:4000/accounts", data)
@@ -70,9 +59,23 @@ export default function SignUp() {
           console.log(err);
         }) ,
       navigate("/")
-    )}
-    })
-    setAccounts(acc);
+    )
+    }else if( accounts.find((account) =>(account.email === data.email))){
+      setError("This email already exist please try Signing In")
+    }else{
+      return (
+        axios
+        .post("http://localhost:4000/accounts", data)
+        .then((res) => {
+        console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        }) ,
+      navigate("/")
+    )
+    }
+    console.log(data);
 
   };
 
@@ -99,9 +102,8 @@ export default function SignUp() {
 
   const SignUpSubmit = (data) => {
     data.id = id;
-    reset();
     addAccount(data);
-    console.log(data);
+    reset();
   };
 
   const navigate = useNavigate(-1);

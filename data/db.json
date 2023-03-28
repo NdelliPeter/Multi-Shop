@@ -4,65 +4,9 @@
       "firstName": "Ndemba",
       "lastName": "Ndelli",
       "email": "ndellipetex@gmail.com",
-      "password": "12345",
-      "confirmPassword": "12345",
-      "id": "20b417aa-6c31-70f7-e5a4-995242882996"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
       "password": "1234",
       "confirmPassword": "1234",
-      "id": "9b2f8712-7c74-bc56-7f74-57300815d416"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "id": "9cd5669b-5c54-46c8-02d7-0f841c130685"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "id": "66e20c72-aa42-8653-d806-3829bf0c679a"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "id": "70043817-b9bb-f464-ece4-984a46967827"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "id": "9b39c36f-97d7-179a-e6d1-07d4c458f76a"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "id": "fff68982-ef15-a263-85e0-452ab57abbbf"
-    },
-    {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipeter@yahoo.com",
-      "password": "12345",
-      "confirmPassword": "12345",
-      "id": "4dca2687-1557-12e9-8bb5-f7a6c8753ead"
+      "id": "10f6fa22-85ad-ecb8-49e6-35b91ce983a1"
     },
     {
       "firstName": "Ndemba",
@@ -70,89 +14,118 @@
       "email": "ndellipeter@yahoo.com",
       "password": "1234",
       "confirmPassword": "1234",
-      "id": "f20b8fc4-4726-613e-e3f6-58ad04a8d340"
+      "id": "52e230fb-98b2-dcec-517a-6936aec144ce"
     },
     {
-      "firstName": "Ndemba",
-      "lastName": "Ndelli",
-      "email": "ndellipetex@gmail.com",
-      "password": "12345",
       "confirmPassword": "12345",
-      "id": "462ac222-1f70-bf7e-0d48-28a863decee3"
+      "password": "12345",
+      "email": "benedictlifanje@gmail.com",
+      "lastName": "Lifanje",
+      "firstName": "Benedict",
+      "id": "0d3e12b8-4655-431d-86dc-bf9b55b1f92a"
     }
   ],
   "products": [
     {
       "id": 1,
-      "productName": "camera",
-      "image": "https://www.pexels.com/photo/camera-in-black-and-white-14799851/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "productName": "Drone camera",
+      "image": "https://images.pexels.com/photos/14799851/pexels-photo-14799851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 2,
       "productName": "Male cloth",
-      "image": "https://www.pexels.com/photo/man-in-gray-suit-jacket-looking-at-camera-8371721/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/13192037/pexels-photo-13192037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 3,
       "productName": "camera",
-      "image": "https://www.pexels.com/photo/drone-flying-against-blue-sky-336232/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 4,
       "productName": "Ladies cloth",
-      "image": "https://www.pexels.com/photo/woman-in-white-dress-sitting-on-beige-armchair-10792732/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/10792732/pexels-photo-10792732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 5,
       "productName": "Male cloth",
-      "image": "https://www.pexels.com/photo/brunette-man-and-women-wearing-graphite-colour-traditional-clothing-standing-in-an-interior-with-pink-carpet-13192037/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/13192037/pexels-photo-13192037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 6,
       "productName": "camera",
-      "image": "https://www.pexels.com/photo/black-and-silver-canon-dslr-camera-3368215/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 7,
       "productName": "Ladies cloth",
-      "image": "https://www.pexels.com/photo/photo-of-woman-in-field-7207506/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/7207506/pexels-photo-7207506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 8,
       "productName": "camera",
-      "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/9825046/pexels-photo-9825046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 9,
       "productName": "camera",
-      "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/9825046/pexels-photo-9825046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 10,
-      "productName": "camera",
-      "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "productName": "Kid cloth",
+      "image": "https://images.pexels.com/photos/3875080/pexels-photo-3875080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 11,
       "productName": "camera",
-      "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/3875080/pexels-photo-3875080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     },
     {
       "id": 12,
       "productName": "camera",
-      "image": "https://www.pexels.com/photo/a-black-sony-camera-9825046/",
-      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy"
+      "image": "https://images.pexels.com/photos/3875080/pexels-photo-3875080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
     }
-  ]
+  ],
+  "basket": [
+    {
+      "id": 1,
+      "productName": "Drone camera",
+      "image": "https://images.pexels.com/photos/14799851/pexels-photo-14799851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
+    },
+    {
+      "id": 6,
+      "productName": "camera",
+      "image": "https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "productDetails": "Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy",
+      "price": 150
+    }
+  ],
+  "Checkout": []
 }

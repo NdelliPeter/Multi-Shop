@@ -136,3 +136,9 @@ transition: 0.2;
 .yellowbtn{
   border: none;
 }
+
+.logo{
+  height: 13rem;
+  object-fit: cover;
+
+}

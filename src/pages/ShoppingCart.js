@@ -7,16 +7,44 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ShoppingCart() {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState();
   const [basket, setBasket] = useState();
   const [checkout, setCheckout] = useState();
 
-  const increaseQuntity = (product) => {
-    const increase = basket.find((productItem) => 
-      productItem.id === product.id)
-    const  increased = increase.quantity +1;
-    product.quantity =increased
-    console.log(increased);
+  const increaseQuntity = (id) => {
+    // const item = axios.get(`http://localhost:4000/basket/${id}`)
+    // .then((res) => {
+    //   const respo =res.data
+    //   // setQuantity(respo)
+    //         console.log(respo);
+    // })
+    // const new_item= 
+    // if(item.id === id ){
+    //   const addQuantity = item.quantity ++
+    //   return(addQuantity)
+    // }
+    // const add = basket.map((product) => {
+    //   if(product.id === id){
+    //     return setBasket(item)
+    //   }
+    // })
+    const new_item = basket.map((item) => {
+      if(item.id === id) {
+        item.quantity = item.quantity ++
+        return(item)
+      }else{
+        return item;
+      }
+
+    })
+    const update = basket.map
+
+    console.log(new_item);
+
+    // axios.put(`http://localhost:4000/basket/${ id }`,)
+    //       .then((res) =>{
+    //         console.log(res.data);
+    //       })
   };
 
 
@@ -42,6 +70,7 @@ export default function ShoppingCart() {
         console.log(respo);
       })
       .catch((err) => console.log(err));
+
     axios.get("http://localhost:4000/Checkout")
     .then((res) => {
       const respo = res.data;
@@ -51,26 +80,17 @@ export default function ShoppingCart() {
   },[setBasket]);
 
   const deleteProduct = (productId) =>{
-    basket.map((product) => {
-      if(product.id === productId){
-        axios
-        .delete(`http://localhost:4000/basket/${productId}`)
-        .then((res) =>{
-          const respo = res.data;
-          // setBasket(respo)
-          console.log(respo);
-        }) 
-      }else{
-        setBasket(product)
-      }
-    })
- 
+    axios.delete(`http://localhost:4000/basket/${productId}`);
+    setBasket(
+      basket.filter((product) => {
+        return(product.id !== productId)})
+    ) 
   }
 
   const clearBasket = () => {
     setCheckout(basket)
     axios
-    .get("http://localhost:4000/basket", basket)
+    .post("http://localhost:4000/Checkout", basket)
     .then((res) => {
       const respo = res.data;
       setBasket(respo);
@@ -118,14 +138,14 @@ export default function ShoppingCart() {
                       <div className="col-2 d-flex justify-content-center align-items-center">
                         <button
                           className="bg-warning d-flex align-items-center p-2 quantitybtn"
-                          onClick={() =>{ decreaseQuantity(product)}}
+                          onClick={() =>{ decreaseQuantity(product?.id)}}
                         >
                           <FaMinus />
                         </button>
                         <span className="mx-2 ">{product?.quantity}</span>
                         <button
                           className="bg-warning d-flex align-items-center p-2 quantitybtn"
-                          onClick={() => {increaseQuntity(product)}}
+                          onClick={() => {increaseQuntity(product?.id)}}
                         >
                           <BiPlusMedical />
                         </button>
@@ -175,7 +195,8 @@ export default function ShoppingCart() {
                 <h3>$150</h3>
               </div>
 
-              <button className="col-12 px-5 py-3 my-4 bg-warning btn">
+              <button className="col-12 px-5 py-3 my-4 bg-warning btn" 
+              onClick={() =>{clearBasket()}}>
                 Proced to checkOut
               </button>
             </div>

@@ -38,6 +38,9 @@
 }
 
 /* Nav Styles */
+.header{
+  padding: 0px;
+}
 #nav {
   background-color: rgb(240, 240, 240);
 }
@@ -73,7 +76,7 @@
 }
 
 .catego-hieght {
-  height: 100px;
+  width: 30%;
   transition:transform .2s;
 }
 
@@ -89,7 +92,7 @@
   background-color: rgb(240, 240, 240);
 }
 .carousel{
-  height: 30rem;
+  height: 31rem;
 }
 .image{
   height:max-content;
@@ -102,7 +105,7 @@
 }
 .yellow{
   /* width: 10vh; */
-  height: 34vh;
+  height: 15rem;
   overflow: hidden;
   /* background-image: url(./assets/girl.jpg);
   background-position: center;

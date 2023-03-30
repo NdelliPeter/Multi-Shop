@@ -126,14 +126,14 @@ export default function Home() {
 
           <div className="col-12 px-5">
             <div className="row py-5 ">
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
                 <div className=" p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <BsCheckLg className="text-warning icon" />
                   <h4>Quality Product</h4>
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
                 <div className="p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <FaShippingFast className="text-warning icon" />
                   <h4>
@@ -142,7 +142,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
                 <div className="p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <BiTransfer className="text-warning icon" />
                   <h4>
@@ -151,7 +151,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
                 <div className="p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <FaPhoneVolume className="text-warning icon" />
                   <h4>
@@ -165,7 +165,7 @@ export default function Home() {
           <div className=" col-12 px-5">
             <div className="row align-items-center">
               <h2 className="col-12">CATEGORIES</h2>
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={camera} alt="camera" />
@@ -181,45 +181,13 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={shoes} alt="shoes" />
-                  </div>
-
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={camera} alt="camera" />
-                  </div>
-
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
+                  <div className="catego-hieght">
                     <img className="img-fluid" src={shoes} alt="camera" />
                   </div>
 
-                  <div className="col-7 p-3">
+                  <div className="">
                     <span>
                       <b>Category Name</b>
                     </span>
@@ -229,13 +197,13 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={camera} alt="camera" />
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
+                  <div className="catego-hieght">
+                    <img className="img-fluid" src={girl} alt="camera" />
                   </div>
 
-                  <div className="col-7 p-3">
+                  <div className="">
                     <span>
                       <b>Category Name</b>
                     </span>
@@ -245,13 +213,13 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={shoes} alt="camera" />
+              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
+                  <div className="catego-hieght">
+                    <img className="img-fluid" src={man} alt="camera" />
                   </div>
 
-                  <div className="col-7 p-3">
+                  <div className="">
                     <span>
                       <b>Category Name</b>
                     </span>
@@ -261,101 +229,11 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={camera} alt="camera" />
-                  </div>
 
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={shoes} alt="camera" />
-                  </div>
+      
 
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={camera} alt="camera" />
-                  </div>
-
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={shoes} alt="camera" />
-                  </div>
-
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 p-3 gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={camera} alt="camera" />
-                  </div>
-
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3  gap-2 d-flex align-items-center">
-                <div className="row align-items-center bg-white catego-hieght">
-                  <div className="col-4">
-                    <img className="img-fluid" src={shoes} alt="camera" />
-                  </div>
-
-                  <div className="col-7 p-3">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 

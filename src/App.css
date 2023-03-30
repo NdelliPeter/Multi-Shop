@@ -77,14 +77,18 @@
 
 .catego-hieght {
   width: 30%;
+  height: 50px;
   transition:transform .2s;
 }
+
 
 .catego-hieght:hover {
   background-color: gold;
 }
 
-.catego-hieght div img{
+.catego-hieght img{
+  width: 100%;
+  height: 100%;
   transition:transform .1s;
 }
 

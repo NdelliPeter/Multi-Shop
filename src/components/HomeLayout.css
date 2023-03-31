@@ -2,17 +2,19 @@
 .inputSearch {
     border: 1px solid rgb(167, 167, 167);
     height: 35px;
+    width: 50%;
   }
   
   .serchbtn {
     border: 1px solid rgb(167, 167, 167);
     border-left: 0px;
-    width: 40px;
+    width: 13%;
     height: 35px;
   }
 
 .SlMagnifier {
-    font-size: x-large;
+    font-size: large;
+    font-weight:  bolder;
   }
   
   .nestedlink {
@@ -63,6 +65,7 @@
     background-color: transparent;
     color: white;
     border: none;
+    padding: 0px;
   }
   .pagesDrop-content {
     display: block;

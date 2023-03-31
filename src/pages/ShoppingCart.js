@@ -99,13 +99,14 @@ export default function ShoppingCart() {
   }
 
   return (
-    <div className="container-fluid px-5 py-3 bg-light">
+    <div className="container-fluid shoppingCartbg">
       <div className="row px-5">
         <div className="col-12 bg-white p-3 my-4">
           <span>Home / Shop / Shopping Cart </span>
         </div>
-
-        <div className="col-8">
+        <div className="col-12 px-0">
+          <div className="row">
+          <div className="col-8">
           <div className="col-12">
             <div className="col-12 d-flex py-3 align-items-center bg-dark text-white">
               <h5 className="col-4 d-flex justify-content-center align-items-center">
@@ -202,6 +203,9 @@ export default function ShoppingCart() {
             </div>
           </div>
         </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

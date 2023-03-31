@@ -35,12 +35,15 @@ export default function CheckOut() {
 
   return (
     <>
-      <div className="container-fluid px-5 py-3 checkoutbg">
+      <div className="container-fluid py-3 checkoutbg">
         <div className="row px-5">
           <div className="col-12 bg-white p-3 my-4">
             <span>Home / Shop / Checkout </span>
           </div>
-          <div className="col-8">
+
+          <div className="col-12 px-0">
+            <div className="row">
+            <div className="col-8">
             <h3 className="col-12">BILLING ADDRESS</h3>
             <form
               className="col-12 bg-white px-4 py-3"
@@ -407,6 +410,9 @@ export default function CheckOut() {
               </div>
             </div>
           </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </>

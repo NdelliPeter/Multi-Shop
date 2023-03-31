@@ -36,7 +36,7 @@
     position: absolute;
     /* padding-top: 5rem; */
     display: none;
-    width: 19rem;
+    width: 100%;
     top: 0px;
     height: 15rem;
     align-self: center;
@@ -45,6 +45,8 @@
 }
 .icons:hover{
     opacity: 1;
+    /* transform: scale(1.5) */
+
 }
 
 .productIcon{

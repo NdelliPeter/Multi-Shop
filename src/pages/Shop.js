@@ -34,7 +34,7 @@ export default function Shop() {
   }, []);
 
   const basketDrop = (product) => {
-    product.quantity = 1
+    product.quantity = 1;
     const drop = products.find(
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
@@ -51,14 +51,14 @@ export default function Shop() {
   };
 
   return (
-    <div className="container-fluid px-5 py-3 shopbg">
+    <div className="container-fluid shopbg">
       <div className="row px-5">
         <div className="col-12 bg-white p-3 my-4">
           <span>Home / Shop / ShopList </span>
         </div>
 
         {/* Filter column */}
-        <div className="col-3">
+        <div className="col-3 d-sm-none d-md-block d-lg-block px-0">
           <div>
             <h4 className="my-3">FILTER BY PRICE</h4>
             <div className="col-12 px-4 py-3 bg-white">
@@ -220,78 +220,85 @@ export default function Shop() {
         </div>
 
         {/* Products column */}
-        <div className="col-9">
-          <div className="col-12 d-flex justify-content-between align-items-center">
-            <div className="d-flex gap-2 my-3">
-              <BiGridSmall className="bg-white icon" />
-              <GiHamburgerMenu className="bg-white icon" />
+        <div className="col-9 px-0">
+          <div className="row ps-2">
+            <div className="col-12 d-flex justify-content-between align-items-center">
+              <div className="d-flex gap-2 my-3">
+                <BiGridSmall className="bg-white icon" />
+                <GiHamburgerMenu className="bg-white icon" />
+              </div>
+
+              <div className="d-flex gap-2 my-3">
+                <Dropdown>
+                  <Dropdown.Toggle variant="light" id="sortBtn">
+                    Sorting
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#">Latest</Dropdown.Item>
+                    <Dropdown.Item href="#">Popularity</Dropdown.Item>
+                    <Dropdown.Item href="#">Best Rating</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                <Dropdown>
+                  <Dropdown.Toggle variant="light" id="sortBtn">
+                    Showing
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#">10</Dropdown.Item>
+                    <Dropdown.Item href="#">20</Dropdown.Item>
+                    <Dropdown.Item href="#">30</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
             </div>
 
-            <div className="d-flex gap-2 my-3">
-              <Dropdown>
-                <Dropdown.Toggle variant="light" id="sortBtn">
-                  Sorting
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#">Latest</Dropdown.Item>
-                  <Dropdown.Item href="#">Popularity</Dropdown.Item>
-                  <Dropdown.Item href="#">Best Rating</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-
-              <Dropdown>
-                <Dropdown.Toggle variant="light" id="sortBtn">
-                  Showing
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#">10</Dropdown.Item>
-                  <Dropdown.Item href="#">20</Dropdown.Item>
-                  <Dropdown.Item href="#">30</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          </div>
-
-          <div className="col-12 ">
-            <div className="row justify-content-between align-items-center">
-              {(products?.length ?? 0) >= 1
-                ? products.map((product, id) => {
-                    return (
-                      <div key={id} className="col-4 p-1">
-                        <div className="bg-white  round">
-                          <div className="  m-0 container_">
-                            <img
-                              src={product.image}
-                              alt={product.productName}
-                              className=" col-12 img"
-                            />
-                            <div className="d-flex gap-2 justify-content-center align-items-center icons">
-                              <HiShoppingCart
-                                className="productIcon"
-                                onClick={() => {
-                                  basketDrop(product);
-                                }}
-                              />
-                              <AiOutlineHeart className="productIcon" />
-                              <TfiReload className="productIcon" />
-                              <HiMagnifyingGlass className="productIcon" />
+            <div className="col-12 ">
+                <div className="row px-2">
+                  {(products?.length ?? 0) >= 1
+                    ? products.map((product, id) => {
+                        return (
+                          <div
+                            key={id}
+                            className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
+                          >
+                            <div className="bg-white round">
+                              <div className=" col-12 m-0 container_">
+                                <div className="col-12">
+                                  <img
+                                    src={product.image}
+                                    alt="image"
+                                    className="img-fluid img"
+                                  />
+                                </div>
+                                <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                  <HiShoppingCart
+                                    className="productIcon"
+                                    onClick={() => {
+                                      basketDrop(product);
+                                    }}
+                                  />
+                                  <AiOutlineHeart className="productIcon" />
+                                  <TfiReload className="productIcon" />
+                                  <HiMagnifyingGlass className="productIcon" />
+                                </div>
+                              </div>
+                              <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                                <h6>{product.productName}</h6>
+                                <p>
+                                  ${product.price}{" "}
+                                  <small className="text-though">$163.00</small>
+                                </p>
+                              </div>
                             </div>
                           </div>
-                          <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                            <h6>{product.productName}</h6>
-                            <p>
-                              ${product.price}
-                              <small className="text-though">$163.00</small>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })
-                : "No Product found"}
-            </div>
+                        );
+                      })
+                    : "No Product found"}
+                </div>
+              </div>
           </div>
         </div>
       </div>

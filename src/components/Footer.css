@@ -15,11 +15,12 @@ footer{
 .EmailAdress{
     border: none;
     height: 35px;
+    width: 60%;
 }
 
 .searchbtn{
     border: none;
     border-left: 0px;
-    /* width: 40px; */
+    width: 40%;
     height: 35px;
 }

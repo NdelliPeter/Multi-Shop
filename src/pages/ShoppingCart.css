@@ -1,4 +1,6 @@
-
+.shoppingCartbg{
+    background-color: rgb(240, 240, 240);
+}
 .quantitybtn{
     border: none;
 }

@@ -99,24 +99,28 @@ export default function Home() {
               <div className="col-12 col-sm-12 col-md-4 col-lg-4 d-flex flex-column align-items-between">
                 <div className="col-12 yellow">
                   <div className="bgimage d-flex flex-column justify-content-center align-items-center">
-                    <div className="content">
-                      <h6>SAVE 20%</h6>
-                      <h4>Special Offer</h4>
-                      <button className="bg-warning py-2 px-3 yellowbtn">
-                        Shop Now
-                      </button>
+                    <div className="d-flex align-items-center">
+                      <div className="content">
+                        <h6>SAVE 20%</h6>
+                        <h4>Special Offer</h4>
+                        <button className="bg-warning py-2 px-3 yellowbtn">
+                          Shop Now
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-12 mt-3 yellow">
                   <div className="bgimage d-flex flex-column justify-content-center align-items-center">
-                    <div className="content">
-                      <h6>SAVE 20%</h6>
-                      <h4>Special Offer</h4>
-                      <button className="bg-warning py-2 px-3 yellowbtn">
-                        Shop Now
-                      </button>
+                    <div className="d-flex align-items-center">
+                      <div className="content">
+                        <h6>SAVE 20%</h6>
+                        <h4>Special Offer</h4>
+                        <button className="bg-warning py-2 px-3 yellowbtn">
+                          Shop Now
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -126,14 +130,14 @@ export default function Home() {
 
           <div className="col-12 px-5">
             <div className="row py-5 ">
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className=" p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <BsCheckLg className="text-warning icon" />
                   <h4>Quality Product</h4>
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <FaShippingFast className="text-warning icon" />
                   <h4>
@@ -142,7 +146,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <BiTransfer className="text-warning icon" />
                   <h4>
@@ -151,7 +155,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="p-4 gap-2 d-flex justify-content-center bg-white align-items-center">
                   <FaPhoneVolume className="text-warning icon" />
                   <h4>
@@ -165,7 +169,7 @@ export default function Home() {
           <div className=" col-12 px-5">
             <div className="row align-items-center">
               <h2 className="col-12">CATEGORIES</h2>
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={camera} alt="camera" />
@@ -181,7 +185,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 py-2">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={shoes} alt="camera" />
@@ -197,7 +201,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 ">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={girl} alt="camera" />
@@ -213,7 +217,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 col-sm-6 col-md-3 col-lg-3 ">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 ">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={man} alt="camera" />
@@ -228,85 +232,95 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-
-
-      
-
-
             </div>
           </div>
 
-          <div className="container-fluid row px-5 homebg align-items-center">
-            <div className="col-12">
-              <h2>FEATURED PRODUCTS</h2>
+          <div className="col-12 px-5">
+            <div className="row px-2">
+              <div className="col-12 px-0">
+                <h2>FEATURED PRODUCTS</h2>
+              </div>
+              <div className="col-12 ">
+                <div className="row">
+                  {(products?.length ?? 0) >= 1
+                    ? products.map((product, id) => {
+                        return (
+                          <div
+                            key={id}
+                            className="col-11 col-sm-11 col-md-3 col-lg-3 p-1  "
+                          >
+                            <div className="bg-white round">
+                              <div className=" col-12 m-0 container_">
+                                <div className="col-12">
+                                  <img
+                                    src={product.image}
+                                    alt="image"
+                                    className="img-fluid img"
+                                  />
+                                </div>
+                                <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                  <HiShoppingCart
+                                    className="productIcon"
+                                    onClick={() => {
+                                      basketDrop(product);
+                                    }}
+                                  />
+                                  <AiOutlineHeart className="productIcon" />
+                                  <TfiReload className="productIcon" />
+                                  <HiMagnifyingGlass className="productIcon" />
+                                </div>
+                              </div>
+                              <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                                <h6>{product.productName}</h6>
+                                <p>
+                                  ${product.price}{" "}
+                                  <small className="text-though">$163.00</small>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })
+                    : "No Product found"}
+                </div>
+              </div>
             </div>
-            {(products?.length ?? 0) >= 1
-              ? products.map((product, id) => {
-                  return (
-                    <div key={id} className="col-3 p-1  ">
-                      <div className="bg-white round">
-                        <div className=" col-12 m-0 container_">
-                          <div className="col-12">
-                            <img
-                              src={product.image}
-                              alt="image"
-                              className="img-fluid img"
-                            />
-                          </div>
-                          <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
-                            <HiShoppingCart
-                              className="productIcon"
-                              onClick={() => {
-                                basketDrop(product);
-                              }}
-                            />
-                            <AiOutlineHeart className="productIcon" />
-                            <TfiReload className="productIcon" />
-                            <HiMagnifyingGlass className="productIcon" />
-                          </div>
-                        </div>
-                        <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                          <h6>{product.productName}</h6>
-                          <p>
-                            ${product.price}{" "}
-                            <small className="text-though">$163.00</small>
-                          </p>
-                        </div>
-                      </div>
+          </div>
+
+          <div className="col-12 px-5 py-5">
+            <div className="row d-flex justify-content-between">
+              <div className="col-6 yellow">
+                <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                  <div className="d-flex align-items-center">
+                    <div className="content">
+                      <h6>SAVE 20%</h6>
+                      <h4>Special Offer</h4>
+                      <button className="bg-warning py-2 px-3 yellowbtn">
+                        Shop Now
+                      </button>
                     </div>
-                  );
-                })
-              : "No Product found"}
-          </div>
-
-          <div className="col-12 d-flex p-4 justify-content-around homebg align-items-center">
-            <div className="col-5 yellow">
-              <div className="bgimage d-flex flex-column justify-content-center align-items-center">
-                <div className="content">
-                  <h6>SAVE 20%</h6>
-                  <h4>Special Offer</h4>
-                  <button className="bg-warning py-2 px-3 yellowbtn">
-                    Shop Now
-                  </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="col-5 yellow">
-              <div className="bgimage d-flex flex-column justify-content-center align-items-center">
-                <div className="content">
-                  <h6>SAVE 20%</h6>
-                  <h4>Special Offer</h4>
-                  <button className="bg-warning py-2 px-3 yellowbtn">
-                    Shop Now
-                  </button>
+              <div className="col-6 yellow">
+                <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                  <div className="d-flex align-items-center">
+                    <div className="content">
+                      <h6>SAVE 20%</h6>
+                      <h4>Special Offer</h4>
+                      <button className="bg-warning py-2 px-3 yellowbtn">
+                        Shop Now
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-12 homebg d-flex jutify-content-center align-items-center">
-            <Carousel className="col-3 d-flex jutity-content-center align-items-center">
+          <div className="col-12 px-5 ">
+            <div className="row d-flex justify-content-center align-items-center" >
+            <Carousel className="col-12 d-flex jus  tity-content-center align-items-center">
               <Carousel.Item className="logo">
                 <img
                   className="img-fluid"
@@ -378,6 +392,8 @@ export default function Home() {
                 />
               </Carousel.Item>
             </Carousel>
+            </div>
+            
           </div>
         </div>
       </div>

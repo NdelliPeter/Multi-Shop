@@ -23,7 +23,7 @@ export default function HomeLayout() {
         <div className="row px-5 py-4 align-items-center">
             <img className="col-4 d-flex px-0 align-items-center" src={logo} alt="logo" />
 
-          <div className="col-4 d-flex justify-content-center align-items-center">
+          <div className="col-5 d-flex justify-content-center align-items-center">
             <input
               className="px-1 inputSearch"
               placeholder="Search for product"
@@ -33,7 +33,7 @@ export default function HomeLayout() {
             </button>
           </div>
 
-          <div className="col-4 px-0 d-flex flex-column justify-content-end align-items-end">
+          <div className="col-3 px-0 d-flex flex-column justify-content-end align-items-end">
               <div>Customer Service</div>
               <div>
                 <b>+237 612 345 678</b>

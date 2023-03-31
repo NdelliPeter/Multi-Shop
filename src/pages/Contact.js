@@ -50,19 +50,17 @@ export default function Contact() {
   };
 
   return (
-    <div className="container-fluid px-5 py-3 contactbg">
+    <div className="container-fluid py-3 contactbg">
       <div className="row px-5">
         <div className="col-12 bg-white p-3 my-4">
           <span>Home / Contact </span>
         </div>
 
-        <div className="col-12 p-0 my-4">
-          <h2>
+        <div className="col-12 my-4">
+          <div className="row justify-content-between">
+          <h2 className="col-12 p-0">
             <b>CONTACT US </b>
           </h2>
-        </div>
-
-        <div className="row justify-content-between">
           <form
             className="col-7 bg-white px-5 py-4"
             onSubmit={handleSubmit(submitMessage)}
@@ -115,7 +113,7 @@ export default function Contact() {
             </button>
           </form>
 
-          <div className="col-4">
+          <div className="col-5 pe-0">
             <div className="col-12 bg-white p-2">
               <MapContainer
               className="map"
@@ -152,6 +150,9 @@ export default function Contact() {
             </div>
           </div>
         </div>
+        </div>
+
+
       </div>
     </div>
   );

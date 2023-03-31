@@ -18,7 +18,7 @@ import {AiOutlineInstagram} from 'react-icons/ai'
 export default function Footer() {
     return (
         <footer className="container-fluid bg-dark text-white p-5">
-                <div className="row justify-content-center ">
+                <div className="row  ">
                     <div className="col-3">
                         <h3>GET IN TOUCH</h3>
 
@@ -69,25 +69,25 @@ export default function Footer() {
                         <p>
                             Dou stet tempor ipsum sit <br/> amet magna ipsum tempor est
                         </p>
-                        <div className='row my-3 d-flex px-2'>
-                            <input className='col-7 px-1 EmailAdress' placeholder='Your Email Address' />
-                            <button className='col-4 p-1 searchbtn bg-warning text-black'>
+                        <div className=' my-3 d-flex'>
+                            <input className=' px-1 EmailAdress' placeholder='Your Email Address' />
+                            <button className='p-1 searchbtn bg-warning text-black'>
                                 Sign Up
                             </button>
                         </div>
 
                         <h5>FOLLOW US</h5>
-                        <div className="row gap-2 p-3">
-                            <div className="col-2 d-flex p-3 bg-warning justify-content-center align-items-center">
+                        <div className="d-flex gap-1 pt-3">
+                            <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
                                 <AiOutlineTwitter className="text-dark" />
                             </div>
-                            <div className="col-2 d-flex p-3 bg-warning justify-content-center align-items-center">
+                            <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
                                 <GrFacebookOption className="text-dark" />
                             </div>
-                            <div className="col-2 d-flex p-3 bg-warning justify-content-center align-items-center">
+                            <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
                                 <FaLinkedinIn className="text-dark" />
                             </div>
-                            <div className="col-2 d-flex p-3 bg-warning justify-content-center align-items-center">
+                            <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
                                 <AiOutlineInstagram className="text-dark" />
                             </div>
                         </div>

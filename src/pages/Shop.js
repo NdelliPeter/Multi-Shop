@@ -58,7 +58,7 @@ export default function Shop() {
         </div>
 
         {/* Filter column */}
-        <div className="col-3 d-sm-none d-md-block d-lg-block px-0">
+        <div className="col-3 d-none d-sm-none d-md-block d-lg-block px-0">
           <div>
             <h4 className="my-3">FILTER BY PRICE</h4>
             <div className="col-12 px-4 py-3 bg-white">
@@ -220,7 +220,7 @@ export default function Shop() {
         </div>
 
         {/* Products column */}
-        <div className="col-9 px-0">
+        <div className="col-12 col-sm-12 col-md-8 col-lg-9 px-0">
           <div className="row ps-2">
             <div className="col-12 d-flex justify-content-between align-items-center">
               <div className="d-flex gap-2 my-3">
@@ -256,7 +256,7 @@ export default function Shop() {
             </div>
 
             <div className="col-12 ">
-                <div className="row px-2">
+                <div className="row align-items-center px-2">
                   {(products?.length ?? 0) >= 1
                     ? products.map((product, id) => {
                         return (

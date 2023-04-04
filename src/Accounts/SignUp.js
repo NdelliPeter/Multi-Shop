@@ -12,6 +12,8 @@ import axios from "axios";
 // import SignIn from "./SignIn.js";
 import { Button } from "react-bootstrap";
 
+
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const SignUpSchema = yup.object().shape({
   firstName: yup
     .string()
@@ -25,7 +27,11 @@ const SignUpSchema = yup.object().shape({
     .string()
     .email("please input a valid email")
     .required("email canot be empty"),
-  password: yup.string().min(4).max(15).required("password cannot be empty"),
+  password: yup.string()
+    .min(8)
+    .max(12)
+    .matches(passwordRules, { message: "Please create a stronger password" })
+    .required("password cannot be empty"),
   confirmPassword: yup
     .string()
     .test("passwords-match", "Passwords must match", function (value) {
@@ -114,9 +120,10 @@ export default function SignUp() {
 
   return (
     <>
-      <div className="container-fluid row justify-content-center align-items-center bg-warning">
+      <div className="container-fluid warning">
+        <div className="row">
         <form
-          className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 bg-white rounded "
+          className="col-11 col-sm-11 col-md-4 col-lg-4 shadow-lg bg-white rounded"
           onSubmit={handleSubmit(SignUpSubmit)}
         >
           <h1>Sign Up</h1>
@@ -186,6 +193,8 @@ export default function SignUp() {
             <Button onClick={moveToNewPage}>SignIn</Button>
           </div>
         </form>
+        </div>
+
       </div>
       {/* <Outlet /> */}
     </>

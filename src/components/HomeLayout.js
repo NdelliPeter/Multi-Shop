@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import whiteLogo from "../assets/whiteLogo.png";
+
 // import "../App.css";
 import "./HomeLayout.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,9 +22,12 @@ export default function HomeLayout() {
     <>
       <div className="container-fluid">
         {/* middle header */}
-        <div className="row px-5 py-4 align-items-center">
-            <img className="col-4 d-flex px-0 align-items-center" src={logo} alt="logo" />
-
+        <div className="row d-none d-sm-none d-lg-flex px-5 py-4 align-items-center">
+          <img
+            className="col-4 d-flex px-0 align-items-center"
+            src={logo}
+            alt="logo"
+          />
           <div className="col-5 d-flex justify-content-center align-items-center">
             <input
               className="px-1 inputSearch"
@@ -34,118 +39,128 @@ export default function HomeLayout() {
           </div>
 
           <div className="col-3 px-0 d-flex flex-column justify-content-end align-items-end">
-              <div>Customer Service</div>
-              <div>
-                <b>+237 612 345 678</b>
-              </div>
+            <div>Customer Service</div>
+            <div>
+              <b>+237 612 345 678</b>
+            </div>
           </div>
         </div>
 
         {/* Bottom header */}
         <div className="bg-dark row justify-content-between align-items-center px-5">
-          <div className="col-8 d-flex px-0 gap-4 align-items-center">
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger className="bg-warning dropdown-categories py-4 px-3 text-dark">
-                <div className="d-flex justify-content-between align-items-center">
-                  <div>
-                    <GiHamburgerMenu className="mx-2 bolder" />
-                    <b>Categories</b>
-                  </div>
-                  <AiFillCaretDown />
-                </div>
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Portal>
-                <DropdownMenu.Content className="DropdownMenuContent">
-                  <DropdownMenu.Sub>
-                    <DropdownMenu.SubTrigger className="DropdownMenuItem">
-                      <di className="d-flex justify-content-between align-items-center">
-                        Dresses
-                        <AiFillCaretRight />
-                      </di>
-                    </DropdownMenu.SubTrigger>
-                    <DropdownMenu.Portal>
-                      <DropdownMenu.SubContent className="DropdownMenuSubContent">
-                        <DropdownMenu.Item className="DropdownMenuItem">
-                          Men's Dresses
-                        </DropdownMenu.Item>
-                        <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                        <DropdownMenu.Item className="DropdownMenuItem">
-                          Women's Dresses
-                        </DropdownMenu.Item>
-                        <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                        <DropdownMenu.Item className="DropdownMenuItem">
-                          Baby's Dresses
-                        </DropdownMenu.Item>
-                      </DropdownMenu.SubContent>
-                    </DropdownMenu.Portal>
-                  </DropdownMenu.Sub>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Shirts
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    {" "}
-                    Jeans
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Swimwear
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Sleepwear
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Jumpsuits
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Blazers
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Jackets
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                  <DropdownMenu.Item className="DropdownMenuItem">
-                    Shoes
-                  </DropdownMenu.Item>
-                </DropdownMenu.Content>
-              </DropdownMenu.Portal>
-            </DropdownMenu.Root>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-8 d-flex px-0 gap-4 align-items-center">
+            <div className="row align-items-center">
+              <img
+                className="col-4 d-lg-none px-0 align-items-center"
+                src={whiteLogo}
+                alt="logo"
+              />
 
-            <div className="d-flex gap-3">
-              <NavLink className="nestedlink" to="/">
-                Home
-              </NavLink>
-              <NavLink className="nestedlink" to="shop">
-                Shop
-              </NavLink>
-              <NavLink className="nestedlink" to="shopDetails">
-                Shop Detail
-              </NavLink>
-              <Dropdown>
-                <Dropdown.Toggle variant="light" id="pagesBtn">
-                  Pages
-                </Dropdown.Toggle>
+              <div className="col-5 d-none d-sm-none d-lg-block">
+                <DropdownMenu.Root>
+                  <DropdownMenu.Trigger className="bg-warning dropdown-categories py-4 px-3 text-dark">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <GiHamburgerMenu className="mx-2 bolder" />
+                        <b>Categories</b>
+                      </div>
+                      <AiFillCaretDown />
+                    </div>
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Portal>
+                    <DropdownMenu.Content className="DropdownMenuContent">
+                      <DropdownMenu.Sub>
+                        <DropdownMenu.SubTrigger className="DropdownMenuItem">
+                          <di className="d-flex justify-content-between align-items-center">
+                            Dresses
+                            <AiFillCaretRight />
+                          </di>
+                        </DropdownMenu.SubTrigger>
+                        <DropdownMenu.Portal>
+                          <DropdownMenu.SubContent className="DropdownMenuSubContent">
+                            <DropdownMenu.Item className="DropdownMenuItem">
+                              Men's Dresses
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                            <DropdownMenu.Item className="DropdownMenuItem">
+                              Women's Dresses
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                            <DropdownMenu.Item className="DropdownMenuItem">
+                              Baby's Dresses
+                            </DropdownMenu.Item>
+                          </DropdownMenu.SubContent>
+                        </DropdownMenu.Portal>
+                      </DropdownMenu.Sub>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Shirts
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        {" "}
+                        Jeans
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Swimwear
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Sleepwear
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Jumpsuits
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Blazers
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Jackets
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                      <DropdownMenu.Item className="DropdownMenuItem">
+                        Shoes
+                      </DropdownMenu.Item>
+                    </DropdownMenu.Content>
+                  </DropdownMenu.Portal>
+                </DropdownMenu.Root>
+              </div>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="shoppingCart">
-                    Shopping Cart
-                  </Dropdown.Item>
-                  <Dropdown.Item href="checkOut">Checkout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <div className=" col-7 d-flex gap-3">
+                <NavLink className="nestedlink" to="/">
+                  Home
+                </NavLink>
+                <NavLink className="nestedlink" to="shop">
+                  Shop
+                </NavLink>
+                <NavLink className="nestedlink" to="shopDetails">
+                  Shop Detail
+                </NavLink>
+                <Dropdown>
+                  <Dropdown.Toggle variant="light" id="pagesBtn">
+                    Pages
+                  </Dropdown.Toggle>
 
-              <NavLink className="nestedlink" to="contact">
-                Contact
-              </NavLink>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="shoppingCart">
+                      Shopping Cart
+                    </Dropdown.Item>
+                    <Dropdown.Item href="checkOut">Checkout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                <NavLink className="nestedlink" to="contact">
+                  Contact
+                </NavLink>
+              </div>
             </div>
           </div>
 
-          <div className="col-2 d-flex px-0 justify-content-end gap-3">
+          <div className="col-2 d-none d-sm-none d-lg-flex px-0 justify-content-end gap-3">
             <div className="d-flex align-items-center">
               <AiFillHeart className="text-warning" />
               <div className="text-white circle">0</div>

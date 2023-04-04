@@ -19,7 +19,7 @@ export default function Footer() {
     return (
         <footer className="container-fluid bg-dark text-white p-5">
                 <div className="row  ">
-                    <div className="col-3">
+                    <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>GET IN TOUCH</h3>
 
                         <p>
@@ -39,7 +39,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="col-3">
+                    <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>QUICK SHOP</h3>
 
                         <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Home</NavLink>
@@ -51,7 +51,7 @@ export default function Footer() {
 
                     </div>
 
-                    <div className="col-3">
+                    <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>MY ACCOUNT</h3>
 
                         <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Home</NavLink>
@@ -63,7 +63,7 @@ export default function Footer() {
 
                     </div>
 
-                    <div className="col-3">
+                    <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>NEWSLETTER</h3>
 
                         <p>

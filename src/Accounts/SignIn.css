@@ -12,5 +12,9 @@
     color: white;
 }
 .rounded{
-    margin: 9.4rem;
+    margin: 0rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

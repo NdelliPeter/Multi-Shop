@@ -60,7 +60,7 @@ export default function Home() {
         <div className="row justify-content-between homebg  ">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 px-5">
             <div className="row">
-              <Carousel className="col-8 col-sm-11 col-md-8 col-lg-8">
+              <Carousel className="col-12 col-sm-12 col-md-8 col-lg-8">
                 <Carousel.Item className="carousel">
                   <img className="img-fluid" src={girl} alt="women" />
                   <Carousel.Caption>
@@ -201,7 +201,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-12 col-sm-12 col-md-6 col-lg-3 ">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={girl} alt="camera" />
@@ -217,7 +217,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-12 col-sm-12 col-md-6 col-lg-3 ">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={man} alt="camera" />
@@ -289,7 +289,7 @@ export default function Home() {
 
           <div className="col-12 px-5 py-5">
             <div className="row d-flex justify-content-between">
-              <div className="col-6 yellow">
+              <div className="col-12 col-sm-12 col-md-12 col-6 my-2 yellow">
                 <div className="bgimage d-flex flex-column justify-content-center align-items-center">
                   <div className="d-flex align-items-center">
                     <div className="content">
@@ -303,7 +303,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-6 yellow">
+              <div className="col-12 col-sm-12 col-md-12 col-6 my-2 yellow">
                 <div className="bgimage d-flex flex-column justify-content-center align-items-center">
                   <div className="d-flex align-items-center">
                     <div className="content">

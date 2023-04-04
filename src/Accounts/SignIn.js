@@ -90,9 +90,9 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="container-fluid p-5 row justify-content-center align-items-center bg-warning">
+      <div className="container-fluid row  bg-warning">
         <form
-          className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 bg-white rounded "
+          className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 shadow-lg bg-white rounded "
           onSubmit={handleSubmit(SignInSubmit)}
         >
           <h1>Sign In</h1>
@@ -118,7 +118,10 @@ export default function SignIn() {
           <span className="text-danger font-strong">
             {errors.password?.message}
           </span>
-
+          <input 
+           type="checkbox"
+           />
+           <span className="mx-2">Forgotten password</span>
           <button className="col-12 mt-4 signInBtn" type="submit">
             {" "}
             SIGN IN

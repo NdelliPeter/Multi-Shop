@@ -289,7 +289,7 @@ export default function Home() {
 
           <div className="col-12 px-5 py-5">
             <div className="row d-flex justify-content-between">
-              <div className="col-12 col-sm-12 col-md-12 col-6 my-2 yellow">
+              <div className="col-12 col-sm-12 col-md-12 col-lg-6 my-2 yellow">
                 <div className="bgimage d-flex flex-column justify-content-center align-items-center">
                   <div className="d-flex align-items-center">
                     <div className="content">
@@ -303,7 +303,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="col-12 col-sm-12 col-md-12 col-6 my-2 yellow">
+              <div className="col-12 col-sm-12 col-md-12 col-lg-6 my-2 yellow">
                 <div className="bgimage d-flex flex-column justify-content-center align-items-center">
                   <div className="d-flex align-items-center">
                     <div className="content">

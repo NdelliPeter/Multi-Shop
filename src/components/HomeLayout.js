@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import whiteLogo from "../assets/whiteLogo.png";
 
@@ -16,8 +16,28 @@ import { AiFillCaretDown } from "react-icons/ai";
 
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 export default function HomeLayout() {
+
+  const [length, setLength] = useState()
+  const [basket, setBasket] = useState()
+
+
+   
+
+  useEffect(() => {
+    axios
+    .get("http://localhost:4000/basket")
+    .then((res) => {
+      const respo = res.data;
+      setBasket(respo);
+      console.log(respo);
+    })
+    .catch((err) => console.log(err));
+  }, [])
+
+
   return (
     <>
       <div className="container-fluid">

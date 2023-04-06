@@ -18,12 +18,27 @@ export default function ShoppingCart() {
     //   // setQuantity(respo)
     //         console.log(respo);
     // })
+    console.log("rrrrrrrrr"+ basket);
+    
 
-    axios.put(`http://localhost:4000/basket/${id}`).then((res) => {
-      const respo = res.data;
-      respo.quantity ++
-      console.log(respo);
-    });
+    const new_array = basket.map((product) => {
+              if(product.id === id){
+                product.quantity ++ 
+                return(
+                  product
+                )
+              }else{
+                return product
+              }
+    })
+console.log("ooooooooooo"+ new_array);
+
+
+    // axios.put(`http://localhost:4000/basket/${id}`).then((res) => {
+    //   const respo = res.data;
+    //   respo.quantity ++
+    //   console.log(respo);
+    // });
   };
 
   const decreaseQuantity = (product) => {
@@ -54,7 +69,7 @@ export default function ShoppingCart() {
       setCheckout(respo);
       console.log(respo);
     });
-  }, [setBasket]);
+  }, []);
 
   const deleteProduct = (productId) => {
     axios.delete(`http://localhost:4000/basket/${productId}`);
@@ -132,7 +147,7 @@ export default function ShoppingCart() {
                             <button
                               className="bg-warning d-flex align-items-center p-2 quantitybtn"
                               onClick={() => {
-                                increaseQuntity(product);
+                                increaseQuntity(product?.id);
                               }}
                             >
                               <BiPlusMedical />

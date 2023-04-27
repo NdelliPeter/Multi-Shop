@@ -35,6 +35,7 @@ export default function Shop() {
 
   const basketDrop = (product) => {
     product.quantity = 1;
+    product.total = product.price;
     const drop = products.find(
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)

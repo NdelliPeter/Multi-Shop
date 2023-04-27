@@ -23,6 +23,10 @@ const SignUpSchema = yup.object().shape({
     .string()
     .trim("Please input cannot contain just spaces")
     .required("Please input last name"),
+  userName: yup
+    .string()
+    .trim("Please input cannot contain just spaces")
+    .required("Please User name last name"),
   email: yup
     .string()
     .email("please input a valid email")
@@ -144,6 +148,17 @@ export default function SignUp() {
             type="string"
             placeholder="LastName"
             {...register("lastName")}
+          />
+          <span className="text-danger font-strong">
+            {errors.lastName?.message}
+          </span>
+
+          <input
+            className="col-12 my-2"
+            name="userName"
+            type="string"
+            placeholder="userName"
+            {...register("userName")}
           />
           <span className="text-danger font-strong">
             {errors.lastName?.message}

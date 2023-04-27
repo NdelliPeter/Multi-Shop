@@ -42,9 +42,9 @@ export default function Footer() {
                     <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>QUICK SHOP</h3>
 
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Home</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Our Shop</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Shop Detail</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="/"><MdKeyboardArrowRight /> Home</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shop"><MdKeyboardArrowRight /> Our Shop</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shopDetails"><MdKeyboardArrowRight /> Shop Detail</NavLink>
                         <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Shopping Cart</NavLink>
                         <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Checkout</NavLink>
                         <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Contact Us</NavLink>

@@ -11,48 +11,77 @@ export default function ShoppingCart() {
   const [basket, setBasket] = useState();
   const [checkout, setCheckout] = useState();
 
-  const increaseQuntity = (id) => {
-    // const item = axios.get(`http://localhost:4000/basket/${id}`)
-    // .then((res) => {
-    //   const respo =res.data
-    //   // setQuantity(respo)
-    //         console.log(respo);
-    // })
-    console.log("rrrrrrrrr"+ basket);
-    
+  const increaseQuntity = (product) => {
+    product.quantity += 1;
 
-    const new_array = basket.map((product) => {
-              if(product.id === id){
-                product.quantity ++ 
-                return(
-                  product
-                )
-              }else{
-                return product
-              }
-    })
-console.log("ooooooooooo"+ new_array);
-
-
-    // axios.put(`http://localhost:4000/basket/${id}`).then((res) => {
-    //   const respo = res.data;
-    //   respo.quantity ++
-    //   console.log(respo);
-    // });
+    axios
+      .put(`http://localhost:4000/basket/${product.id}`, product)
+      .then((res) => {
+        const increased = basket.map((prod) => {
+          if (product.id === prod.id) {
+            product.quantity = res.data.quantity;
+            product.total = product.price * product.quantity;
+          }
+          return prod;
+        });
+        setBasket(increased);
+      });
   };
 
   const decreaseQuantity = (product) => {
-    const decrease = basket.find((productItem) => {
-      if (productItem.id === product.id) {
-        if (quantity >= 1) {
-          setQuantity(quantity - 1);
-        } else {
-          setQuantity(0);
-        }
-      }
-    });
-    console.log(decrease);
+    if (product.quantity === 0) {
+      product.quantity = 0;
+      axios
+        .put(`http://localhost:4000/basket/${product.id}`, product)
+        .then((res) => {
+          const decreased = basket.map((prod) => {
+            if (product.id === prod.id) {
+              product.quantity = res.data.quantity;
+              product.total = product.price * product.quantity;
+            }
+            return prod;
+          });
+          setBasket(decreased);
+        });
+    } else {
+      product.quantity -= 1;
+      axios
+        .put(`http://localhost:4000/basket/${product.id}`, product)
+        .then((res) => {
+          const decreased = basket.map((prod) => {
+            if (product.id === prod.id) {
+              product.quantity = res.data.quantity;
+              product.total = product.price * product.quantity;
+            }
+            return prod;
+          });
+          setBasket(decreased);
+        });
+    }
   };
+
+  const subTotal = () => {
+    const total = basket?.map((product) => {
+      let sum = 0;
+      return (product.total += sum);
+    });
+    console.log(total);
+    let sum = total?.reduce(function (a, b) {
+      return a + b;
+    });
+    return sum;
+  };
+
+  const shipping = () => {
+    const shipping = subTotal() / 10;
+    console.log(shipping);
+    return shipping;
+  };
+  const genaralTotal = () => {
+    const total = subTotal() + shipping();
+    return total;
+  };
+  
 
   useEffect(() => {
     axios
@@ -67,7 +96,7 @@ console.log("ooooooooooo"+ new_array);
     axios.get("http://localhost:4000/Checkout").then((res) => {
       const respo = res.data;
       setCheckout(respo);
-      console.log(respo);
+      console.log('Checkout' + respo);
     });
   }, []);
 
@@ -81,12 +110,20 @@ console.log("ooooooooooo"+ new_array);
   };
 
   const clearBasket = () => {
-    setCheckout(basket);
-    axios.post("http://localhost:4000/Checkout", basket).then((res) => {
-      const respo = res.data;
-      setBasket(respo);
-      console.log(respo);
-    });
+    const checkOutUpdate = basket.map((product) => {
+        axios.post("http://localhost:4000/Checkout", product)
+        .then((res) => {
+          const respo = res.data;
+          setCheckout(respo);
+          console.log("oierueneff" + respo);
+    
+        // axios.delete(`http://localhost:4000/basket/${product.id}`);
+      });
+    })
+
+    console.log(checkOutUpdate);
+    // setCheckout(checkOutUpdate);
+    // setBasket();
   };
 
   return (
@@ -147,14 +184,14 @@ console.log("ooooooooooo"+ new_array);
                             <button
                               className="bg-warning d-flex align-items-center p-2 quantitybtn"
                               onClick={() => {
-                                increaseQuntity(product?.id);
+                                increaseQuntity(product);
                               }}
                             >
                               <BiPlusMedical />
                             </button>
                           </div>
                           <div className="col-2 d-flex justify-content-center align-items-center">
-                            ${product?.price * product?.quantity}
+                            ${product?.total}
                           </div>
                           <div className="col-2 d-flex justify-content-center align-items-center">
                             <button
@@ -188,17 +225,17 @@ console.log("ooooooooooo"+ new_array);
                   <div className="borderBot">
                     <div className="d-flex justify-content-between align-items-center my-3">
                       <span>Subtotal</span>
-                      <span>$150</span>
+                      <span>${subTotal()}</span>
                     </div>
                     <div className="d-flex justify-content-between align-items-center my-3">
                       <span>Shipping</span>
-                      <span>$10</span>
+                      <span>${shipping()}</span>
                     </div>
                   </div>
 
                   <div className="d-flex justify-content-between align-items-center mt-3">
                     <h3>Total</h3>
-                    <h3>$150</h3>
+                    <h3>${genaralTotal()}</h3>
                   </div>
 
                   <button

@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, Outlet } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AiFillHeart } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
+import axios from "axios";
+
 
 export default function Header() {
+
+  const [basket, setBasket] = useState()
+
+  useEffect(() => {
+    axios
+    .get("http://localhost:4000/basket")
+    .then((res) => {
+      const respo = res.data;
+      setBasket(respo);
+      // console.log(respo);
+    })
+    .catch((err) => console.log(err));
+  }, [])
+
+
   return (
     <>
       <header className="container-fluid ">
@@ -71,7 +88,7 @@ export default function Header() {
 
                   <div className="d-flex align-items-center">
                     <FaShoppingCart className="" />
-                    <div className="ring ">0</div>
+                    <div className="ring ">{basket?.length}</div>
                   </div>
                 </div>
               </div>

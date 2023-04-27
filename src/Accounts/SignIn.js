@@ -11,8 +11,10 @@ import { Button } from "react-bootstrap";
 const SignInSchema = yup.object().shape({
   email: yup
     .string()
-    .email("please input a valid email")
+    .email("please try again")
     .required("email canot be empty"),
+  userName:yup
+    .string(),  
   password: yup.string().min(4).max(15).required("password cannot be empty"),
 });
 
@@ -56,23 +58,6 @@ export default function SignIn() {
     }
     })
 
-
-    // const checkEmail =  axios
-    // .get("http://localhost:4000/accounts")
-    // .then((res) => {
-    //   res.data.find((el) => {if(el.email === email){
-    //     if(el.password === password){
-    //       navigate("/")
-    //     }else{
-    //       setError("Wrong password")
-    //     }
-    //   }else{
-    //     setError("Email dose not exist please check email again or try Signing Up")
-    //   }});
-
-    // })
-    // .catch((err) => console.log(err));
-    // console.log(checkEmail);
   };
 
   const SignInSubmit = (data) => {
@@ -82,7 +67,7 @@ export default function SignIn() {
     // navigate("/")
   };
 
-  const navigate = useNavigate(-1);
+  const navigate = useNavigate(-1); 
 
   const moveToNewPage = () => {
     return( navigate("/signUp")
@@ -95,13 +80,13 @@ export default function SignIn() {
           className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 shadow-lg bg-white rounded "
           onSubmit={handleSubmit(SignInSubmit)}
         >
-          <h1>Sign In</h1>
+          <h1>Sign In</h1> 
 
           <input
             className="col-12 my-2"
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="userName or email"
             {...register("email")}
           />
           <span className="text-danger font-strong">
@@ -115,11 +100,12 @@ export default function SignIn() {
             placeholder="password"
             {...register("password")}
           />
-          <span className="text-danger font-strong">
+          <p className="text-danger font-strong">
             {errors.password?.message}
-          </span>
+          </p>
           <input 
            type="checkbox"
+           {...register("password")}
            />
            <span className="mx-2">Forgotten password</span>
           <button className="col-12 mt-4 signInBtn" type="submit">

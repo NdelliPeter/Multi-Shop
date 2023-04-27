@@ -20,9 +20,7 @@ import axios from "axios";
 
 export default function HomeLayout() {
 
-  const [length, setLength] = useState()
   const [basket, setBasket] = useState()
-
 
    
 
@@ -151,16 +149,16 @@ export default function HomeLayout() {
               </div>
 
               <div className=" col-7 d-flex gap-3">
-                <NavLink className="nestedlink" to="/">
-                  Home
+                <NavLink className="col-2 nestedlink" to="/">
+                  <b>Home</b>
                 </NavLink>
-                <NavLink className="nestedlink" to="shop">
-                  Shop
+                <NavLink className="col-2 nestedlink" to="shop">
+                  <b>Shop</b>
                 </NavLink>
-                <NavLink className="nestedlink" to="shopDetails">
-                  Shop Detail
+                <NavLink className="col-2 nestedlink" to="shopDetails">
+                  <b>Shop Detail</b>
                 </NavLink>
-                <Dropdown>
+                <Dropdown className="col-2">
                   <Dropdown.Toggle variant="light" id="pagesBtn">
                     Pages
                   </Dropdown.Toggle>
@@ -173,8 +171,8 @@ export default function HomeLayout() {
                   </Dropdown.Menu>
                 </Dropdown>
 
-                <NavLink className="nestedlink" to="contact">
-                  Contact
+                <NavLink className="col-2 nestedlink" to="contact">
+                  <b>Contact</b>
                 </NavLink>
               </div>
             </div>
@@ -188,7 +186,7 @@ export default function HomeLayout() {
 
             <div className="d-flex align-items-center">
               <FaShoppingCart className="text-warning" />
-              <div className="text-white circle ">0</div>
+              <div className="text-white circle "> {basket?.length}</div>
             </div>
           </div>
         </div>

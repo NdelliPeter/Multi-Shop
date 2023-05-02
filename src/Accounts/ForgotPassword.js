@@ -5,31 +5,32 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as yup from "yup";
 import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import {AiFillEyeInvisible} from "react-icons/ai";
 import {AiFillEye} from "react-icons/ai";
 
-const SignInSchema = yup.object().shape({
-  email_or_userName: yup.string("Enter your Email/User Name")
-  // .email("Enter a valid email")
-  .required("Email/User Name is required")
-  .test('test-name', 'Enter Valid User Name/Email', 
-    function(value) {
-      const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-      const userNameRegex = /^[aA-zZ\s]+$/; // Change this regex based on requirement
-      const isValidEmail = emailRegex.test(value);
-      const isValidPhone = userNameRegex.test(value);
-      if (!isValidEmail && !isValidPhone ){
-        return false;
-      }
-      return true;
-    }),  
-  password: yup.string().min(4).max(15).required("password cannot be empty"),
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const SignInSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("please try again")
+    .required("email canot be empty"),
+  userName:yup
+    .string(),  
+  password: yup.string()
+    .min(8)
+    .max(12)
+    .matches(passwordRules, { message: "Please create a stronger password" })
+    .required("password cannot be empty"),
+  confirmPassword: yup
+    .string()
+    .test("passwords-match", "Passwords must match", function (value) {
+      return this.parent.password === value;
+    }),
 });
 
-export default function SignIn() {
+export default function ForgotPassword() {
   const {
     register,
     handleSubmit,
@@ -69,39 +70,33 @@ export default function SignIn() {
   }, []);
 
   const checkAccount = (data) => {
-    const email = data.email_or_userName
-    const password = data.password
-    accounts.find((account) =>{if(account.email === email || account.userName === data.email_or_userName){
-      if(account.password === password){
-        navigate("/")
-      }else{
-        setError("Wrong Password")
-      }
-    }else{
-      setError("Email dose not exist please check email again or try Signing Up")
-    }
-    })
 
+    const acc = accounts.find((account) =>account.email === data.email);
+    acc.password =  data.password;
+    acc.confirmPassword = data.confirmPassword
+
+    axios
+    .put(`http://localhost:4000/accounts/${acc.id}`, acc)
+    .then((res) =>{
+
+      setAccounts((prevState)=>
+      [...prevState.filter((account)=> account.id === res.data.id ),res.data]
+      )
+      console.log("oooooooooo", accounts)}
+      )
+    navigate("/signIn")
   };
+
+  const navigate = useNavigate(-1); 
 
   const SignInSubmit = (data) => {
     // reset();
     checkAccount(data);
     console.log(data);
-    // navigate("/")
+    // navigate("/signIn")
   };
 
-  const navigate = useNavigate(-1); 
 
-  const moveToNewPage = () => {
-    return( navigate("/signUp")
-  )};
-
-
-  const forgotPassword = () => {
-    return( navigate("/forgotPassword")
-  )};
-  
 
   return (
     <>
@@ -110,18 +105,18 @@ export default function SignIn() {
           className="col-11 col-sm-11 col-md-4 col-lg-4 p-3 shadow-lg bg-white rounded "
           onSubmit={handleSubmit(SignInSubmit)}
         >
-          <h1>Sign In</h1> 
+          <h3>Forgotten Password</h3> 
 
           <input
             className="col-12 my-2"
-            name="email_or_userName"
-            type="string"
+            name="email"
+            type="email"
             placeholder="user name or email"
-            {...register("email_or_userName") }
+            {...register("email") }
           />
-          <span className="text-danger font-strong">
+          <p className="text-danger font-strong">
             {errors.email?.message}
-          </span>
+          </p>
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
@@ -137,23 +132,35 @@ export default function SignIn() {
               </button>
             </div>            
           </div>
-                    
           <p className="text-danger font-strong">
             {errors.password?.message}
           </p>
-       
-           <button className="forgotbtn" onClick={forgotPassword}>Forgotten password?</button>
+
+          <div className="col-12 my-2 passBox ">
+            <div className="row px-2">
+              <input
+                className="col-10 pass"
+                type={passwordType} 
+                onChange={handlePasswordChange} 
+                name="confirmPassword"
+                placeholder="confirm password"
+                {...register("confirmPassword")}
+              />
+              <button className="col-2 eyebtn " onClick={togglePassword}>
+                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEye/></i> :<i className="bi bi-eye"><AiFillEyeInvisible/></i> }
+              </button>
+            </div>            
+          </div>
+          <p className="text-danger font-strong">
+            {errors.confirmPassword?.message}
+          </p>
           <button className="col-12 mt-4 signInBtn" type="submit">
             {" "}
-            SIGN IN
+           submit
           </button>
           <span className="text-danger font-strong">
             {Error}
           </span>
-          <div className="col-12 my-2 d-flex justify-content-between align-items-center">
-            <small>Don't have an account yet?</small>
-            <Button onClick={moveToNewPage}>SignUp</Button>
-          </div>
         </form>
       </div>
     </>

@@ -18,3 +18,30 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.passBox{
+    /* border: 1px solid black; */
+    border-radius: 3px;
+    border-left: 1px solid black;
+}
+.pass{
+    /* border: none; */
+    border: 1px solid black;
+    border-right: none;
+    border-radius: 3px;
+
+
+
+}
+.eyebtn{
+    border: 1px solid black;
+    border-left: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: -5px;
+    background-color: white;
+}
+.forgotbtn{
+    border: none;
+    background-color: white;
+    
+}

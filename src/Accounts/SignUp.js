@@ -11,6 +11,8 @@ import axios from "axios";
 // import signIn from "./SignIn.js"
 // import SignIn from "./SignIn.js";
 import { Button } from "react-bootstrap";
+import {AiFillEyeInvisible} from "react-icons/ai";
+import {AiFillEye} from "react-icons/ai";
 
 
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
@@ -18,18 +20,22 @@ const SignUpSchema = yup.object().shape({
   firstName: yup
     .string()
     .trim("Please input cannot contain just spaces")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ")
     .required("Please input first name"),
   lastName: yup
     .string()
     .trim("Please input cannot contain just spaces")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ")
     .required("Please input last name"),
   userName: yup
     .string()
+    .max(10)
     .trim("Please input cannot contain just spaces")
     .required("Please User name last name"),
   email: yup
     .string()
     .email("please input a valid email")
+    .matches(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, "input a valid email")
     .required("email canot be empty"),
   password: yup.string()
     .min(8)
@@ -55,6 +61,20 @@ export default function SignUp() {
 
   const [accounts, setAccounts] = useState([]);
   const [Error, setError] = useState()
+
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange =(evnt)=>{
+      setPasswordInput(evnt.target.value);
+  }
+  const togglePassword =()=>{
+    if(passwordType==="password")
+    {
+      setPasswordType("text")
+      return;
+    }
+    setPasswordType("password")
+  }
 
   const addAccount = (data) => {
 
@@ -161,7 +181,7 @@ export default function SignUp() {
             {...register("userName")}
           />
           <span className="text-danger font-strong">
-            {errors.lastName?.message}
+            {errors.userName?.message}
           </span>
 
           <input
@@ -175,24 +195,40 @@ export default function SignUp() {
             {errors.email?.message}
           </span>
 
-          <input
-            className="col-12 my-2"
-            name="password"
-            type="password"
-            placeholder="password"
-            {...register("password")}
-          />
+          <div className="col-12 my-2 passBox ">
+            <div className="row px-2">
+              <input
+                className="col-10 pass"
+                type={passwordType} 
+                onChange={handlePasswordChange} 
+                name="password"
+                placeholder="password"
+                {...register("password")}
+              />
+              <button className="col-2 eyebtn " onClick={togglePassword}>
+                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEye/></i> :<i className="bi bi-eye"><AiFillEyeInvisible/></i> }
+              </button>
+            </div>            
+          </div>
           <span className="text-danger font-strong">
             {errors.password?.message}
           </span>
 
-          <input
-            name="confirmPassword"
-            className="col-12 my-2"
-            type="password"
-            placeholder="confirm password"
-            {...register("confirmPassword")}
-          />
+          <div className="col-12 my-2 passBox ">
+            <div className="row px-2">
+              <input
+                className="col-10 pass"
+                type={passwordType} 
+                onChange={handlePasswordChange} 
+                name="confirmPassword"
+                placeholder="confirm password"
+                {...register("confirmPassword")}
+              />
+              <button className="col-2 eyebtn " onClick={togglePassword}>
+                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEye/></i> :<i className="bi bi-eye"><AiFillEyeInvisible/></i> }
+              </button>
+            </div>            
+          </div>
           <span className="text-danger font-strong">
             {errors.confirmPassword?.message}
           </span>

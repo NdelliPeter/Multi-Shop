@@ -31,7 +31,7 @@ const SignUpSchema = yup.object().shape({
     .string()
     .max(10)
     .trim("Please input cannot contain just spaces")
-    .required("Please User name last name"),
+    .required("Please input user name"),
   email: yup
     .string()
     .email("please input a valid email")

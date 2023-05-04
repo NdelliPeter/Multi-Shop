@@ -116,14 +116,10 @@ export default function ShoppingCart() {
           const respo = res.data;
           setCheckout(respo);
           console.log("oierueneff" + respo);
-    
-        // axios.delete(`http://localhost:4000/basket/${product.id}`);
-      });
+          });
     })
 
     console.log(checkOutUpdate);
-    // setCheckout(checkOutUpdate);
-    // setBasket();
   };
 
   return (
@@ -135,8 +131,8 @@ export default function ShoppingCart() {
         <div className="col-12 px-0">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-8 col-lg-8">
-              <div className="col-12">
-                <div className="col-12 d-flex py-3 align-items-center bg-dark text-white">
+              <div className="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div className="col-12  d-flex py-3 align-items-center bg-dark text-white">
                   <h5 className="col-4 d-flex justify-content-center align-items-center">
                     Products
                   </h5>
@@ -206,7 +202,7 @@ export default function ShoppingCart() {
                         </div>
                       );
                     })
-                  : " "}
+                  : " No Products in Cart"}
               </div>
             </div>
 

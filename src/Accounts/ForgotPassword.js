@@ -111,7 +111,7 @@ export default function ForgotPassword() {
             className="col-12 my-2"
             name="email"
             type="email"
-            placeholder="user name or email"
+            placeholder="email"
             {...register("email") }
           />
           <p className="text-danger font-strong">

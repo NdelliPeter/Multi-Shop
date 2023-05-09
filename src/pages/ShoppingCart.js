@@ -132,17 +132,17 @@ export default function ShoppingCart() {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-8 col-lg-8">
               <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div className="col-12  d-flex py-3 align-items-center bg-dark text-white">
-                  <h5 className="col-4 d-flex justify-content-center align-items-center">
+                <div className="row mx-1  d-flex py-3 align-items-center bg-dark text-white">
+                  <h5 className="col-6 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center align-items-center">
                     Products
                   </h5>
-                  <h5 className="col-2 d-flex justify-content-center align-items-center">
+                  <h5 className="col-6 col-sm-6 col-md-2 col-lg-2 d-flex justify-content-center align-items-center">
                     Price
                   </h5>
-                  <h5 className="col-2 d-flex justify-content-center align-items-center">
+                  <h5 className="col-5 col-sm-5 col-md-2 col-lg-2 d-flex justify-content-center align-items-center">
                     Quantity
                   </h5>
-                  <h5 className="col-2 d-flex justify-content-center align-items-center">
+                  <h5 className="col-3 col-sm-3 col-md-2 col-lg-2 d-flex justify-content-center align-items-center">
                     Total
                   </h5>
                   <h5 className="col-2 d-flex justify-content-center align-items-center">
@@ -154,51 +154,54 @@ export default function ShoppingCart() {
                       return (
                         <div
                           key={id}
-                          className="col-12 d-flex my-3 py-3 justify-content-between align-items-center bg-white "
+                          className="col-12    "
                         >
-                          <div className="col-4 d-flex ps-5 align-items-center">
-                            <img
-                              className="img-fluid col-2 photo"
-                              src={product?.image}
-                              alt={product?.productName}
-                            />
-                            {product?.productName}
+                          <div className="row my-3 py-3 mx-1 justify-content-between align-items-center bg-white">
+                            <div className="col-6 col-sm-6 col-md-4 col-lg-4 d-flex my-2 ps-lg-5 ps-sm-2 ps-2 justify-content-center align-items-center">
+                              <img
+                                className="img-fluid col-2 photo"
+                                src={product?.image}
+                                alt={product?.productName}
+                              />
+                              {product?.productName}
+                            </div>
+                            <div className="col-6 col-sm-6 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
+                              ${product?.price}
+                            </div>
+                            <div className="col-5 col-sm-5 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
+                              <button
+                                className="bg-warning d-flex align-items-center p-2 quantitybtn"
+                                onClick={() => {
+                                  decreaseQuantity(product);
+                                }}
+                              >
+                                <FaMinus />
+                              </button>
+                              <span className="mx-2 ">{product?.quantity}</span>
+                              <button
+                                className="bg-warning d-flex align-items-center p-2 quantitybtn"
+                                onClick={() => {
+                                  increaseQuntity(product);
+                                }}
+                              >
+                                <BiPlusMedical />
+                              </button>
+                            </div>
+                            <div className="col-3 col-sm-3 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
+                              ${product?.total}
+                            </div>
+                            <div className="col-2 d-flex my-2 justify-content-center align-items-center">
+                              <button
+                                className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
+                                onClick={() => {
+                                  deleteProduct(product?.id);
+                                }}
+                              >
+                                <FaTimes />
+                              </button>
+                            </div>
                           </div>
-                          <div className="col-2 d-flex justify-content-center align-items-center">
-                            ${product?.price}
-                          </div>
-                          <div className="col-2 d-flex justify-content-center align-items-center">
-                            <button
-                              className="bg-warning d-flex align-items-center p-2 quantitybtn"
-                              onClick={() => {
-                                decreaseQuantity(product);
-                              }}
-                            >
-                              <FaMinus />
-                            </button>
-                            <span className="mx-2 ">{product?.quantity}</span>
-                            <button
-                              className="bg-warning d-flex align-items-center p-2 quantitybtn"
-                              onClick={() => {
-                                increaseQuntity(product);
-                              }}
-                            >
-                              <BiPlusMedical />
-                            </button>
-                          </div>
-                          <div className="col-2 d-flex justify-content-center align-items-center">
-                            ${product?.total}
-                          </div>
-                          <div className="col-2 d-flex justify-content-center align-items-center">
-                            <button
-                              className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
-                              onClick={() => {
-                                deleteProduct(product?.id);
-                              }}
-                            >
-                              <FaTimes />
-                            </button>
-                          </div>
+                          
                         </div>
                       );
                     })

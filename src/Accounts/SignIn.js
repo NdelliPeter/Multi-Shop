@@ -78,7 +78,7 @@ export default function SignIn() {
         setError("Wrong Password")
       }
     }else{
-      setError("Email dose not exist please check email again or try Signing Up")
+      setError("Email or password not correct try again or try Signing Up")
     }
     })
 
@@ -133,13 +133,13 @@ export default function SignIn() {
                 {...register("password")}
               />
               <button className="col-2 eyebtn " onClick={togglePassword}>
-                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEye/></i> :<i className="bi bi-eye"><AiFillEyeInvisible/></i> }
+                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEyeInvisible/></i> :<i className="bi bi-eye"><AiFillEye/></i> }
               </button>
             </div>            
           </div>
                     
           <p className="text-danger font-strong">
-            {errors.password?.message}
+            {Error}
           </p>
        
            <button className="forgotbtn" onClick={forgotPassword}>Forgotten password?</button>

@@ -20,7 +20,8 @@ import axios from "axios";
 
 export default function HomeLayout() {
 
-  const [basket, setBasket] = useState()
+  const [basket, setBasket] = useState();
+  const [toggle, setToggle] = useState(false)
 
    
 
@@ -67,14 +68,14 @@ export default function HomeLayout() {
         {/* Bottom header */}
         <div className="bg-dark row justify-content-between align-items-center px-5">
           <div className="col-12 col-sm-12 col-md-12 col-lg-8 d-flex px-0 gap-4 align-items-center">
-            <div className="row align-items-center">
+            <div className="row justify-content-between align-items-center">
               <img
                 className="col-4 d-lg-none px-0 align-items-center"
                 src={whiteLogo}
                 alt="logo"
               />
 
-              <div className="col-5 d-none d-sm-none d-lg-block">
+              <div className="col-5 d-none d-sm-none d-md-none d-lg-block">
                 <DropdownMenu.Root>
                   <DropdownMenu.Trigger className="bg-warning dropdown-categories py-4 px-3 text-dark">
                     <div className="d-flex justify-content-between align-items-center">
@@ -148,7 +149,40 @@ export default function HomeLayout() {
                 </DropdownMenu.Root>
               </div>
 
-              <div className=" col-7 d-flex gap-3">
+              <button 
+              className="col-3 col-sm-3 d-block d-sm-block d-md-block d-lg-none togglebtn"
+              onClick={() => setToggle(!toggle)}>
+                <GiHamburgerMenu />
+              </button>
+              {toggle && (<div className=" col-7 d-flex flex-column gap-3">
+                <NavLink className="col-2 nestedlink" to="/">
+                  <b>Home</b>
+                </NavLink>
+                <NavLink className="col-2 nestedlink" to="shop">
+                  <b>Shop</b>
+                </NavLink>
+                <NavLink className="col-2 nestedlink" to="shopDetails">
+                  <b>Shop Detail</b>
+                </NavLink>
+                <Dropdown className="col-2">
+                  <Dropdown.Toggle variant="light" id="pagesBtn">
+                    Pages
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="shoppingCart">
+                      Shopping Cart
+                    </Dropdown.Item>
+                    <Dropdown.Item href="checkOut">Checkout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                <NavLink className="col-2 nestedlink" to="contact">
+                  <b>Contact</b>
+                </NavLink>
+              </div>) 
+              }
+              <div className=" col-7 d-none d-sm-none d-md-none d-lg-flex gap-3">
                 <NavLink className="col-2 nestedlink" to="/">
                   <b>Home</b>
                 </NavLink>

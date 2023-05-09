@@ -34,13 +34,13 @@ export default function ShopDetails() {
   }
   return (
     <div className="container-fluid px-5 py-3 ShopDetailsbg">
-      <div className="row px-5">
-        <div className="col-12 bg-white p-3 my-4">
+      <div className="row px-1 px-sm-1 px-md-5 px-lg-5">
+        <div className="col-12  bg-white p-3 my-4">
           <span>Home / Shop / ShopDetails </span>
         </div>
 
 
-        <div className="col-5 p-2">
+        <div className="col-12 col-sm-12 col-md-5 col-lg-5 p-2">
               <Carousel >
 
                 { 
@@ -58,7 +58,7 @@ export default function ShopDetails() {
               </Carousel>
         </div>
 
-        <div className="col-7 p-2">
+        <div className="col-12 col-sm-12 col-md-7 col-lg-7 p-2">
           <div className="col-12 p-5 bg-white">
                 <h3>
                   Product Name Goes Here
@@ -80,45 +80,57 @@ export default function ShopDetails() {
 
 
 
-          <div className="col-12 ">
-            <div className="row justify-content-between align-items-center">
-              {(products?.length ?? 0) >= 1
-                ? products.map((product, id) => {
-                    return (
-                      <div key={id} className="col-3 p-1">
-                        <div className="bg-white  round">
-                          <div className="  m-0 container_">
-                            <img
-                              src={product.image}
-                              alt={product.productName}
-                              className=" col-12 img"
-                            />
-                            <div className="d-flex gap-2 justify-content-center align-items-center icons">
-                              <HiShoppingCart
-                                className="productIcon"
-                                onClick={() => {
-                                  basketDrop(product);
-                                }}
-                              />
-                              <AiOutlineHeart className="productIcon" />
-                              <TfiReload className="productIcon" />
-                              <HiMagnifyingGlass className="productIcon" />
+        <div className="col-12 ">
+          <div className="row px-2">
+            <div className="col-12 px-0">
+              <h2>FEATURED PRODUCTS</h2>
+            </div>
+            <div className="col-12 ">
+              <div className="row">
+                {(products?.length ?? 0) >= 1
+                  ? products.map((product, id) => {
+                      return (
+                        <div
+                          key={id}
+                          className="col-12 col-sm-12 col-md-3 col-lg-3 p-1  "
+                        >
+                          <div className="bg-white round">
+                            <div className=" col-12 m-0 container_">
+                              <div className="col-12">
+                                <img
+                                  src={product.image}
+                                  alt="image"
+                                  className="img-fluid img"
+                                />
+                              </div>
+                              <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                <HiShoppingCart
+                                  className="productIcon"
+                                  onClick={() => {
+                                    basketDrop(product);
+                                  }}
+                                />
+                                <AiOutlineHeart className="productIcon" />
+                                <TfiReload className="productIcon" />
+                                <HiMagnifyingGlass className="productIcon" />
+                              </div>
+                            </div>
+                            <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                              <h6>{product.productName}</h6>
+                              <p>
+                                ${product.price}{" "}
+                                <small className="text-though">$163.00</small>
+                              </p>
                             </div>
                           </div>
-                          <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                            <h6>{product.productName}</h6>
-                            <p>
-                              ${product.price}
-                              <small className="text-though">$163.00</small>
-                            </p>
-                          </div>
                         </div>
-                      </div>
-                    );
-                  })
-                : "No Product found"}
+                      );
+                    })
+                  : "No Product found"}
+              </div>
             </div>
           </div>
+        </div>
         
       </div>
     </div>

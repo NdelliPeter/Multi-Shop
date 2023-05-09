@@ -93,3 +93,14 @@
     height: 20px;
     margin: 3px;
   }
+  .togglebtn{
+    color: rgb(107, 107, 107);;
+    background-color: transparent;
+    border: 1px solid rgb(107, 107, 107);
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 0px;
+  }

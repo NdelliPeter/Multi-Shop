@@ -251,7 +251,7 @@ export default function Home() {
                         return (
                           <div
                             key={id}
-                            className="col-11 col-sm-11 col-md-3 col-lg-3 p-1  "
+                            className="col-12 col-sm-12 col-md-3 col-lg-3 p-1  "
                           >
                             <div className="bg-white round">
                               <div className=" col-12 m-0 container_">

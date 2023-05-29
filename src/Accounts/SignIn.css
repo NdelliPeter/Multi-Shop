@@ -27,9 +27,9 @@
 .pass{
     border: none;
     /* border: 1px solid black; */
-    
-    /* border-right: none; */
-    border-radius: 3px;
+    /* border-left: none; */
+    /* border-inline: none; */
+    /* border-radius: 3px; */
 
 }
 .eyebtn{

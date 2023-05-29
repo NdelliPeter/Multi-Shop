@@ -2,6 +2,7 @@ import "./CheckOut.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 
 const CheckOutSchema = yup.object().shape({
   firstName: yup
@@ -19,6 +20,11 @@ const CheckOutSchema = yup.object().shape({
 });
 
 export default function CheckOut() {
+
+
+
+  const [shipping, setShipping] = useState(false)
+
   const {
     register,
     handleSubmit,
@@ -43,14 +49,14 @@ export default function CheckOut() {
 
           <div className="col-12 px-0">
             <div className="row">
-            <div className="col-8">
+            <div className="col-12 col-sm-12 col-md-8 col-lg-8">
             <h3 className="col-12">BILLING ADDRESS</h3>
             <form
               className="col-12 bg-white px-4 py-3"
               onSubmit={handleSubmit(SubmitCheckOut)}
             >
               <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>First Name</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -64,7 +70,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>Last Name</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -78,7 +84,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>E-mail</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -92,7 +98,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>Mobile No</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -106,7 +112,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>Address Line 1</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -120,7 +126,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>Address Line 2</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -134,7 +140,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>Country</label>
                   <input
                     className="col-12 my-2 p-2 "
@@ -143,7 +149,7 @@ export default function CheckOut() {
                   />
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>City</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -157,7 +163,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>State</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -171,7 +177,7 @@ export default function CheckOut() {
                   </span>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                   <label>Zip Code</label>
                   <input
                     className="col-12 my-2 p-2"
@@ -200,6 +206,7 @@ export default function CheckOut() {
                     className="bg-warning"
                     name="zipCode"
                     type="checkbox"
+                    onClick={() => setShipping(!shipping)}
                     {...register("zipCode")}
                   />
                   <span>Ship to different Address</span>
@@ -207,14 +214,14 @@ export default function CheckOut() {
               </div>
             </form>
 
-            <div className="my-5">
+            { shipping &&(<div className="my-5">
               <h3 className="col-12">SHIPPING ADDRESS</h3>
               <form
                 className="col-12 bg-white px-4 py-3"
                 onSubmit={handleSubmit(SubmitCheckOut)}
               >
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>First Name</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -228,7 +235,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>Last Name</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -242,7 +249,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>E-mail</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -256,7 +263,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>Mobile No</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -270,7 +277,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>Address Line 1</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -284,7 +291,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>Address Line 2</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -298,7 +305,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>Country</label>
                     <input
                       className="col-12 my-2 p-2 "
@@ -307,7 +314,7 @@ export default function CheckOut() {
                     />
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>City</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -321,7 +328,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>State</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -335,7 +342,7 @@ export default function CheckOut() {
                     </span>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                     <label>Zip Code</label>
                     <input
                       className="col-12 my-2 p-2"
@@ -350,9 +357,9 @@ export default function CheckOut() {
                   </div>
                 </div>
               </form>
-            </div>
+            </div>)}
           </div>
-          <div className="col-4">
+          <div className="col-12 col-sm-12 col-md-4 col-lg-4">
             <h3 className="col-12">ORDER TOTAL</h3>
             <div className="col-12 bg-white px-5 py-3">
               <h4>Products</h4>

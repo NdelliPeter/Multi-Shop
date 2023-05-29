@@ -21,19 +21,19 @@ import axios from "axios";
 export default function HomeLayout() {
 
   const [basket, setBasket] = useState();
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
-   
+
 
   useEffect(() => {
     axios
-    .get("http://localhost:4000/basket")
-    .then((res) => {
-      const respo = res.data;
-      setBasket(respo);
-      console.log(respo);
-    })
-    .catch((err) => console.log(err));
+      .get("http://localhost:4000/basket")
+      .then((res) => {
+        const respo = res.data;
+        setBasket(respo);
+        console.log(respo);
+      })
+      .catch((err) => console.log(err));
   }, [])
 
 
@@ -68,12 +68,15 @@ export default function HomeLayout() {
         {/* Bottom header */}
         <div className="bg-dark row justify-content-between align-items-center px-5">
           <div className="col-12 col-sm-12 col-md-12 col-lg-8 d-flex px-0 gap-4 align-items-center">
-            <div className="row justify-content-between align-items-center">
-              <img
-                className="col-4 d-lg-none px-0 align-items-center"
-                src={whiteLogo}
-                alt="logo"
-              />
+            <div className="row justify-content-sm-between align-items-center">
+              <div className="col-5 col-sm-5 col-md-5 d-lg-none midlogo">
+                <img
+                  className=" img-fluid px-0 align-items-center"
+                  src={whiteLogo}
+                  alt="logo"
+                />
+              </div>
+
 
               <div className="col-5 d-none d-sm-none d-md-none d-lg-block">
                 <DropdownMenu.Root>
@@ -149,22 +152,25 @@ export default function HomeLayout() {
                 </DropdownMenu.Root>
               </div>
 
-              <button 
-              className="col-3 col-sm-3 d-block d-sm-block d-md-block d-lg-none togglebtn"
-              onClick={() => setToggle(!toggle)}>
-                <GiHamburgerMenu />
-              </button>
+              <div className="col-3 col-sm-3 d-flex d-sm-flex d-md-flex d-lg-none position">
+                <button
+                  className="  togglebtn"
+                  onClick={() => setToggle(!toggle)}>
+                  <GiHamburgerMenu />
+                </button>
+              </div>
+
               {toggle && (<div className=" col-7 d-flex flex-column gap-3">
-                <NavLink className="col-2 nestedlink" to="/">
-                  <b>Home</b>
+                <NavLink className=" nestedlink" to="/">
+                  Home
                 </NavLink>
-                <NavLink className="col-2 nestedlink" to="shop">
-                  <b>Shop</b>
+                <NavLink className=" nestedlink" to="shop">
+                  Shop
                 </NavLink>
-                <NavLink className="col-2 nestedlink" to="shopDetails">
-                  <b>Shop Detail</b>
+                <NavLink className=" nestedlink" to="shopDetails">
+                  Shop Detail
                 </NavLink>
-                <Dropdown className="col-2">
+                <Dropdown className="">
                   <Dropdown.Toggle variant="light" id="pagesBtn">
                     Pages
                   </Dropdown.Toggle>
@@ -177,22 +183,23 @@ export default function HomeLayout() {
                   </Dropdown.Menu>
                 </Dropdown>
 
-                <NavLink className="col-2 nestedlink" to="contact">
-                  <b>Contact</b>
+                <NavLink className=" nestedlink" to="contact">
+                  Contact
                 </NavLink>
-              </div>) 
+              </div>)
               }
               <div className=" col-7 d-none d-sm-none d-md-none d-lg-flex gap-3">
-                <NavLink className="col-2 nestedlink" to="/">
-                  <b>Home</b>
+
+                <NavLink className=" nestedlink" to="/">
+                  Home
                 </NavLink>
-                <NavLink className="col-2 nestedlink" to="shop">
-                  <b>Shop</b>
+                <NavLink className=" nestedlink" to="shop">
+                  Shop
                 </NavLink>
-                <NavLink className="col-2 nestedlink" to="shopDetails">
-                  <b>Shop Detail</b>
+                <NavLink className=" nestedlink" to="shopDetails">
+                  Shop Detail
                 </NavLink>
-                <Dropdown className="col-2">
+                <Dropdown className="">
                   <Dropdown.Toggle variant="light" id="pagesBtn">
                     Pages
                   </Dropdown.Toggle>
@@ -205,9 +212,11 @@ export default function HomeLayout() {
                   </Dropdown.Menu>
                 </Dropdown>
 
-                <NavLink className="col-2 nestedlink" to="contact">
-                  <b>Contact</b>
+                <NavLink className=" nestedlink" to="contact">
+                  Contact
                 </NavLink>
+
+
               </div>
             </div>
           </div>

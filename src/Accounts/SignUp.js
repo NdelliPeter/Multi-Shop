@@ -198,7 +198,7 @@ export default function SignUp() {
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
-                className="col-10 pass"
+                className="col-10 ms-1 pass"
                 type={passwordType} 
                 onChange={handlePasswordChange} 
                 name="password"
@@ -206,7 +206,7 @@ export default function SignUp() {
                 {...register("password")}
               />
               <button className="col-2 eyebtn " onClick={togglePassword}>
-                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEye/></i> :<i className="bi bi-eye"><AiFillEyeInvisible/></i> }
+                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEyeInvisible/></i> :<i className="bi bi-eye"><AiFillEye/></i> }
               </button>
             </div>            
           </div>
@@ -217,7 +217,7 @@ export default function SignUp() {
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
-                className="col-10 pass"
+                className="col-10 ms-1 pass"
                 type={passwordType} 
                 onChange={handlePasswordChange} 
                 name="confirmPassword"
@@ -225,7 +225,7 @@ export default function SignUp() {
                 {...register("confirmPassword")}
               />
               <button className="col-2 eyebtn " onClick={togglePassword}>
-                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEye/></i> :<i className="bi bi-eye"><AiFillEyeInvisible/></i> }
+                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEyeInvisible/></i> :<i className="bi bi-eye"><AiFillEye/></i> }
               </button>
             </div>            
           </div>

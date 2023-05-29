@@ -125,7 +125,7 @@ export default function SignIn() {
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
-                className="col-10 pass"
+                className="col-10 ms-1 pass"
                 type={passwordType} 
                 onChange={handlePasswordChange} 
                 name="password"

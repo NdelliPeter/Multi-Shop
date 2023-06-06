@@ -40,13 +40,13 @@ const SignUpSchema = yup.object().shape({
   password: yup.string()
     .min(8)
     .max(12)
-    .matches(passwordRules, { message: "Please create a stronger password" })
+    .matches(passwordRules, { message: "Password should include uppercase, lowercase, special character and number" })
     .required("password cannot be empty"),
-  confirmPassword: yup
-    .string()
-    .test("passwords-match", "Passwords must match", function (value) {
-      return this.parent.password === value;
-    }),
+  // confirmPassword: yup
+  //   .string()
+  //   .test("passwords-match", "Passwords must match", function (value) {
+  //     return this.parent.password === value;
+  //   }),
 });
 
 export default function SignUp() {
@@ -83,11 +83,11 @@ export default function SignUp() {
         axios
         .post("http://localhost:4000/accounts", data)
         .then((res) => {
-        console.log(res);
+        console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
-        }) ,
+        }),
       navigate("/")
     )
     }else if( accounts.find((account) =>(account.email === data.email))){
@@ -97,11 +97,11 @@ export default function SignUp() {
         axios
         .post("http://localhost:4000/accounts", data)
         .then((res) => {
-        console.log(res);
+        console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
-        }) ,
+        }),
       navigate("/")
     )
     }
@@ -123,8 +123,8 @@ export default function SignUp() {
 
   function func() {
     function ff(s) {
-      var pt = (Math.random().toString(16) + "000000000").substr(2, 8);
-      return s ? "-" + pt.substr(0, 4) + "-" + pt.substr(4, 4) : pt;
+      var pt = (Math.random() + "00000").substr(2, 2);
+      return pt;
     }
     return ff() + ff(true) + ff(true) + ff();
   }
@@ -214,7 +214,7 @@ export default function SignUp() {
             {errors.password?.message}
           </span>
 
-          <div className="col-12 my-2 passBox ">
+          {/* <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
                 className="col-10 ms-1 pass"
@@ -231,7 +231,7 @@ export default function SignUp() {
           </div>
           <span className="text-danger font-strong">
             {errors.confirmPassword?.message}
-          </span>
+          </span> */}
 
           <button className="col-12 mt-4 signUpBtn" href="home" type="submit">
             SIGN UP

@@ -287,7 +287,7 @@ export default function Shop() {
                                 </div>
                               </div>
                               <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                                <h6>{product.productName}</h6>
+                                <h6>{product.name}</h6>
                                 <p>
                                   ${product.price}{" "}
                                   <small className="text-though">$163.00</small>

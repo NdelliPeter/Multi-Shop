@@ -22,12 +22,6 @@ import { FaShippingFast } from "react-icons/fa";
 import { BiTransfer } from "react-icons/bi";
 import { FaPhoneVolume } from "react-icons/fa";
 
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from "react-responsive-carousel";
-
-// import {OwlCarousel} from 'react-owl-carousel';
-// import 'owl.carousel/dist/assets/owl.carousel.css';
-// import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 export default function Home() {
   const [products, setProducts] = useState();
@@ -48,7 +42,7 @@ export default function Home() {
         products.indexOf(productItem) === products.indexOf(product)
     );
     axios
-      .post("http://localhost:4000/basket", product)
+      .post("http://localhost:4000/baskets", product)
       .then((res) => {
         console.log(res);
       })
@@ -275,7 +269,7 @@ export default function Home() {
                                 </div>
                               </div>
                               <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                                <h6>{product.productName}</h6>
+                                <h6>{product.name}</h6>
                                 <p>
                                   ${product.price}{" "}
                                   <small className="text-though">$163.00</small>

@@ -14,18 +14,19 @@ const SignInSchema = yup.object().shape({
   email_or_userName: yup.string("Enter your Email/User Name")
   // .email("Enter a valid email")
   .required("Email/User Name is required")
-  .test('test-name', 'Enter Valid User Name/Email', 
-    function(value) {
-      const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  // .test('test-name', 'Enter Valid User Name/Email', 
+  //   function(value) {
+  //     const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-      const userNameRegex = /^[aA-zZ\s]+$/; // Change this regex based on requirement
-      const isValidEmail = emailRegex.test(value);
-      const isValidPhone = userNameRegex.test(value);
-      if (!isValidEmail && !isValidPhone ){
-        return false;
-      }
-      return true;
-    }),  
+  //     const userNameRegex = /^[aA-zZ\s]+$/; // Change this regex based on requirement
+  //     const isValidEmail = emailRegex.test(value);
+  //     const isValidPhone = userNameRegex.test(value);
+  //     if (!isValidEmail && !isValidPhone ){
+  //       return false;
+  //     }
+  //     return true;
+  //   })
+  ,
   password: yup.string().min(4).max(15).required("password cannot be empty"),
 });
 
@@ -41,6 +42,7 @@ export default function SignIn() {
 
   const [accounts, setAccounts] = useState([]);
   const [Error, setError] = useState()
+  console.log('sdfdsfsdfdsf', accounts);
 
 
   const [passwordType, setPasswordType] = useState("password");
@@ -71,7 +73,7 @@ export default function SignIn() {
   const checkAccount = (data) => {
     const email = data.email_or_userName
     const password = data.password
-    accounts.find((account) =>{if(account.email === email || account.userName === data.email_or_userName){
+    accounts.find((account) =>{if(account.email === email || account.userName === email){
       if(account.password === password){
         navigate("/")
       }else{

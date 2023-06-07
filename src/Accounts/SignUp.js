@@ -5,11 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import SignUpSchema from "../Schema/SignUpSchema";
-// import { v4 as uuid} from 'uuid'
+import { v4 as uuid} from 'uuid'
 import * as yup from "yup";
 import axios from "axios";
-// import signIn from "./SignIn.js"
-// import SignIn from "./SignIn.js";
 import { Button } from "react-bootstrap";
 import {AiFillEyeInvisible} from "react-icons/ai";
 import {AiFillEye} from "react-icons/ai";
@@ -123,16 +121,17 @@ export default function SignUp() {
 
   function func() {
     function ff(s) {
-      var pt = (Math.random() + "00000").substr(2, 2);
+      var pt = (Math.random() + "00").substr(2, 2);
       return pt;
     }
     return ff() + ff(true) + ff(true) + ff();
   }
-  const id = func();
+  const id = func()
 
   const SignUpSubmit = (data) => {
     data.id = id;
     addAccount(data);
+    console.log(data);
     reset();
   };
 

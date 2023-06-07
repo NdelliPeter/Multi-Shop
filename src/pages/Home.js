@@ -33,7 +33,7 @@ export default function Home() {
         setProducts(respo);
         console.log(respo);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));    
   }, []);
 
   const basketDrop = (product) => {
@@ -42,14 +42,14 @@ export default function Home() {
         products.indexOf(productItem) === products.indexOf(product)
     );
     axios
-      .post("http://localhost:4000/baskets", product)
+      .post("http://localhost:4000/baskets", drop)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log(drop);
+    console.log('podvpfnvsdsnvsddcsd', product);
   };
 
   return (
@@ -60,9 +60,9 @@ export default function Home() {
             <div className="row">
               <Carousel className="col-12 col-sm-12 col-md-8 col-lg-8">
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid" src={girl} alt="women" />
+                  <img className="img-fluid" src={'https://image.lexica.art/md2/056eab40-a2a0-4e9b-a1da-2f296593649c'} alt="women" />
                   <Carousel.Caption>
-                    <h1>Women Fashion</h1>
+                    <h1>Sculptures</h1>
                     <p>
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
@@ -71,9 +71,9 @@ export default function Home() {
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid" src={man} alt="men" />
+                  <img className="img-fluid" src={'https://kimbellart.org/sites/default/files/styles/hero_image/public/2022-02/LOB%20Lockup%20Website.jpg?itok=eC7s4Rn3'} alt="men" />
                   <Carousel.Caption>
-                    <h1>Men Fashion</h1>
+                    <h1>Sculptures</h1>
                     <p>
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
@@ -82,9 +82,9 @@ export default function Home() {
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid" src={kid} alt="kid" />
+                  <img className="img-fluid" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="kid" />
                   <Carousel.Caption className="">
-                    <h1>Kids Fashion</h1>
+                    <h1>Painting</h1>
                     <p>
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
@@ -271,8 +271,8 @@ export default function Home() {
                               <div className="d-flex py-3 flex-column justify-content-center align-items-center">
                                 <h6>{product.name}</h6>
                                 <p>
-                                  ${product.price}{" "}
-                                  <small className="text-though">$163.00</small>
+                                  XFA{product.price}{" "}
+                                  <small className="text-though">XFA16000.00</small>
                                 </p>
                               </div>
                             </div>

@@ -15,7 +15,7 @@ export default function ShoppingCart() {
     product.quantity += 1;
 
     axios
-      .put(`http://localhost:4000/basket/${product.id}`, product)
+      .put(`http://localhost:4000/baskets/${product.id}`, product)
       .then((res) => {
         const increased = basket.map((prod) => {
           if (product.id === prod.id) {
@@ -32,7 +32,7 @@ export default function ShoppingCart() {
     if (product.quantity === 0) {
       product.quantity = 0;
       axios
-        .put(`http://localhost:4000/basket/${product.id}`, product)
+        .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
           const decreased = basket.map((prod) => {
             if (product.id === prod.id) {
@@ -46,7 +46,7 @@ export default function ShoppingCart() {
     } else {
       product.quantity -= 1;
       axios
-        .put(`http://localhost:4000/basket/${product.id}`, product)
+        .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
           const decreased = basket.map((prod) => {
             if (product.id === prod.id) {
@@ -65,7 +65,7 @@ export default function ShoppingCart() {
       let sum = 0;
       return (product.total += sum);
     });
-    console.log(total);
+    // console.log(total);
     let sum = total?.reduce(function (a, b) {
       return a + b;
     });
@@ -74,7 +74,7 @@ export default function ShoppingCart() {
 
   const shipping = () => {
     const shipping = subTotal() / 10;
-    console.log(shipping);
+    // console.log(shipping);
     return shipping;
   };
   const genaralTotal = () => {
@@ -85,23 +85,26 @@ export default function ShoppingCart() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/basket")
+      .get("http://localhost:4000/baskets")
       .then((res) => {
         const respo = res.data;
         setBasket(respo);
-        console.log(respo);
+        console.log('first', respo);
       })
       .catch((err) => console.log(err));
 
-    axios.get("http://localhost:4000/Checkout").then((res) => {
-      const respo = res.data;
-      setCheckout(respo);
-      console.log('Checkout' + respo);
-    });
+    axios.get("http://localhost:4000/Checkout")
+      .then((res) => {
+        const respo = res.data;
+        setCheckout(respo);
+        console.log('Checkout' + respo);
+      })
+      .catch((err) => console.log(err));
+
   }, []);
 
   const deleteProduct = (productId) => {
-    axios.delete(`http://localhost:4000/basket/${productId}`);
+    axios.delete(`http://localhost:4000/baskets/${productId}`);
     setBasket(
       basket.filter((product) => {
         return product.id !== productId;

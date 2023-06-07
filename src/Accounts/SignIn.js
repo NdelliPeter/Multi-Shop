@@ -11,21 +11,21 @@ import {AiFillEyeInvisible} from "react-icons/ai";
 import {AiFillEye} from "react-icons/ai";
 
 const SignInSchema = yup.object().shape({
-  email_or_userName: yup.string("Enter your Email/User Name")
-  // .email("Enter a valid email")
+  email_or_username: yup.string("Enter your Email/User Name")
+  .email("Enter a valid email")
   .required("Email/User Name is required")
-  // .test('test-name', 'Enter Valid User Name/Email', 
-  //   function(value) {
-  //     const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  .test('test-name', 'Enter Valid User Name/Email', 
+    function(value) {
+      const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-  //     const userNameRegex = /^[aA-zZ\s]+$/; // Change this regex based on requirement
-  //     const isValidEmail = emailRegex.test(value);
-  //     const isValidPhone = userNameRegex.test(value);
-  //     if (!isValidEmail && !isValidPhone ){
-  //       return false;
-  //     }
-  //     return true;
-  //   })
+      const userNameRegex = /^[aA-zZ\s]+$/; // Change this regex based on requirement
+      const isValidEmail = emailRegex.test(value);
+      const isValidPhone = userNameRegex.test(value);
+      if (!isValidEmail && !isValidPhone ){
+        return false;
+      }
+      return true;
+    })
   ,
   password: yup.string().min(4).max(15).required("password cannot be empty"),
 });
@@ -42,7 +42,7 @@ export default function SignIn() {
 
   const [accounts, setAccounts] = useState([]);
   const [Error, setError] = useState()
-  console.log('sdfdsfsdfdsf', accounts);
+  // console.log('sdfdsfsdfdsf', accounts);
 
 
   const [passwordType, setPasswordType] = useState("password");
@@ -71,9 +71,10 @@ export default function SignIn() {
   }, []);
 
   const checkAccount = (data) => {
-    const email = data.email_or_userName
+    console.log(data);
+    const email = data.email_or_username
     const password = data.password
-    accounts.find((account) =>{if(account.email === email || account.userName === email){
+    accounts.find((account) =>{if(account.email === email || account.username === email){
       if(account.password === password){
         navigate("/")
       }else{
@@ -116,10 +117,10 @@ export default function SignIn() {
 
           <input
             className="col-12 my-2"
-            name="email_or_userName"
+            name="email_or_username"
             type="string"
             placeholder="user name or email"
-            {...register("email_or_userName") }
+            {...register("email_or_username") }
           />
           <span className="text-danger font-strong">
             {errors.email?.message}

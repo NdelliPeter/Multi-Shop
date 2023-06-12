@@ -24,7 +24,7 @@ export default function Shop() {
       .catch((err) => console.log(err));
 
     axios
-      .get("http://localhost:4000/basket")
+      .get("http://localhost:4000/baskets")
       .then((res) => {
         const respo = res.data;
         setBasket(respo);
@@ -41,7 +41,7 @@ export default function Shop() {
         products.indexOf(productItem) === products.indexOf(product)
     );
     axios
-      .post("http://localhost:4000/basket", product)
+      .post("http://localhost:4000/baskets", product)
       .then((res) => {
         console.log(res);
       })

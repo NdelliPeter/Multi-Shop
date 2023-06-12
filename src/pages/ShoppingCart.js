@@ -13,49 +13,54 @@ export default function ShoppingCart() {
 
   const increaseQuntity = (product) => {
     product.quantity += 1;
-
+    window.location.reload(false)
     axios
       .put(`http://localhost:4000/baskets/${product.id}`, product)
       .then((res) => {
-        const increased = basket.map((prod) => {
-          if (product.id === prod.id) {
-            product.quantity = res.data.quantity;
-            product.total = product.price * product.quantity;
-          }
-          return prod;
-        });
-        setBasket(increased);
+        // const increased = basket.map((prod) => {
+        //   if (product.id === prod.id) {
+        //     product.quantity = res.data.quantity;
+        //     product.total = product.price * product.quantity;
+        //   }
+        //   return prod;
+        // });
+        // setBasket(increased);
+        console.log(res);
       });
   };
 
   const decreaseQuantity = (product) => {
     if (product.quantity === 0) {
       product.quantity = 0;
+      window.location.reload(false)
       axios
         .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
-          const decreased = basket.map((prod) => {
-            if (product.id === prod.id) {
-              product.quantity = res.data.quantity;
-              product.total = product.price * product.quantity;
-            }
-            return prod;
-          });
-          setBasket(decreased);
+          // const decreased = basket.map((prod) => {
+          //   if (product.id === prod.id) {
+          //     product.quantity = res.data.quantity;
+          //     product.total = product.price * product.quantity;
+          //   }
+          //   return prod;
+          // });
+          // setBasket(decreased);
+          console.log(res);
         });
     } else {
       product.quantity -= 1;
+      window.location.reload(false)
       axios
         .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
-          const decreased = basket.map((prod) => {
-            if (product.id === prod.id) {
-              product.quantity = res.data.quantity;
-              product.total = product.price * product.quantity;
-            }
-            return prod;
-          });
-          setBasket(decreased);
+          // const decreased = basket.map((prod) => {
+          //   if (product.id === prod.id) {
+          //     product.quantity = res.data.quantity;
+          //     product.total = product.price * product.quantity;
+          //   }
+          //   return prod;
+          // });
+          // setBasket(decreased);
+          console.log(res);
         });
     }
   };

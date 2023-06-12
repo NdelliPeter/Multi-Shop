@@ -93,13 +93,13 @@ export default function ShoppingCart() {
       })
       .catch((err) => console.log(err));
 
-    axios.get("http://localhost:4000/Checkout")
-      .then((res) => {
-        const respo = res.data;
-        setCheckout(respo);
-        console.log('Checkout' + respo);
-      })
-      .catch((err) => console.log(err));
+    // axios.get("http://localhost:4000/Checkout")
+    //   .then((res) => {
+    //     const respo = res.data;
+    //     setCheckout(respo);
+    //     console.log('Checkout' + respo);
+    //   })
+    //   .catch((err) => console.log(err));
 
   }, []);
 
@@ -164,12 +164,12 @@ export default function ShoppingCart() {
                               <img
                                 className="img-fluid col-2 photo"
                                 src={product?.image}
-                                alt={product?.productName}
+                                alt={product?.name}
                               />
-                              {product?.productName}
+                              {product?.name}
                             </div>
                             <div className="col-6 col-sm-6 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
-                              ${product?.price}
+                              {product?.price} XFA
                             </div>
                             <div className="col-5 col-sm-5 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
                               <button
@@ -191,7 +191,7 @@ export default function ShoppingCart() {
                               </button>
                             </div>
                             <div className="col-3 col-sm-3 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
-                              ${product?.total}
+                              {product?.total} XFA
                             </div>
                             <div className="col-2 d-flex my-2 justify-content-center align-items-center">
                               <button
@@ -227,17 +227,17 @@ export default function ShoppingCart() {
                   <div className="borderBot">
                     <div className="d-flex justify-content-between align-items-center my-3">
                       <span>Subtotal</span>
-                      <span>${subTotal()}</span>
+                      <span>{subTotal()} XFA</span>
                     </div>
                     <div className="d-flex justify-content-between align-items-center my-3">
                       <span>Shipping</span>
-                      <span>${shipping()}</span>
+                      <span>{shipping()} XFA</span>
                     </div>
                   </div>
 
                   <div className="d-flex justify-content-between align-items-center mt-3">
                     <h3>Total</h3>
-                    <h3>${genaralTotal()}</h3>
+                    <h3>{genaralTotal()} XFA</h3>
                   </div>
 
                   <button

@@ -1,4 +1,5 @@
 import "./ShoppingCart.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { BiPlusMedical } from "react-icons/bi";
 import { FaMinus } from "react-icons/fa";
@@ -17,14 +18,6 @@ export default function ShoppingCart() {
     axios
       .put(`http://localhost:4000/baskets/${product.id}`, product)
       .then((res) => {
-        // const increased = basket.map((prod) => {
-        //   if (product.id === prod.id) {
-        //     product.quantity = res.data.quantity;
-        //     product.total = product.price * product.quantity;
-        //   }
-        //   return prod;
-        // });
-        // setBasket(increased);
         console.log(res);
       });
   };
@@ -36,14 +29,6 @@ export default function ShoppingCart() {
       axios
         .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
-          // const decreased = basket.map((prod) => {
-          //   if (product.id === prod.id) {
-          //     product.quantity = res.data.quantity;
-          //     product.total = product.price * product.quantity;
-          //   }
-          //   return prod;
-          // });
-          // setBasket(decreased);
           console.log(res);
         });
     } else {
@@ -52,14 +37,6 @@ export default function ShoppingCart() {
       axios
         .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
-          // const decreased = basket.map((prod) => {
-          //   if (product.id === prod.id) {
-          //     product.quantity = res.data.quantity;
-          //     product.total = product.price * product.quantity;
-          //   }
-          //   return prod;
-          // });
-          // setBasket(decreased);
           console.log(res);
         });
     }
@@ -70,7 +47,6 @@ export default function ShoppingCart() {
       let sum = 0;
       return (product.total += sum);
     });
-    // console.log(total);
     let sum = total?.reduce(function (a, b) {
       return a + b;
     });
@@ -79,10 +55,10 @@ export default function ShoppingCart() {
 
   const shipping = () => {
     const shipping = subTotal() / 10;
-    // console.log(shipping);
     return shipping;
   };
-  const genaralTotal = () => {
+
+  const generalTotal = () => {
     const total = subTotal() + shipping();
     return total;
   };
@@ -117,18 +93,34 @@ export default function ShoppingCart() {
     );
   };
 
-  const clearBasket = () => {
-    const checkOutUpdate = basket.map((product) => {
-        axios.post("http://localhost:4000/Checkout", product)
-        .then((res) => {
-          const respo = res.data;
-          setCheckout(respo);
-          console.log("oierueneff" + respo);
-          });
-    })
+  function func() {
+    function ff(s) {
+      var pt = (Math.random() + "00").substr(2, 2);
+      return pt;
+    }
+    return ff() + ff(true) + ff(true) + ff();
+  }
+  const id = func()
 
-    console.log(checkOutUpdate);
+  const clearBasket = () => {
+    const checkout = {}
+    checkout.id = id
+    checkout.subtotal = subTotal()
+    checkout.shipping = shipping()
+    checkout.generaltotal = subTotal() + shipping()
+    axios.post("http://localhost:4000/checkout", checkout)
+    .then((res) => {
+      const respo = res.data;
+      setCheckout(respo);
+      console.log("oierueneff" + respo);
+      });
+    console.log(checkout);
+    
+    navigate('/checkOut')
+
   };
+
+  const navigate = useNavigate(1); 
 
   return (
     <div className="container-fluid shoppingCartbg">
@@ -242,7 +234,7 @@ export default function ShoppingCart() {
 
                   <div className="d-flex justify-content-between align-items-center mt-3">
                     <h3>Total</h3>
-                    <h3>{genaralTotal()} XFA</h3>
+                    <h3>{generalTotal()} XFA</h3>
                   </div>
 
                   <button

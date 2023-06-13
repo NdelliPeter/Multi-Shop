@@ -14,7 +14,7 @@ export default function Header() {
 
   useEffect(() => {
     axios
-    .get("http://localhost:4000/basket")
+    .get("http://localhost:4000/baskets")
     .then((res) => {
       const respo = res.data;
       setBasket(respo);

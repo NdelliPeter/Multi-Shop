@@ -40,6 +40,7 @@ export default function Shop() {
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
     );
+    window.location.reload(false)
     axios
       .post("http://localhost:4000/baskets", product)
       .then((res) => {

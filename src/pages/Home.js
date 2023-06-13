@@ -41,6 +41,7 @@ export default function Home() {
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
     );
+    window.location.reload(false)
     axios
       .post("http://localhost:4000/baskets", drop)
       .then((res) => {

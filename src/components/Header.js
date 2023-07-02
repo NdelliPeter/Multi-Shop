@@ -54,6 +54,7 @@ export default function Header() {
                   <Dropdown.Menu>
                     <Dropdown.Item href="signIn">Sign In</Dropdown.Item>
                     <Dropdown.Item href="signUp">Sign Up</Dropdown.Item>
+                    <Dropdown.Item href="">logout</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
 

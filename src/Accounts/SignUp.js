@@ -15,21 +15,21 @@ import {AiFillEye} from "react-icons/ai";
 
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const SignUpSchema = yup.object().shape({
-  firstName: yup
+  fullname: yup
     .string()
     .trim("Please input cannot contain just spaces")
     .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ")
     .required("Please input first name"),
-  lastName: yup
-    .string()
-    .trim("Please input cannot contain just spaces")
-    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ")
-    .required("Please input last name"),
   userName: yup
     .string()
     .max(10)
     .trim("Please input cannot contain just spaces")
     .required("Please input user name"),
+  role: yup
+    .string()
+    .max(10)
+    .trim("Please input cannot contain just spaces")
+    .required("Please input role"),
   email: yup
     .string()
     .email("please input a valid email")
@@ -153,23 +153,13 @@ export default function SignUp() {
 
           <input
             className="col-12 my-2"
-            name="firstName"
+            name="fullname"
             type="string"
-            placeholder="FirstName"
-            {...register("firstName")}
+            placeholder="Full Name"
+            {...register("fullname")}
           />
           <span className="text-danger font-strong">
             {errors.firstName?.message}
-          </span>
-          <input
-            className="col-12 my-2"
-            name="lastName"
-            type="string"
-            placeholder="LastName"
-            {...register("lastName")}
-          />
-          <span className="text-danger font-strong">
-            {errors.lastName?.message}
           </span>
 
           <input
@@ -182,6 +172,15 @@ export default function SignUp() {
           <span className="text-danger font-strong">
             {errors.userName?.message}
           </span>
+
+          <select 
+            name="role" 
+            className="col-12 py-1 my-2"
+            {...register("role")}
+          >
+            <option value="User">User</option>
+            <option value="Vendor">Vendor</option>
+          </select>
 
           <input
             className="col-12 my-2"

@@ -118,8 +118,7 @@ export default function ShopDetails() {
                             <div className="d-flex py-3 flex-column justify-content-center align-items-center">
                               <h6>{product.productName}</h6>
                               <p>
-                                ${product.price}{" "}
-                                <small className="text-though">$163.00</small>
+                                {product.price} XFA
                               </p>
                             </div>
                           </div>

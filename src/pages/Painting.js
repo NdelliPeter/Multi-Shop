@@ -8,15 +8,23 @@ import { TfiReload } from "react-icons/tfi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import LoadingSpinner from "../components/loading";
-import { RingLoader } from 'react-spinners';
 
-
-export default function Shop() {
-  const [products, setProducts] = useState();
+export default function Painting() {
+  const [products, setProducts] = useState([]);
   const [basket, setBasket] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [painting, setPainting] = useState([]);
+
+
+  const painting = products?.filter((prod) => (prod.category === 'painting'))
+  // const painting = products?.map((prod) => {
+  //   if (prod.category === 'painting') {
+  //     return (prod)
+  //   }else{
+  //     return null
+  //   }
+  // })
+
+  console.log('poijfkdfndlfkndflknfd', painting);
 
   useEffect(() => {
     axios
@@ -39,43 +47,29 @@ export default function Shop() {
   }, []);
 
   const basketDrop = (product) => {
-    setIsLoading(true);
     product.quantity = 1;
     product.total = product.price * product.quantity;
     const drop = products.find(
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
     );
-    window.location.reload(<RingLoader />)
+    window.location.reload(false)
     axios
       .post("http://localhost:4000/baskets", product)
       .then((res) => {
         console.log(res);
-        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
-        setErrorMessage("Unable to fetch user list");
-        setIsLoading(false);
       });
     console.log(drop);
   };
 
-  const [loading, setLoading] = useState(false);
-  const [color, setColor] = useState()
-  useEffect(() => {
-    setLoading(false)
-    setTimeout(()=>{
-      setLoading(false)
-    })
-  },5000)
-
   return (
     <div className="container-fluid shopbg">
-      {isLoading ? <LoadingSpinner /> : 
-            <div className="row px-5">
+      <div className="row px-5">
         <div className="col-12 bg-white p-3 my-4">
-          <span>Home / Shop / ShopList </span>
+          <span>Home / Shop / Category / Painting</span>
         </div>
 
         {/* Filter column */}
@@ -278,8 +272,10 @@ export default function Shop() {
 
             <div className="col-12 ">
                 <div className="row align-items-center px-2">
-                  {(products?.length ?? 0) >= 1
-                    ? products.map((product, id) => {
+                  {(painting?.length ?? 0) >= 1
+                    ? painting?.map((product, id) => {
+                      
+
                         return (
                           <div
                             key={id}
@@ -289,7 +285,7 @@ export default function Shop() {
                               <div className=" col-12 m-0 container_">
                                 <div className="col-12">
                                   <img
-                                    src={product.image}
+                                    src={product?.image}
                                     alt="image"
                                     className="img-fluid img"
                                   />
@@ -300,7 +296,6 @@ export default function Shop() {
                                     onClick={() => {
                                       basketDrop(product);
                                     }}
-                                    disabled ={isLoading}
                                   />
                                   <AiOutlineHeart className="productIcon" />
                                   <TfiReload className="productIcon" />
@@ -308,10 +303,9 @@ export default function Shop() {
                                 </div>
                               </div>
                               <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                                <h6>{product.name}</h6>
+                                <h6>{product?.name}</h6>
                                 <p>
-                                  ${product.price}{" "}
-                                  <small className="text-though">$163.00</small>
+                                  {product?.price} XFA{" "}
                                 </p>
                               </div>
                             </div>
@@ -324,9 +318,6 @@ export default function Shop() {
           </div>
         </div>
       </div>
-      }
-     {errorMessage && <div className="error">{errorMessage}</div>}
-
     </div>
   );
 }

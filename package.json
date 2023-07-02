@@ -30,6 +30,7 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
+    "react-spinners": "^0.13.8",
     "react-uuid": "^2.0.0",
     "stripe": "^11.17.0",
     "uuidv4": "^6.2.13",

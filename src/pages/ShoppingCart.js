@@ -74,13 +74,13 @@ export default function ShoppingCart() {
       })
       .catch((err) => console.log(err));
 
-    // axios.get("http://localhost:4000/Checkout")
-    //   .then((res) => {
-    //     const respo = res.data;
-    //     setCheckout(respo);
-    //     console.log('Checkout' + respo);
-    //   })
-    //   .catch((err) => console.log(err));
+    axios.get("http://localhost:4000/Checkout")
+      .then((res) => {
+        const respo = res.data;
+        setCheckout(respo);
+        console.log('Checkout' + respo);
+      })
+      .catch((err) => console.log(err));
 
   }, []);
 

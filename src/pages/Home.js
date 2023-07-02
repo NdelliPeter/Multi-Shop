@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import camera from "../assets/download.jpeg";
-import shoes from "../assets/images.jpg";
-import man from "../assets/man.jpg";
 import girl from "../assets/girl.jpg";
-import kid from "../assets/kid.jpg";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 //Dropdowns
-// import Dropdown from "react-bootstrap/Dropdown";
-// import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-
 import Carousel from "react-bootstrap/Carousel";
 // Icons
 import { HiShoppingCart } from "react-icons/hi";
@@ -21,6 +15,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
 import { BiTransfer } from "react-icons/bi";
 import { FaPhoneVolume } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Home() {
@@ -41,7 +36,7 @@ export default function Home() {
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
     );
-    window.location.reload(false)
+      window.location.reload(false)
     axios
       .post("http://localhost:4000/baskets", drop)
       .then((res) => {
@@ -53,6 +48,15 @@ export default function Home() {
     console.log('podvpfnvsdsnvsddcsd', product);
   };
 
+  const navigate = useNavigate(1);
+
+  const moveToNewPagePainting = () => {
+    return( navigate("/painting")
+    )};
+  const moveToNewPageSculpture = () => {
+    return( navigate("/sculpture")
+    )};
+
   return (
     <>
       <div className="container-fluid py-5 justify-content-between homebg align-items">
@@ -61,7 +65,7 @@ export default function Home() {
             <div className="row">
               <Carousel className="col-12 col-sm-12 col-md-8 col-lg-8">
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid" src={'https://image.lexica.art/md2/056eab40-a2a0-4e9b-a1da-2f296593649c'} alt="women" />
+                  <img className="img-fluid slideImage" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="women" />
                   <Carousel.Caption>
                     <h1>Sculptures</h1>
                     <p>
@@ -72,18 +76,7 @@ export default function Home() {
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid" src={'https://kimbellart.org/sites/default/files/styles/hero_image/public/2022-02/LOB%20Lockup%20Website.jpg?itok=eC7s4Rn3'} alt="men" />
-                  <Carousel.Caption>
-                    <h1>Sculptures</h1>
-                    <p>
-                      Lorem rebum magna amet lorem magna erat diam stet. Sadips
-                      duo stet amet amet ndiam elitr ipsum diam
-                    </p>
-                    <button className=" px-2 py-1 slidebtn">Shop Now</button>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item className="carousel">
-                  <img className="img-fluid" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="kid" />
+                  <img className="img-fluid slideImage" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="kid" />
                   <Carousel.Caption className="">
                     <h1>Painting</h1>
                     <p>
@@ -168,34 +161,34 @@ export default function Home() {
           <div className=" col-12 px-5">
             <div className="row align-items-center">
               <h2 className="col-12">CATEGORIES</h2>
-              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
+              <div onClick={moveToNewPageSculpture} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
-                    <img className="img-fluid" src={camera} alt="camera" />
+                    <img className="img-fluid" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="camera" />
                   </div>
 
                   <div className="">
                     <span>
-                      <b>Category Name</b>
+                      <b>Sculptures</b>
                     </span>
                     <br />
-                    <span className="text-dark">100 product</span>
+                    {/* <span className="text-dark"> product</span> */}
                   </div>
                 </div>
               </div>
 
-              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
+              <div onClick={moveToNewPagePainting} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
-                    <img className="img-fluid" src={shoes} alt="camera" />
+                    <img className="img-fluid" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="camera" />
                   </div>
 
                   <div className="">
                     <span>
-                      <b>Category Name</b>
+                      <b>Painting</b>
                     </span>
                     <br />
-                    <span className="text-dark">100 product</span>
+                    {/* <span className="text-dark"> product</span> */}
                   </div>
                 </div>
               </div>
@@ -208,29 +201,15 @@ export default function Home() {
 
                   <div className="">
                     <span>
-                      <b>Category Name</b>
+                      <b>Fabrics</b>
                     </span>
                     <br />
-                    <span className="text-dark">100 product</span>
+                    {/* <span className="text-dark">product</span> */}
                   </div>
                 </div>
               </div>
 
-              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
-                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
-                  <div className="catego-hieght">
-                    <img className="img-fluid" src={man} alt="camera" />
-                  </div>
 
-                  <div className="">
-                    <span>
-                      <b>Category Name</b>
-                    </span>
-                    <br />
-                    <span className="text-dark">100 product</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -272,8 +251,7 @@ export default function Home() {
                               <div className="d-flex py-3 flex-column justify-content-center align-items-center">
                                 <h6>{product.name}</h6>
                                 <p>
-                                  XFA{product.price}{" "}
-                                  <small className="text-though">XFA16000.00</small>
+                                  {product.price} XFA{" "}
                                 </p>
                               </div>
                             </div>

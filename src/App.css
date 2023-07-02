@@ -157,6 +157,11 @@ transition: 0.2;
   border: none;
 }
 
+.slideImage{
+  height: 100%;
+  width: 100%;
+}
+
 /* .logo{
   height: 13rem;
   object-fit: cover;

@@ -71,27 +71,52 @@ export default function SignIn() {
   }, []);
 
   const checkAccount = (data) => {
-    console.log(data);
-    const email = data.email_or_username
-    const password = data.password
-    accounts.find((account) =>{if(account.email === email || account.username === email){
-      if(account.password === password){
-        navigate("/")
-      }else{
-        setError("Wrong Password")
-      }
-    }else{
-      setError("Email or password not correct try again or try Signing Up")
+    // console.log(data);
+
+    // axios
+    // .post("http://localhost:4000/auth", data)
+    // .then((res) => {
+    // console.log(res.data);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // })
+
+    // const email = data.email_or_username
+    // const password = data.password
+    const acc ={
+      email: data.email_or_username,
+      password: data.password
     }
+
+    const account = accounts.find((account) => account.email === acc.email)
+    console.log(account);
+    axios
+      .post("http://localhost:4000/accounts", account)
+      .then((res) => {
+      console.log(res.data);
     })
+    .catch((err) => {
+      console.log(err);
+    })
+    // accounts.find((account) =>{if(account.email === email || account.username === email){
+    //   if(account.password === password){
+    //     navigate("/")
+    //   }else{
+    //     setError("Wrong Password")
+    //   }
+    // }else{
+    //   setError("Email or password not correct try again or try Signing Up")
+    // }
+    // })
 
   };
 
   const SignInSubmit = (data) => {
     // reset();
     checkAccount(data);
-    console.log(data);
-    // navigate("/")
+    // console.log(data);
+    navigate("/")
   };
 
   const navigate = useNavigate(-1); 

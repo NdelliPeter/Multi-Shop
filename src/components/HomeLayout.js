@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpg";
 import whiteLogo from "../assets/whiteLogo.png";
 
 // import "../App.css";
@@ -42,11 +42,13 @@ export default function HomeLayout() {
       <div className="container-fluid">
         {/* middle header */}
         <div className="row d-none d-sm-none d-lg-flex px-5 py-4 align-items-center">
-          <img
-            className="col-4 d-flex px-0 align-items-center"
-            src={logo}
-            alt="logo"
-          />
+          <div className="col-4 d-flex px-0 align-items-center">
+            <img
+              className="logo"
+              src={logo}
+              alt="logo"
+            />
+          </div>
           <div className="col-5 d-flex justify-content-center align-items-center">
             <input
               className="px-1 inputSearch"
@@ -72,7 +74,7 @@ export default function HomeLayout() {
               <div className="col-5 col-sm-5 col-md-5 d-lg-none midlogo">
                 <img
                   className=" img-fluid px-0 align-items-center"
-                  src={whiteLogo}
+                  src={logo}
                   alt="logo"
                 />
               </div>
@@ -91,61 +93,17 @@ export default function HomeLayout() {
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Portal>
                     <DropdownMenu.Content className="DropdownMenuContent">
-                      <DropdownMenu.Sub>
-                        <DropdownMenu.SubTrigger className="DropdownMenuItem">
-                          <di className="d-flex justify-content-between align-items-center">
-                            Dresses
-                            <AiFillCaretRight />
-                          </di>
-                        </DropdownMenu.SubTrigger>
-                        <DropdownMenu.Portal>
-                          <DropdownMenu.SubContent className="DropdownMenuSubContent">
-                            <DropdownMenu.Item className="DropdownMenuItem">
-                              Men's Dresses
-                            </DropdownMenu.Item>
-                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                            <DropdownMenu.Item className="DropdownMenuItem">
-                              Women's Dresses
-                            </DropdownMenu.Item>
-                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                            <DropdownMenu.Item className="DropdownMenuItem">
-                              Baby's Dresses
-                            </DropdownMenu.Item>
-                          </DropdownMenu.SubContent>
-                        </DropdownMenu.Portal>
-                      </DropdownMenu.Sub>
                       <DropdownMenu.Separator className="DropdownMenuSeparator" />
                       <DropdownMenu.Item className="DropdownMenuItem">
-                        Shirts
+                        Paintings
                       </DropdownMenu.Item>
                       <DropdownMenu.Separator className="DropdownMenuSeparator" />
                       <DropdownMenu.Item className="DropdownMenuItem">
-                        {" "}
-                        Jeans
+                        Sculptures
                       </DropdownMenu.Item>
                       <DropdownMenu.Separator className="DropdownMenuSeparator" />
                       <DropdownMenu.Item className="DropdownMenuItem">
-                        Swimwear
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
-                        Sleepwear
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
-                        Jumpsuits
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
-                        Blazers
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
-                        Jackets
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
-                        Shoes
+                        Fabrics
                       </DropdownMenu.Item>
                     </DropdownMenu.Content>
                   </DropdownMenu.Portal>
@@ -229,7 +187,7 @@ export default function HomeLayout() {
 
             <div className="d-flex align-items-center">
               <FaShoppingCart className="text-warning" />
-              <div className="text-white circle "> {basket?.length}</div>
+              <div className="text-white circle "> {basket?.length }</div>
             </div>
           </div>
         </div>

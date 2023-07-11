@@ -12,9 +12,6 @@ import {AiOutlineInstagram} from 'react-icons/ai'
 
 
 
-
-
-
 export default function Footer() {
     return (
         <footer className="container-fluid bg-dark text-white p-5">
@@ -45,21 +42,21 @@ export default function Footer() {
                         <NavLink className='footerLink d-flex align-items-center' to="/"><MdKeyboardArrowRight /> Home</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="shop"><MdKeyboardArrowRight /> Our Shop</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="shopDetails"><MdKeyboardArrowRight /> Shop Detail</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Shopping Cart</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Checkout</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Contact Us</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shoppingCart"><MdKeyboardArrowRight /> Shopping Cart</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="checkOut"><MdKeyboardArrowRight /> Checkout</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="contact"><MdKeyboardArrowRight /> Contact Us</NavLink>
 
                     </div>
 
                     <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>MY ACCOUNT</h3>
 
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Home</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Our Shop</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Shop Detail</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Shopping Cart</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Checkout</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center'><MdKeyboardArrowRight /> Contact Us</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="/"><MdKeyboardArrowRight /> Home</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shop"><MdKeyboardArrowRight /> Our Shop</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shopDetails"><MdKeyboardArrowRight /> Shop Detail</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shoppingCart"><MdKeyboardArrowRight /> Shopping Cart</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="checkOut"><MdKeyboardArrowRight /> Checkout</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="contact"><MdKeyboardArrowRight /> Contact Us</NavLink>
 
                     </div>
 

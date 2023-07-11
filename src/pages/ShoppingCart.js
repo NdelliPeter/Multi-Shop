@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ShoppingCart() {
-  const [quantity, setQuantity] = useState();
+  // const [quantity, setQuantity] = useState();
   const [basket, setBasket] = useState();
   const [checkout, setCheckout] = useState();
 
@@ -155,7 +155,7 @@ export default function ShoppingCart() {
                       return (
                         <div
                           key={id}
-                          className="col-12    "
+                          className="col-12"
                         >
                           <div className="row my-3 py-3 mx-1 justify-content-between align-items-center bg-white">
                             <div className="col-6 col-sm-6 col-md-4 col-lg-4 d-flex my-2 ps-lg-5 ps-sm-2 ps-2 justify-content-center align-items-center">

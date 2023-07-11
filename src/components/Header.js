@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AiFillHeart } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
@@ -11,6 +11,8 @@ import axios from "axios";
 export default function Header() {
 
   const [basket, setBasket] = useState()
+  const [count, setCount] = useState('')
+
 
   useEffect(() => {
     axios
@@ -18,10 +20,18 @@ export default function Header() {
     .then((res) => {
       const respo = res.data;
       setBasket(respo);
+      setCount(respo?.length)
+
       // console.log(respo);
     })
     .catch((err) => console.log(err));
   }, [])
+
+  const moveToCart = () => {
+    navigate('/shoppingCart')
+  }
+
+  const navigate = useNavigate(1)
 
 
   return (
@@ -87,9 +97,9 @@ export default function Header() {
                     <div className="ring">0</div>
                   </div>
 
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center" onClick={moveToCart}>
                     <FaShoppingCart className="" />
-                    <div className="ring ">{basket?.length}</div>
+                    <div className=" ring "> {count }</div>
                   </div>
                 </div>
               </div>

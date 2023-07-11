@@ -20,6 +20,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [products, setProducts] = useState();
+  const [basket, setBasket] = useState();
+  const [count, setCout] = useState(0)
+
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/products")
@@ -40,6 +44,8 @@ export default function Home() {
     axios
       .post("http://localhost:4000/baskets", drop)
       .then((res) => {
+        setBasket(drop)
+        setCout(count + 1)
         console.log(res.data);
       })
       .catch((err) => {
@@ -47,6 +53,7 @@ export default function Home() {
       });
     console.log('podvpfnvsdsnvsddcsd', product);
   };
+
 
   const navigate = useNavigate(1);
 

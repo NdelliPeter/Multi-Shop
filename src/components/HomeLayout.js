@@ -5,7 +5,7 @@ import whiteLogo from "../assets/whiteLogo.png";
 // import "../App.css";
 import "./HomeLayout.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { SlMagnifier } from "react-icons/sl";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -22,6 +22,7 @@ export default function HomeLayout() {
 
   const [basket, setBasket] = useState();
   const [toggle, setToggle] = useState(false);
+  const [count, setCount] = useState('')
 
 
 
@@ -31,10 +32,18 @@ export default function HomeLayout() {
       .then((res) => {
         const respo = res.data;
         setBasket(respo);
+        setCount(respo?.length)
         console.log(respo);
       })
       .catch((err) => console.log(err));
+
   }, [])
+
+  const moveToCart = () => {
+    navigate('/shoppingCart')
+  }
+
+  const navigate = useNavigate(1)
 
 
   return (
@@ -94,11 +103,15 @@ export default function HomeLayout() {
                   <DropdownMenu.Portal>
                     <DropdownMenu.Content className="DropdownMenuContent">
                       <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
+                      <DropdownMenu.Item
+                        href="painting"
+                       className="DropdownMenuItem">
                         Paintings
                       </DropdownMenu.Item>
                       <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                      <DropdownMenu.Item className="DropdownMenuItem">
+                      <DropdownMenu.Item 
+                      href="sculptur"
+                      className="DropdownMenuItem">
                         Sculptures
                       </DropdownMenu.Item>
                       <DropdownMenu.Separator className="DropdownMenuSeparator" />
@@ -185,9 +198,9 @@ export default function HomeLayout() {
               <div className="text-white circle">0</div>
             </div>
 
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center" onClick={moveToCart}>
               <FaShoppingCart className="text-warning" />
-              <div className="text-white circle "> {basket?.length }</div>
+              <div className="text-white circle "> {count }</div>
             </div>
           </div>
         </div>

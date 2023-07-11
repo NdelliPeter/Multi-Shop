@@ -18,6 +18,7 @@ export default function ShoppingCart() {
     axios
       .put(`http://localhost:4000/baskets/${product.id}`, product)
       .then((res) => {
+        setBasket()
         console.log(res);
       });
   };

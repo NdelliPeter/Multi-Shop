@@ -72,7 +72,6 @@ export default function Shop() {
 
   return (
     <div className="container-fluid shopbg">
-      {isLoading ? <LoadingSpinner /> : 
             <div className="row px-5">
         <div className="col-12 bg-white p-3 my-4">
           <span>Home / Shop / ShopList </span>
@@ -94,7 +93,7 @@ export default function Shop() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$0 - $100</span>
+                  <span>0 - 1000 XFA</span>
                 </div>
                 <small className="border px-1">150</small>
               </div>
@@ -102,7 +101,7 @@ export default function Shop() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$100-200</span>
+                  <span>1000-2000 XFA</span>
                 </div>
                 <small className="border px-1">295</small>
               </div>
@@ -110,7 +109,7 @@ export default function Shop() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$200-300</span>
+                  <span>2000-3000 XFA</span>
                 </div>
                 <small className="border px-1">246</small>
               </div>
@@ -118,7 +117,7 @@ export default function Shop() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$300-400</span>
+                  <span>3000-4000</span>
                 </div>
                 <small className="border px-1">145</small>
               </div>
@@ -126,7 +125,7 @@ export default function Shop() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$400-500</span>
+                  <span>4000-5000 XFA</span>
                 </div>
                 <small className="border px-1">168</small>
               </div>
@@ -276,6 +275,8 @@ export default function Shop() {
               </div>
             </div>
 
+            {isLoading ? <LoadingSpinner /> : 
+
             <div className="col-12 ">
                 <div className="row align-items-center px-2">
                   {(products?.length ?? 0) >= 1
@@ -310,8 +311,8 @@ export default function Shop() {
                               <div className="d-flex py-3 flex-column justify-content-center align-items-center">
                                 <h6>{product.name}</h6>
                                 <p>
-                                  ${product.price}{" "}
-                                  <small className="text-though">$163.00</small>
+                                  {product.price} XFA{" "}
+                                  {/* <small className="text-though">$163.00</small> */}
                                 </p>
                               </div>
                             </div>
@@ -321,11 +322,11 @@ export default function Shop() {
                     : "No Product found"}
                 </div>
               </div>
+            }
+            {errorMessage && <div className="error">{errorMessage}</div>}
           </div>
         </div>
       </div>
-      }
-     {errorMessage && <div className="error">{errorMessage}</div>}
 
     </div>
   );

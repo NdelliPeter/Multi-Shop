@@ -27,6 +27,7 @@ export default function CheckOut() {
   const [shipping, setShipping] = useState(false)
   const [basket, setBasket] = useState()
   const [checkout, setCheckout] = useState();
+  const [gtotal, setGtotal] = useState()
   console.log(checkout);
   const {
     register,
@@ -461,7 +462,10 @@ export default function CheckOut() {
                     <h3>Total</h3>
                     <h3>{(checkout?.length ?? 0) >= 1
                     ? checkout.map((product, id) => {
+                      
+                      // setGtotal(product.generaltotal)
                       return (
+                        // sum(gtotal)
                         product.generaltotal
                       );
                     })

@@ -25,11 +25,10 @@ const SignUpSchema = yup.object().shape({
     .max(10)
     .trim("Please input cannot contain just spaces")
     .required("Please input user name"),
-  role: yup
-    .string()
-    .max(10)
-    .trim("Please input cannot contain just spaces")
-    .required("Please input role"),
+  // role: yup
+  //   .string()
+  //   .trim("Please input cannot contain just spaces")
+  //   .required("Please input role"),
   email: yup
     .string()
     .email("please input a valid email")
@@ -81,12 +80,12 @@ export default function SignUp() {
         axios
         .post("http://localhost:4000/accounts", data)
         .then((res) => {
-        console.log(res.data);
+        console.log(res.headers);
         })
         .catch((err) => {
           console.log(err);
-        }),
-      navigate("/")
+        })
+      // navigate("/")
     )
     }else if( accounts.find((account) =>(account.email === data.email))){
       setError("This email already exist please try Signing In")
@@ -100,7 +99,7 @@ export default function SignUp() {
         .catch((err) => {
           console.log(err);
         }),
-      navigate("/")
+      navigate("/signIn")
     )
     }
     console.log(data);
@@ -173,14 +172,14 @@ export default function SignUp() {
             {errors.userName?.message}
           </span>
 
-          <select 
+          {/* <select 
             name="role" 
             className="col-12 py-1 my-2"
             {...register("role")}
           >
             <option value="User">User</option>
             <option value="Vendor">Vendor</option>
-          </select>
+          </select> */}
 
           <input
             className="col-12 my-2"

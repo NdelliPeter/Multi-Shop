@@ -62,10 +62,10 @@ export default function Contact() {
             <b>CONTACT US </b>
           </h2>
           <form
-            className="col-12 col-sm-12 col-md-7 col-lg-7  "
+            className="col-12 col-sm-12 col-md-7 pe-0 col-lg-7  "
             onSubmit={handleSubmit(submitMessage)}
           >
-            <div className="row me-0  bg-white px-2 py-4">
+            <div className="row me-0 me-1 bg-white px-2 py-4">
               <input
                 className="col-12 my-2 p-2"
                 name="yourName"

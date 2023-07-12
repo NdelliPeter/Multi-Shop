@@ -17,6 +17,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Footer from "../components/Footer";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function HomeLayout() {
 
@@ -27,7 +28,8 @@ export default function HomeLayout() {
 
 
   useEffect(() => {
-    axios
+    if(Cookies.get('jwt') !== null){
+      axios
       .get("http://localhost:4000/baskets")
       .then((res) => {
         const respo = res.data;
@@ -36,6 +38,8 @@ export default function HomeLayout() {
         console.log(respo);
       })
       .catch((err) => console.log(err));
+    }
+
 
   }, [])
 
@@ -90,37 +94,40 @@ export default function HomeLayout() {
 
 
                   <div className="col-lg-3 d-none d-sm-none px-0 d-md-none d-lg-block">
-                    <DropdownMenu.Root>
-                      <DropdownMenu.Trigger className="bg-warning dropdown-categories py-4 px-3 text-dark">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div>
-                            <GiHamburgerMenu className="mx-2 bolder" />
-                            <b>Categories</b>
+                    <div className="row px-3 align-items-center">
+                      <DropdownMenu.Root>
+                        <DropdownMenu.Trigger className="bg-warning col-12 dropdown-categories py-4 px-4 text-dark">
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                              <GiHamburgerMenu className="mx-2 bolder" />
+                              <b>Categories</b>
+                            </div>
+                            <AiFillCaretDown />
                           </div>
-                          <AiFillCaretDown />
-                        </div>
-                      </DropdownMenu.Trigger>
-                      <DropdownMenu.Portal>
-                        <DropdownMenu.Content className="DropdownMenuContent">
-                          <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                          <DropdownMenu.Item
-                            href="painting"
-                          className="DropdownMenuItem">
-                            Paintings
-                          </DropdownMenu.Item>
-                          <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                          <DropdownMenu.Item 
-                          href="sculptur"
-                          className="DropdownMenuItem">
-                            Sculptures
-                          </DropdownMenu.Item>
-                          <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                          <DropdownMenu.Item className="DropdownMenuItem">
-                            Fabrics
-                          </DropdownMenu.Item>
-                        </DropdownMenu.Content>
-                      </DropdownMenu.Portal>
-                    </DropdownMenu.Root>
+                        </DropdownMenu.Trigger>
+                        <DropdownMenu.Portal>
+                          <DropdownMenu.Content className="DropdownMenuContent">
+                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                            <DropdownMenu.Item
+                              href="painting"
+                            className="DropdownMenuItem">
+                              Paintings
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                            <DropdownMenu.Item 
+                            href="sculptur"
+                            className="DropdownMenuItem">
+                              Sculptures
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+                            <DropdownMenu.Item className="DropdownMenuItem">
+                              Fabrics
+                            </DropdownMenu.Item>
+                          </DropdownMenu.Content>
+                        </DropdownMenu.Portal>
+                      </DropdownMenu.Root>
+                    </div>
+      
                   </div>
 
                   <div className="col-7 col-sm-7 d-flex d-sm-flex d-md-flex d-lg-none px-0 justify-content-end position">
@@ -159,7 +166,7 @@ export default function HomeLayout() {
                     </NavLink>
                   </div>)
                   }
-                  <div className=" col-6 d-none d-sm-none d-md-none d-lg-flex gap-3">
+                  <div className=" col-7 d-none d-sm-none d-md-none d-lg-flex gap-3">
 
                     <NavLink className=" nestedlink" to="/">
                       Home

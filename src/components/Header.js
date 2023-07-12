@@ -6,6 +6,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { AiFillHeart } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 
 export default function Header() {
@@ -15,16 +16,18 @@ export default function Header() {
 
 
   useEffect(() => {
-    axios
-    .get("http://localhost:4000/baskets")
-    .then((res) => {
-      const respo = res.data;
-      setBasket(respo);
-      setCount(respo?.length)
-
-      // console.log(respo);
-    })
-    .catch((err) => console.log(err));
+    const cookies = Cookies.get('jwt')
+    if(cookies !== null){
+      axios
+      .get("http://localhost:4000/baskets")
+      .then((res) => {
+        const respo = res.data;
+        setBasket(respo);
+        setCount(respo?.length)
+        console.log(respo);
+      })
+      .catch((err) => console.log(err));
+    }
   }, [])
 
   const moveToCart = () => {

@@ -16,6 +16,7 @@ import { FaShippingFast } from "react-icons/fa";
 import { BiTransfer } from "react-icons/bi";
 import { FaPhoneVolume } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
 
 
   useEffect(() => {
+
     axios
       .get("http://localhost:4000/products")
       .then((res) => {
@@ -40,8 +42,9 @@ export default function Home() {
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
     );
-      window.location.reload(false)
-    axios
+    window.location.reload(false)
+    if(Cookies.get('jwt') !== null){
+      axios
       .post("http://localhost:4000/baskets", drop)
       .then((res) => {
         setBasket(drop)
@@ -51,6 +54,8 @@ export default function Home() {
       .catch((err) => {
         console.log(err);
       });
+    }
+    
     console.log('podvpfnvsdsnvsddcsd', product);
   };
 

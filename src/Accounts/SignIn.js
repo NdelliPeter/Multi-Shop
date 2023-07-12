@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./SignIn.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Cookies from "js-cookie";
 
 import * as yup from "yup";
 import axios from "axios";
@@ -80,9 +81,10 @@ export default function SignIn() {
     axios
     .post("http://localhost:4000/auth", acc)
     .then((res) => {
-    console.log(res);
+    console.log(res.data);
     const accessToken = res.data.accessToken;
     const user = {accessToken:accessToken, email: acc.email}
+    Cookies.set('jwt', accessToken, {expires: 7})
     localStorage.setItem('logIn user', JSON.stringify(user))
     console.log(user);
     navigate("/")

@@ -84,9 +84,9 @@ export default function SignUp() {
         })
         .catch((err) => {
           console.log(err);
-        })
-      // navigate("/")
-    )
+        }),
+        navigate("/signIn")
+        )
     }else if( accounts.find((account) =>(account.email === data.email))){
       setError("This email already exist please try Signing In")
     }else{

@@ -11,6 +11,8 @@ export default function ShoppingCart() {
   // const [quantity, setQuantity] = useState();
   const [basket, setBasket] = useState();
   const [checkout, setCheckout] = useState();
+  const [bask, setBask] = useState([])
+
 
   const increaseQuntity = (product) => {
     product.quantity += 1;
@@ -18,7 +20,12 @@ export default function ShoppingCart() {
     axios
       .put(`http://localhost:4000/baskets/${product.id}`, product)
       .then((res) => {
-        setBasket()
+        const account = JSON.parse(localStorage.getItem('logIn user'));
+        const email= account.email
+        const f = basket.filter((it)=>(it.id !== product.id))
+        const p = [product, ...f]
+        setBasket(p)
+        localStorage.setItem(`${email}`,JSON.stringify(p))
         console.log(res);
       });
   };
@@ -30,6 +37,12 @@ export default function ShoppingCart() {
       axios
         .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
+          const account = JSON.parse(localStorage.getItem('logIn user'));
+          const email= account.email
+          const f = basket.filter((it)=>(it.id !== product.id))
+          const p = [product, ...f]
+          setBasket(p)
+          localStorage.setItem(`${email}`,JSON.stringify(p))
           console.log(res);
         });
     } else {
@@ -38,6 +51,12 @@ export default function ShoppingCart() {
       axios
         .put(`http://localhost:4000/baskets/${product.id}`, product)
         .then((res) => {
+          const account = JSON.parse(localStorage.getItem('logIn user'));
+          const email= account.email
+          const f = basket.filter((it)=>(it.id !== product.id))
+          const p = [product, ...f]
+          setBasket(p)
+          localStorage.setItem(`${email}`,JSON.stringify(p))
           console.log(res);
         });
     }
@@ -83,6 +102,9 @@ export default function ShoppingCart() {
       })
       .catch((err) => console.log(err));
 
+      const account = JSON.parse(localStorage.getItem('logIn user'));
+      const email= account.email
+
   }, []);
 
   const deleteProduct = (productId) => {
@@ -90,8 +112,11 @@ export default function ShoppingCart() {
     setBasket(
       basket.filter((product) => {
         return product.id !== productId;
-      })
+      })    
     );
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    const email= account.email
+    localStorage.setItem(`${email}`,JSON.stringify(basket))
   };
 
   function func() {
@@ -158,13 +183,14 @@ export default function ShoppingCart() {
                           className="col-12"
                         >
                           <div className="row my-3 py-3 mx-1 justify-content-between align-items-center bg-white">
-                            <div className="col-6 col-sm-6 col-md-4 col-lg-4 d-flex my-2 ps-lg-5 ps-sm-2 ps-2 justify-content-center align-items-center">
+                            <div className="col-6 col-sm-6 col-md-4 col-lg-4 d-flex my-2 ps-lg-5 ps-sm-2 ps-2 justify-content-lg-start justify-content-md-start justify-content-sm-center justify-content-center align-items-center">
                               <img
                                 className="img-fluid col-2 photo"
                                 src={product?.image}
                                 alt={product?.name}
                               />
-                              {product?.name}
+                              <h6> {product?.name}</h6>
+                              
                             </div>
                             <div className="col-6 col-sm-6 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
                               {product?.price} XFA
@@ -211,13 +237,13 @@ export default function ShoppingCart() {
             </div>
 
             <div className="col-12 col-sm-12 col-md-4 col-lg-4">
-              <div className="col-12 d-flex p-0 align-items-center justify-content-between bg-white">
+              {/* <div className="col-12 d-flex p-0 align-items-center justify-content-between bg-white">
                 <h5 className="col-5 px-2 d-flex ">Coupon Code</h5>
 
                 <button className="col-5 py-3 d-flex justify-content-center align-items-center bg-warning  quantitybtn">
                   Aplly Coupon
                 </button>
-              </div>
+              </div> */}
 
               <div className="col-12 my-3">
                 <h3>CART SUMMARY</h3>

@@ -8,11 +8,13 @@ import { TfiReload } from "react-icons/tfi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Painting() {
   const [products, setProducts] = useState([]);
   const [basket, setBasket] = useState();
-  // const [painting, setPainting] = useState([]);
+  const [bask, setBask] = useState([])
 
 
   const painting = products?.filter((prod) => (prod.category === 'painting'))
@@ -44,26 +46,49 @@ export default function Painting() {
         console.log(respo);
       })
       .catch((err) => console.log(err));
+
+      const account = JSON.parse(localStorage.getItem('logIn user'));
+      const email= account.email
+      const local = localStorage.getItem(`${email}`) 
+      setBask(local ? JSON.parse(local) : [])
   }, []);
 
   const basketDrop = (product) => {
-    product.quantity = 1;
-    product.total = product.price * product.quantity;
-    const drop = products.find(
-      (productItem) =>
-        products.indexOf(productItem) === products.indexOf(product)
-    );
-    window.location.reload(false)
-    axios
-      .post("http://localhost:4000/baskets", product)
+  
+    const cookies = Cookies.get('jwt')
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    // console.log(cookies, account);
+ 
+    if(cookies && account !== undefined){
+      const drop = products.find(
+        (productItem) =>
+          products.indexOf(productItem) === products.indexOf(product)
+      );
+      window.location.reload(false)
+      const email= account.email
+      const put = [drop, ...bask]
+      console.log(put);
+      setBask(put)
+      localStorage.setItem(`${email}`,JSON.stringify(put))
+      // setBask(drop)
+     
+      axios
+      .post("http://localhost:4000/baskets", drop)
       .then((res) => {
-        console.log(res);
+        setBasket(drop)
+        // localStorage.setItem(`${email}`, JSON.stringify(drop))
+        // setCout(count + 1)
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
-      });
-    console.log(drop);
-  };
+      })
+    } else {
+      migrate("/signIn")
+    }
+  }
+
+  const migrate = useNavigate(-1)
 
   return (
     <div className="container-fluid shopbg">
@@ -74,7 +99,7 @@ export default function Painting() {
 
         {/* Filter column */}
         <div className="col-3 d-none d-sm-none d-md-block d-lg-block px-0">
-          <div>
+        <div>
             <h4 className="my-3">FILTER BY PRICE</h4>
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
@@ -88,7 +113,7 @@ export default function Painting() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$0 - $100</span>
+                  <span>0 - 1000 XFA</span>
                 </div>
                 <small className="border px-1">150</small>
               </div>
@@ -96,7 +121,7 @@ export default function Painting() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$100-200</span>
+                  <span>1000-2000 XFA</span>
                 </div>
                 <small className="border px-1">295</small>
               </div>
@@ -104,7 +129,7 @@ export default function Painting() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$200-300</span>
+                  <span>2000-3000 XFA</span>
                 </div>
                 <small className="border px-1">246</small>
               </div>
@@ -112,7 +137,7 @@ export default function Painting() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$300-400</span>
+                  <span>3000-4000</span>
                 </div>
                 <small className="border px-1">145</small>
               </div>
@@ -120,7 +145,7 @@ export default function Painting() {
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
-                  <span>$400-500</span>
+                  <span>4000-5000 XFA</span>
                 </div>
                 <small className="border px-1">168</small>
               </div>

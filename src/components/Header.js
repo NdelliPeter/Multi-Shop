@@ -12,23 +12,76 @@ import Cookies from "js-cookie";
 export default function Header() {
 
   const [basket, setBasket] = useState()
+  const [checkout, setCheckout] = useState()
   const [count, setCount] = useState('')
-
+  const [checkAccount, setCheckAccount] = useState(true)
+ 
 
   useEffect(() => {
     const cookies = Cookies.get('jwt')
-    if(cookies !== null){
-      axios
+    if(cookies){
+      return (axios
       .get("http://localhost:4000/baskets")
       .then((res) => {
         const respo = res.data;
         setBasket(respo);
-        setCount(respo?.length)
+        setCount(`${respo?.length}`)
         console.log(respo);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err)),
+      setCheckAccount(false)
+      )
     }
+
+    axios.get("http://localhost:4000/checkout")
+      .then((res) => {
+        const respo = res.data;
+        setCheckout(respo);
+        console.log('Checkout' + respo);
+      })
+      .catch((err) => console.log(err));
   }, [])
+
+  // const check = () =>{
+  //   const checkAccount = Cookies.get('jwt')
+  //   if(checkAccount) {
+  //     return setCheckAccount(false), false
+  //   }
+  //   // else {
+  //   //   return true
+  //   // }
+  // }
+
+
+  const logout = () => {
+    Cookies.remove('jwt')
+    localStorage.removeItem('logIn user')
+    window.location.reload(false)
+    axios.get("http://localhost:4000/logout")
+    .then((res)=>{
+      const respo = res.data
+      console.log(respo);
+      navigate('/')
+    })
+
+    basket.map((prod) =>{ 
+      axios.delete(`http://localhost:4000/baskets/${prod.id}`);
+      setBasket(
+        basket.filter((product) => {
+          return product.id !== prod.id;
+        })
+      );
+    })
+
+    checkout.map((prod) =>{ 
+      axios.delete(`http://localhost:4000/checkout/${prod.id}`);
+      setCheckout(
+        checkout.filter((product) => {
+          return product.id !== prod.id;
+        })
+      );
+    })
+  }
 
   const moveToCart = () => {
     navigate('/shoppingCart')
@@ -58,18 +111,30 @@ export default function Header() {
                   FAQs
                 </NavLink>
               </div>
-              <div className="col-11 col-sm-11 col-md-6 col-lg-4  account_lang_curret">
+              <div className="col-11 col-sm-11 col-md-8 col-lg-4  account_lang_curret">
+                { checkAccount ?  <Dropdown>
+                  <Dropdown.Toggle variant="light" id="dropdown-basic">
+                    Account
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="signIn">Sign In</Dropdown.Item>
+                    <Dropdown.Item href="signUp">Sign Up</Dropdown.Item>
+                    {/* <Dropdown.Item onClick={logout}>logout</Dropdown.Item> */}
+                  </Dropdown.Menu>
+                </Dropdown>:
+
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="dropdown-basic">
                     My Account
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="signIn">Sign In</Dropdown.Item>
-                    <Dropdown.Item href="signUp">Sign Up</Dropdown.Item>
-                    <Dropdown.Item href="">logout</Dropdown.Item>
+                    {/* <Dropdown.Item href="signIn">Sign In</Dropdown.Item>
+                    <Dropdown.Item href="signUp">Sign Up</Dropdown.Item> */}
+                    <Dropdown.Item onClick={logout}>logout</Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown>}
 
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="dropdown-basic">
@@ -95,15 +160,15 @@ export default function Header() {
                   </Dropdown.Menu>
                 </Dropdown>
                 <div className=" d-flex d-sm-flex d-lg-none px-0 justify-content-end gap-3">
-                  <div className="d-flex align-items-center">
+                  <button className="d-flex align-items-center border-0">
                     <AiFillHeart className="" />
                     <div className="ring">0</div>
-                  </div>
+                  </button>
 
-                  <div className="d-flex align-items-center" onClick={moveToCart}>
+                  <button className="d-flex align-items-center border-0" onClick={moveToCart}>
                     <FaShoppingCart className="" />
                     <div className=" ring "> {count }</div>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>

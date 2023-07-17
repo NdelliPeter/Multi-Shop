@@ -2,17 +2,27 @@ import axios from "axios";
 import './ShopDetails.css';
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { TfiReload } from "react-icons/tfi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import Carousel from "react-bootstrap/Carousel";
+import Cookies from "js-cookie";
 
 
 export default function ShopDetails() {
-
+//  console.log('kjksdsvkhsdsbvkhkscbvkhcbvj', item);
   const [products,setProducts] = useState()
+  const [count, setCout] = useState(0)
+  const [basket, setBasket] = useState();
+  const [item, setItem] = useState()
+  const [bask, setBask] = useState([])
 
+
+  console.log('kjhhhjvjgcdfdfdsfsg', item);
+
+  const category = products?.filter((prod) => (prod.category === item?.category))
 
   useEffect(() => {
     axios
@@ -23,54 +33,88 @@ export default function ShopDetails() {
       console.log(respo);
     })
     .catch((err) => console.log(err));
+
+    const it = JSON.parse(localStorage.getItem('item'));
+    setItem(it)
+
+    
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    if(account){
+    const email= account.email
+    const local = localStorage.getItem(`${email}`) 
+    setBask(local ? JSON.parse(local) : [])
+    }
   },[])
 
   const basketDrop = (product) => {
-    product.quantity = 1
-    const drop = products.find(
-      (productItem) =>
-        products.indexOf(productItem) === products.indexOf(product)
-    );
+  
+    const cookies = Cookies.get('jwt')
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    // console.log(cookies, account);
+ 
+    if(cookies && account !== undefined){
+      const drop = products.find(
+        (productItem) =>
+          products.indexOf(productItem) === products.indexOf(product)
+      );
+      window.location.reload(false)
+      const email= account.email
+      const put = [drop, ...bask]
+      console.log(put);
+      setBask(put)
+      localStorage.setItem(`${email}`,JSON.stringify(put))
+      // setBask(drop)
+     
+      axios
+      .post("http://localhost:4000/baskets", drop)
+      .then((res) => {
+        setBasket(drop)
+        // localStorage.setItem(`${email}`, JSON.stringify(drop))
+        // setCout(count + 1)
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else {
+      migrate("/signIn")
+    }
   }
+
+  const migrate = useNavigate(-1)
+
   return (
     <div className="container-fluid px-5 py-3 ShopDetailsbg">
-      <div className="row px-1 px-sm-1 px-md-5 px-lg-5">
+      <div className="row px-1 px-sm-1  px-md-5 px-lg-5">
         <div className="col-12  bg-white p-3 my-4">
           <span>Home / Shop / ShopDetails </span>
         </div>
 
 
-        <div className="col-12 col-sm-12 col-md-5 col-lg-5 p-2">
-              <Carousel >
+        <div className="col-12 col-sm-12 col-md-5 col-lg-5 px-0">
+            <div className="detailImg bg-white">
+              <img className="img-fluid itemImgae" src={item?.image} alt={item?.name} />
+            </div>
 
-                { 
-                  products?.map((product, id) => {
-                    return(
-                      <Carousel.Item className="carousel bg-white">
-                        <img key={id} className="img-fluid" src={product.image} alt={product.productName} />
-                      </Carousel.Item>
-
-                    )
-
-                  })
-                }
-
-              </Carousel>
         </div>
 
-        <div className="col-12 col-sm-12 col-md-7 col-lg-7 p-2">
-          <div className="col-12 p-5 bg-white">
+        <div className="col-12 col-sm-12 col-md-7 col-lg-7 px-0">
+          <div className="col-12 p-5 detailImg bg-white">
                 <h3>
-                  Product Name Goes Here
+                  {item?.name}
                 </h3>
 
                 <h5>
-                  $150
+                  {item?.price} XFA
                 </h5>
                 <p>
                   Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit 
                   clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy
                 </p>
+
+                <div className="">
+
+                </div>
 
           </div>
 
@@ -80,15 +124,15 @@ export default function ShopDetails() {
 
 
 
-        <div className="col-12 ">
-          <div className="row px-2">
+        <div className="col-12 my-4">
+          <div className="row px-0">
             <div className="col-12 px-0">
-              <h2>FEATURED PRODUCTS</h2>
+              <h2>CATEGORY PRODUCTS</h2>
             </div>
             <div className="col-12 ">
               <div className="row">
-                {(products?.length ?? 0) >= 1
-                  ? products.map((product, id) => {
+                {(category?.length ?? 0) >= 1
+                  ? category.map((product, id) => {
                       return (
                         <div
                           key={id}
@@ -98,7 +142,7 @@ export default function ShopDetails() {
                             <div className=" col-12 m-0 container_">
                               <div className="col-12">
                                 <img
-                                  src={product.image}
+                                  src={product?.image}
                                   alt="image"
                                   className="img-fluid img"
                                 />
@@ -116,9 +160,9 @@ export default function ShopDetails() {
                               </div>
                             </div>
                             <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                              <h6>{product.productName}</h6>
+                              <h6>{product?.productName}</h6>
                               <p>
-                                {product.price} XFA
+                                {product?.price} XFA
                               </p>
                             </div>
                           </div>

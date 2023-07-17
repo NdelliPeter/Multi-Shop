@@ -34,7 +34,7 @@ export default function HomeLayout() {
       .then((res) => {
         const respo = res.data;
         setBasket(respo);
-        setCount(respo?.length)
+        setCount(`${respo?.length}`)
         console.log(respo);
       })
       .catch((err) => console.log(err));
@@ -146,11 +146,11 @@ export default function HomeLayout() {
                       Shop
                     </NavLink>
                     <NavLink className=" nestedlink" to="shopDetails">
-                      Shop Detail
+                      Product Detail
                     </NavLink>
-                    <Dropdown className="">
+                    <Dropdown className=" nestedlink">
                       <Dropdown.Toggle variant="light" id="pagesBtn">
-                        Pages
+                        Cart
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
@@ -175,11 +175,11 @@ export default function HomeLayout() {
                       Shop
                     </NavLink>
                     <NavLink className=" nestedlink" to="shopDetails">
-                      Shop Detail
+                      Product Detail
                     </NavLink>
-                    <Dropdown className="">
+                    <Dropdown className=" nestedlink">
                       <Dropdown.Toggle variant="light" id="pagesBtn">
-                        Pages
+                        Cart
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
@@ -201,15 +201,15 @@ export default function HomeLayout() {
 
 
                   <div className="col-0 col-sm-0 col-md-0 col-lg-2 d-none d-sm-none d-lg-flex px-0 justify-content-end gap-3">
-                    <div className="d-flex align-items-center">
+                    <button className="d-flex align-items-center border-0 bg-transparent">
                       <AiFillHeart className="text-warning" />
                       <div className="text-white circle">0</div>
-                    </div>
+                    </button>
 
-                    <div className="d-flex align-items-center" onClick={moveToCart}>
+                    <button className="d-flex align-items-center border-0 bg-transparent" onClick={moveToCart}>
                       <FaShoppingCart className="text-warning" />
                       <div className="text-white circle "> {count }</div>
-                    </div>
+                    </button>
                   </div>
         
 

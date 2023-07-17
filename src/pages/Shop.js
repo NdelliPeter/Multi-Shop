@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingSpinner from "../components/loading";
 import { RingLoader } from 'react-spinners';
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 
 export default function Shop() {
@@ -17,6 +19,8 @@ export default function Shop() {
   const [basket, setBasket] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [bask, setBask] = useState([])
+
 
   useEffect(() => {
     axios
@@ -36,30 +40,51 @@ export default function Shop() {
         console.log(respo);
       })
       .catch((err) => console.log(err));
+
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    const email= account.email
+    const local = localStorage.getItem(`${email}`) 
+    setBask(local ? JSON.parse(local) : [])
   }, []);
 
   const basketDrop = (product) => {
-    setIsLoading(true);
-    product.quantity = 1;
-    product.total = product.price * product.quantity;
-    const drop = products.find(
-      (productItem) =>
-        products.indexOf(productItem) === products.indexOf(product)
-    );
-    window.location.reload(<RingLoader />)
-    axios
-      .post("http://localhost:4000/baskets", product)
+  
+    const cookies = Cookies.get('jwt')
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    // console.log(cookies, account);
+ 
+    if(cookies && account !== undefined){
+      const drop = products.find(
+        (productItem) =>
+          products.indexOf(productItem) === products.indexOf(product)
+      );
+      window.location.reload(<RingLoader />)
+      const email= account.email
+      const put = [drop, ...bask]
+      console.log(put);
+      setBask(put)
+      localStorage.setItem(`${email}`,JSON.stringify(put))
+      // setBask(drop)
+     
+      axios
+      .post("http://localhost:4000/baskets", drop)
       .then((res) => {
-        console.log(res);
-        setIsLoading(false)
+        setBasket(drop)
+        // localStorage.setItem(`${email}`, JSON.stringify(drop))
+        // setCout(count + 1)
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
-        setErrorMessage("Unable to fetch user list");
-        setIsLoading(false);
-      });
-    console.log(drop);
-  };
+      })
+    } else {
+      migrate("/signIn")
+    }
+  }
+
+  const migrate = useNavigate(-1)
+
+
 
   const [loading, setLoading] = useState(false);
   const [color, setColor] = useState()

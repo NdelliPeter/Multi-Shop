@@ -17,12 +17,19 @@ import { BiTransfer } from "react-icons/bi";
 import { FaPhoneVolume } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { RingLoader } from 'react-spinners';
+import LoadingSpinner from "../components/loading";
+import ShopDetails from "./ShopDetails";
+
 
 
 export default function Home() {
   const [products, setProducts] = useState();
   const [basket, setBasket] = useState();
   const [count, setCout] = useState(0)
+  const [isLoading, setIsLoading] = useState(false);
+  const [detail, setDetail] = useState()
+  const [bask, setBask] = useState([])
 
 
   useEffect(() => {
@@ -34,32 +41,76 @@ export default function Home() {
         setProducts(respo);
         console.log(respo);
       })
-      .catch((err) => console.log(err));    
+      .catch((err) => console.log(err)); 
+    axios
+      .get("http://localhost:4000/baskets")
+      .then((res) => {
+        const respo = res.data;
+        const account = JSON.parse(localStorage.getItem('logIn user'));
+        const email= account.email
+        if(account){
+          if(JSON.parse(localStorage.getItem(`${email}`))){
+            setBasket(JSON.parse(localStorage.getItem(`${email}`)))
+          }
+        }
+        setBasket(respo);
+        console.log(respo);
+      })
+      .catch((err) => console.log(err)); 
+     
+      
+      const account = JSON.parse(localStorage.getItem('logIn user'));
+      // const email= account.email
+      // const local = localStorage.getItem(`${email}`) 
+      // setBask(local ? JSON.parse(local) : [])
   }, []);
 
   const basketDrop = (product) => {
-    const drop = products.find(
-      (productItem) =>
-        products.indexOf(productItem) === products.indexOf(product)
-    );
-    window.location.reload(false)
-    if(Cookies.get('jwt') !== null){
+  
+    const cookies = Cookies.get('jwt')
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    // console.log(cookies, account);
+ 
+    if(cookies && account !== undefined){
+      const drop = products.find(
+        (productItem) =>
+          products.indexOf(productItem) === products.indexOf(product)
+      );
+      window.location.reload(false)
+      const email= account.email
+     
       axios
       .post("http://localhost:4000/baskets", drop)
       .then((res) => {
-        setBasket(drop)
+        const put = [drop, ...basket]
+        setBasket(put)
+        localStorage.setItem(`${email}`, JSON.stringify(put))
         setCout(count + 1)
         console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+    } else {
+      migrate("/signIn")
     }
     
-    console.log('podvpfnvsdsnvsddcsd', product);
+    // console.log('podvpfnvsdsnvsddcsd', product);
   };
 
+  const productDetail = (product) => {
+    
+    const item = products.find(
+      (productItem) =>
+        products.indexOf(productItem) === products.indexOf(product)
+    );
+    // console.log(item);
+    localStorage.setItem('item', JSON.stringify(item))
+    navigate("/shopDetails")
+    
+  }
 
+  const migrate = useNavigate(-1)
   const navigate = useNavigate(1);
 
   const moveToNewPagePainting = () => {
@@ -67,6 +118,9 @@ export default function Home() {
     )};
   const moveToNewPageSculpture = () => {
     return( navigate("/sculpture")
+    )};
+  const moveToNewPageShop = () => {
+    return( navigate("/shop")
     )};
 
   return (
@@ -77,25 +131,25 @@ export default function Home() {
             <div className="row">
               <Carousel className="col-12 col-sm-12 col-md-8 col-lg-8">
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid slideImage" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="women" />
+                  <img className=" slideImage" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="women" />
                   <Carousel.Caption>
                     <h1>Sculptures</h1>
                     <p>
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
                     </p>
-                    <button className=" px-2 py-1 slidebtn">Shop Now</button>
+                    <button className=" px-2 py-1 slidebtn" onClick={moveToNewPageShop}>Shop Now</button>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel">
-                  <img className="img-fluid slideImage" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="kid" />
+                  <img className=" slideImage" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="kid" />
                   <Carousel.Caption className="">
                     <h1>Painting</h1>
                     <p>
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
                     </p>
-                    <button className=" px-2 py-1 slidebtn">Shop Now</button>
+                    <button className=" px-2 py-1 slidebtn" onClick={moveToNewPageShop}>Shop Now</button>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>
@@ -107,7 +161,8 @@ export default function Home() {
                       <div className="content">
                         <h6>SAVE 20%</h6>
                         <h4>Special Offer</h4>
-                        <button className="bg-warning py-2 px-3 yellowbtn">
+                        <button className="bg-warning py-2 px-3 yellowbtn"
+                        onClick={moveToNewPageShop}>
                           Shop Now
                         </button>
                       </div>
@@ -121,7 +176,8 @@ export default function Home() {
                       <div className="content">
                         <h6>SAVE 20%</h6>
                         <h4>Special Offer</h4>
-                        <button className="bg-warning py-2 px-3 yellowbtn">
+                        <button className="bg-warning py-2 px-3 yellowbtn"
+                        onClick={moveToNewPageShop}>
                           Shop Now
                         </button>
                       </div>
@@ -173,7 +229,7 @@ export default function Home() {
           <div className=" col-12 px-5">
             <div className="row align-items-center">
               <h2 className="col-12">CATEGORIES</h2>
-              <div onClick={moveToNewPageSculpture} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
+              <button onClick={moveToNewPageSculpture} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="camera" />
@@ -187,9 +243,9 @@ export default function Home() {
                     {/* <span className="text-dark"> product</span> */}
                   </div>
                 </div>
-              </div>
+              </button>
 
-              <div onClick={moveToNewPagePainting} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
+              <button onClick={moveToNewPagePainting} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="camera" />
@@ -203,9 +259,9 @@ export default function Home() {
                     {/* <span className="text-dark"> product</span> */}
                   </div>
                 </div>
-              </div>
+              </button>
 
-              <div className="col-12 col-sm-12 col-md-6 col-lg-3 py-2">
+              <button className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={girl} alt="camera" />
@@ -219,7 +275,7 @@ export default function Home() {
                     {/* <span className="text-dark">product</span> */}
                   </div>
                 </div>
-              </div>
+              </button>
 
 
             </div>
@@ -230,49 +286,63 @@ export default function Home() {
               <div className="col-12 px-0">
                 <h2>FEATURED PRODUCTS</h2>
               </div>
-              <div className="col-12 ">
-                <div className="row">
-                  {(products?.length ?? 0) >= 1
-                    ? products.map((product, id) => {
-                        return (
-                          <div
-                            key={id}
-                            className="col-12 col-sm-12 col-md-3 col-lg-3 p-1  "
-                          >
-                            <div className="bg-white round">
-                              <div className=" col-12 m-0 container_">
-                                <div className="col-12">
-                                  <img
-                                    src={product.image}
-                                    alt="image"
-                                    className="img-fluid img"
-                                  />
+              {
+                isLoading ? <LoadingSpinner/> :
+
+                <div className="col-12 ">
+                  <div className="row">
+                    {(products?.length ?? 0) >= 1
+                      ? products.map((product, id) => {
+                          return (
+                            <div
+                              
+                              key={id}
+                              className="col-12 col-sm-12 col-md-3 col-lg-3 p-1 "
+                            >
+                              <div className="bg-white round">
+                                <div className=" col-12 m-0 container_">
+                                  <div className="col-12">
+                                    <img
+                                      src={product.image}
+                                      alt="image"
+                                      className="img-fluid img"
+                                    />
+                                  </div>
+                                  <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                    <HiShoppingCart
+                                      className="productIcon"
+                                      onClick={() => {
+                                        basketDrop(product);
+                                      }}
+                                      type="button"
+                                    />
+                                    <AiOutlineHeart className="productIcon"
+                                     type="button" 
+                                     />
+                                    <TfiReload className="productIcon" 
+                                      onClick={()=>{window.location.reload(false)}}
+                                      type="button" />
+                                    <HiMagnifyingGlass className="productIcon"
+                                     type="button" />
+                                  </div>
                                 </div>
-                                <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
-                                  <HiShoppingCart
-                                    className="productIcon"
-                                    onClick={() => {
-                                      basketDrop(product);
-                                    }}
-                                  />
-                                  <AiOutlineHeart className="productIcon" />
-                                  <TfiReload className="productIcon" />
-                                  <HiMagnifyingGlass className="productIcon" />
-                                </div>
-                              </div>
-                              <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                                <h6>{product.name}</h6>
-                                <p>
-                                  {product.price} XFA{" "}
-                                </p>
+                                <button 
+                                onClick={()=>{productDetail(product)}}
+                                className="col-12 border-0 bg-white d-flex py-3 flex-column justify-content-center align-items-center">
+                                  <h6>{product.name}</h6>
+                                  <p>
+                                    {product.price} XFA{" "}
+                                  </p>
+                                </button>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })
-                    : "No Product found"}
+                          );
+                        })
+                      : "No Product found"}
+                  </div>
                 </div>
-              </div>
+              }
+
             </div>
           </div>
 
@@ -284,7 +354,8 @@ export default function Home() {
                     <div className="content">
                       <h6>SAVE 20%</h6>
                       <h4>Special Offer</h4>
-                      <button className="bg-warning py-2 px-3 yellowbtn">
+                      <button className="bg-warning py-2 px-3 yellowbtn"
+                      onClick={moveToNewPageShop}>
                         Shop Now
                       </button>
                     </div>
@@ -298,7 +369,8 @@ export default function Home() {
                     <div className="content">
                       <h6>SAVE 20%</h6>
                       <h4>Special Offer</h4>
-                      <button className="bg-warning py-2 px-3 yellowbtn">
+                      <button className="bg-warning py-2 px-3 yellowbtn"
+                      onClick={moveToNewPageShop}>
                         Shop Now
                       </button>
                     </div>

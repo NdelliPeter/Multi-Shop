@@ -70,6 +70,9 @@ export default function CheckOut() {
   const payOut = () => {
 
     // SubmitCheckOut()
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    const email= account.email
+    localStorage.removeItem(`${email}`)
     basket.map((prod) =>{ 
       axios.delete(`http://localhost:4000/baskets/${prod.id}`);
       setBasket(
@@ -460,7 +463,7 @@ export default function CheckOut() {
 
                   <div className="d-flex justify-content-between align-items-center mt-3">
                     <h3>Total</h3>
-                    <h3>{(checkout?.length ?? 0) >= 1
+                    <h4>{(checkout?.length ?? 0) >= 1
                     ? checkout.map((product, id) => {
                       
                       // setGtotal(product.generaltotal)
@@ -469,7 +472,7 @@ export default function CheckOut() {
                         product.generaltotal
                       );
                     })
-                    : "0"} XFA</h3>
+                    : "0"} XFA</h4>
                   </div>
                 </div>
 

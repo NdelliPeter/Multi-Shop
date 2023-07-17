@@ -87,7 +87,17 @@ export default function SignIn() {
     Cookies.set('jwt', accessToken, {expires: 7})
     localStorage.setItem('logIn user', JSON.stringify(user))
     console.log(user);
-    navigate("/")
+    const input = JSON.parse(localStorage.getItem(`${user.email}`))
+    if (input) {
+      input.map((i)=> {
+        axios.post(`http://localhost:4000/baskets`, i)
+
+      })
+      // setBasket(i)
+      navigate("/")
+    }else{
+      navigate("/")
+    }
 
     })
     .catch((err) => {

@@ -40,6 +40,7 @@ export default function Header() {
         console.log('Checkout' + respo);
       })
       .catch((err) => console.log(err));
+
   }, [])
 
   // const check = () =>{

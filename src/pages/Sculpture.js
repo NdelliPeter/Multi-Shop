@@ -86,6 +86,19 @@ export default function Sculpture() {
     }
   }
 
+  const productDetail = (product) => {
+    
+    const item = products.find(
+      (productItem) =>
+        products.indexOf(productItem) === products.indexOf(product)
+    );
+    // console.log(item);
+    localStorage.setItem('item', JSON.stringify(item))
+    navigate("/shopDetails")
+    
+  }
+
+  const navigate = useNavigate(1)
   const migrate = useNavigate(-1)
 
   return (
@@ -105,10 +118,10 @@ export default function Sculpture() {
                   <input type="checkbox" value="true" />
                   <span>All Price</span>
                 </div>
-                <small className="border px-1">1000</small>
+                <small className="border px-1">{sculpture.length}</small>
               </div>
 
-              <div className="d-flex my-2 justify-content-between align-items-center">
+              {/* <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
                   <input type="checkbox" />
                   <span>0 - 1000 XFA</span>
@@ -146,11 +159,11 @@ export default function Sculpture() {
                   <span>4000-5000 XFA</span>
                 </div>
                 <small className="border px-1">168</small>
-              </div>
+              </div> */}
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="my-3">FILTER BY COLOR</h4>
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
@@ -254,7 +267,7 @@ export default function Sculpture() {
                 <small className="border px-1">168</small>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Products column */}
@@ -325,12 +338,14 @@ export default function Sculpture() {
                                   <HiMagnifyingGlass className="productIcon" />
                                 </div>
                               </div>
-                              <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                              <button
+                                onClick={()=>{productDetail(product)}}
+                               className="col-12 d-flex border-0 bg-white py-3 flex-column justify-content-center align-items-center">
                                 <h6>{product?.name}</h6>
                                 <p>
                                   {product?.price} XFA{" "}
                                 </p>
-                              </div>
+                              </button>
                             </div>
                           </div>
                         );

@@ -10,9 +10,13 @@ import axios from "axios";
 export default function ShoppingCart() {
   // const [quantity, setQuantity] = useState();
   const [basket, setBasket] = useState();
-  const [checkout, setCheckout] = useState();
-  const [bask, setBask] = useState([])
+  const [Checkout, setCheckout] = useState();
+  // const [bask, setBask] = useState([])
 
+  // console.log('kjjhghfgfgddfgdfg', Checkout);
+  console.log(basket);
+
+  
 
   const increaseQuntity = (product) => {
     product.quantity += 1;
@@ -64,23 +68,29 @@ export default function ShoppingCart() {
 
   const subTotal = () => {
     const total = basket?.map((product) => {
-      let sum = 0;
+      let sum = 0
       return (product.total += sum);
     });
-    let sum = total?.reduce(function (a, b) {
-      return a + b;
-    });
-    return sum;
+      let sum =0
+
+      for(let i=0; i<total?.length; i++) {
+        sum += total[i]
+      }
+
+      return sum;
+
+
   };
 
   const shipping = () => {
     const shipping = subTotal() / 10;
-    return shipping;
+      return shipping;
+
   };
 
   const generalTotal = () => {
     const total = subTotal() + shipping();
-    return total;
+      return total;
   };
   
 
@@ -102,8 +112,8 @@ export default function ShoppingCart() {
       })
       .catch((err) => console.log(err));
 
-      const account = JSON.parse(localStorage.getItem('logIn user'));
-      const email= account.email
+      // const account = JSON.parse(localStorage.getItem('logIn user'));
+      // const email= account.email
 
   }, []);
 
@@ -129,6 +139,11 @@ export default function ShoppingCart() {
   const id = func()
 
   const clearBasket = () => {
+
+    Checkout?.map((d)=>{
+      axios.delete(`http://localhost:4000/checkout/${d.id}`)
+    })
+    console.log('pqqqqqqqqqqqqqqqqqpqqqqqqqqpqpqpq', Checkout);
     const checkout = {}
     checkout.id = id
     checkout.subtotal = subTotal()
@@ -232,7 +247,16 @@ export default function ShoppingCart() {
                         </div>
                       );
                     })
-                  : " No Products in Cart"}
+                  : <div className="col-12 my-3 p-3 mx-1 d-flex  bg-white">
+                    <div >Add Products to Cart</div>
+                    
+                    <div>
+                    <NavLink to="/shop" className="bg-warning border-0 shop py-1 px-2 text-black mx-3" >
+                      Shop
+                    </NavLink>
+                    </div>
+
+                  </div> }
               </div>
             </div>
 
@@ -247,7 +271,7 @@ export default function ShoppingCart() {
 
               <div className="col-12 my-3">
                 <h3>CART SUMMARY</h3>
-                <div className="col-12 px-4 py-3x bg-white">
+                <div className="col-12 px-4 py-3 bg-white">
                   <div className="borderBot">
                     <div className="d-flex justify-content-between align-items-center my-3">
                       <span>Subtotal</span>

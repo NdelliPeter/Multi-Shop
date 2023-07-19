@@ -145,10 +145,13 @@ export default function HomeLayout() {
                     <NavLink className=" nestedlink" to="shop">
                       Shop
                     </NavLink>
-                    <NavLink className=" nestedlink" to="shopDetails">
+                    {/* <NavLink className=" nestedlink" to="shopDetails">
                       Product Detail
+                    </NavLink> */}
+                    <NavLink className="nestedlink" to="shoppingCart">
+                      Cart
                     </NavLink>
-                    <Dropdown className=" nestedlink">
+                    {/* <Dropdown className=" nestedlink">
                       <Dropdown.Toggle variant="light" id="pagesBtn">
                         Cart
                       </Dropdown.Toggle>
@@ -159,7 +162,7 @@ export default function HomeLayout() {
                         </Dropdown.Item>
                         <Dropdown.Item href="checkOut">Checkout</Dropdown.Item>
                       </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
 
                     <NavLink className=" nestedlink" to="contact">
                       Contact
@@ -174,10 +177,13 @@ export default function HomeLayout() {
                     <NavLink className=" nestedlink" to="shop">
                       Shop
                     </NavLink>
-                    <NavLink className=" nestedlink" to="shopDetails">
+                    {/* <NavLink className=" nestedlink" to="shopDetails">
                       Product Detail
+                    </NavLink> */}
+                    <NavLink className="nestedlink" to="shoppingCart">
+                      Cart
                     </NavLink>
-                    <Dropdown className=" nestedlink">
+                    {/* <Dropdown className=" nestedlink">
                       <Dropdown.Toggle variant="light" id="pagesBtn">
                         Cart
                       </Dropdown.Toggle>
@@ -188,7 +194,7 @@ export default function HomeLayout() {
                         </Dropdown.Item>
                         <Dropdown.Item href="checkOut">Checkout</Dropdown.Item>
                       </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
 
                     <NavLink className=" nestedlink" to="contact">
                       Contact

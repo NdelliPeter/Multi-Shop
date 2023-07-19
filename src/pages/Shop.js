@@ -7,6 +7,8 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { TfiReload } from "react-icons/tfi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useEffect, useState } from "react";
+import { ImCheckboxUnchecked } from "react-icons/im";
+import { BsCheckSquareFill } from "react-icons/bs"
 import axios from "axios";
 import LoadingSpinner from "../components/loading";
 import { RingLoader } from 'react-spinners';
@@ -20,6 +22,18 @@ export default function Shop() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [bask, setBask] = useState([])
+  const [allPrice, setAllPrice] = useState(true)
+
+  // Filter products
+
+
+  const oneThouosand = () =>{
+    const filter = products.filter((prod)=> prod.price <= 1000);
+    
+    console.log(filter );
+  } 
+
+
 
 
   useEffect(() => {
@@ -95,6 +109,20 @@ export default function Shop() {
     })
   },5000)
 
+
+  const productDetail = (product) => {
+    
+    const item = products.find(
+      (productItem) =>
+        products.indexOf(productItem) === products.indexOf(product)
+    );
+    // console.log(item);
+    localStorage.setItem('item', JSON.stringify(item))
+    navigate("/shopDetails")
+    
+  }
+  const navigate = useNavigate(1)
+
   return (
     <div className="container-fluid shopbg">
             <div className="row px-5">
@@ -109,10 +137,14 @@ export default function Shop() {
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" value="true" />
+                <button className="border-0 bg-transparent" onClick={()=>{setAllPrice(!allPrice)}}>
+                      {!allPrice ?  <ImCheckboxUnchecked className='text-black' />
+                      :<BsCheckSquareFill className="text-warning bg-black round" />
+                     }
+                      </button>
                   <span>All Price</span>
                 </div>
-                <small className="border px-1">1000</small>
+                <small className="border px-1">{products?.length}</small>
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
@@ -210,7 +242,7 @@ export default function Shop() {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="my-3">FILTER BY SIZE</h4>
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
@@ -260,8 +292,8 @@ export default function Shop() {
                 </div>
                 <small className="border px-1">168</small>
               </div>
-            </div>
-          </div>
+            </div> 
+          </div> */}
         </div>
 
         {/* Products column */}
@@ -270,10 +302,10 @@ export default function Shop() {
             <div className="col-12 d-flex justify-content-between align-items-center">
               <div className="d-flex gap-2 my-3">
                 <BiGridSmall className="bg-white icon" />
-                <GiHamburgerMenu className="bg-white icon" />
+                {/* <GiHamburgerMenu className="bg-white icon" /> */}
               </div>
 
-              <div className="d-flex gap-2 my-3">
+              {/* <div className="d-flex gap-2 my-3">
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="sortBtn">
                     Sorting
@@ -297,7 +329,7 @@ export default function Shop() {
                     <Dropdown.Item href="#">30</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-              </div>
+              </div> */}
             </div>
 
             {isLoading ? <LoadingSpinner /> : 
@@ -333,13 +365,15 @@ export default function Shop() {
                                   <HiMagnifyingGlass className="productIcon" />
                                 </div>
                               </div>
-                              <div className="d-flex py-3 flex-column justify-content-center align-items-center">
+                              <button 
+                              onClick={()=>{productDetail(product)}}
+                              className="col-12 bg-white d-flex border-0 py-3 flex-column justify-content-center align-items-center">
                                 <h6>{product.name}</h6>
                                 <p>
                                   {product.price} XFA{" "}
                                   {/* <small className="text-though">$163.00</small> */}
                                 </p>
-                              </div>
+                              </button>
                             </div>
                           </div>
                         );
@@ -352,7 +386,6 @@ export default function Shop() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

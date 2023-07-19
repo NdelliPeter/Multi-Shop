@@ -81,13 +81,26 @@ export default function ShopDetails() {
     }
   }
 
+  const productDetail = (product) => {
+    
+    const item = products.find(
+      (productItem) =>
+        products.indexOf(productItem) === products.indexOf(product)
+    );
+    // console.log(item);
+    localStorage.setItem('item', JSON.stringify(item))
+    navigate("/shopDetails")
+    
+  }
+  const navigate = useNavigate(1)
+
   const migrate = useNavigate(-1)
 
   return (
     <div className="container-fluid px-5 py-3 ShopDetailsbg">
       <div className="row px-1 px-sm-1  px-md-5 px-lg-5">
         <div className="col-12  bg-white p-3 my-4">
-          <span>Home / Shop / ShopDetails </span>
+          <span>Home / Shop / Product Details </span>
         </div>
 
 
@@ -159,12 +172,14 @@ export default function ShopDetails() {
                                 <HiMagnifyingGlass className="productIcon" />
                               </div>
                             </div>
-                            <div className="d-flex py-3 flex-column justify-content-center align-items-center">
-                              <h6>{product?.productName}</h6>
-                              <p>
-                                {product?.price} XFA
-                              </p>
-                            </div>
+                              <button 
+                                onClick={()=>{productDetail(product)}}
+                                className="col-12 border-0 bg-white d-flex py-3 flex-column justify-content-center align-items-center">
+                                <h6>{product.name}</h6>
+                                <p>
+                                  {product.price} XFA{" "}
+                                </p>
+                              </button>
                           </div>
                         </div>
                       );

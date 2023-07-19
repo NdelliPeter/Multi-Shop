@@ -131,7 +131,7 @@ export default function Home() {
             <div className="row">
               <Carousel className="col-12 col-sm-12 col-md-8 col-lg-8">
                 <Carousel.Item className="carousel">
-                  <img className=" slideImage" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="women" />
+                  <img className=" slideImage" src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Brooklyn_Museum_61.33_Ndop_Portrait_of_King_Mishe_miShyaang_maMbul_%285%29.jpg/250px-Brooklyn_Museum_61.33_Ndop_Portrait_of_King_Mishe_miShyaang_maMbul_%285%29.jpg'} alt="women" />
                   <Carousel.Caption>
                     <h1>Sculptures</h1>
                     <p>

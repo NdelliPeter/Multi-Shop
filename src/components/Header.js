@@ -131,8 +131,8 @@ export default function Header() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    {/* <Dropdown.Item href="signIn">Sign In</Dropdown.Item>
-                    <Dropdown.Item href="signUp">Sign Up</Dropdown.Item> */}
+                    {/* <Dropdown.Item href="signIn">Sign In</Dropdown.Item> */}
+                    <Dropdown.Item href="">Profile</Dropdown.Item>
                     <Dropdown.Item onClick={logout}>logout</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>}
@@ -154,7 +154,7 @@ export default function Header() {
                     EN
                   </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
+                  <Dropdown.Menu >
                     <Dropdown.Item href="#">FR</Dropdown.Item>
                     <Dropdown.Item href="#">AR</Dropdown.Item>
                     <Dropdown.Item href="#">RU</Dropdown.Item>

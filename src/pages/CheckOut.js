@@ -5,7 +5,8 @@ import * as yup from "yup";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { BsCheckSquareFill } from "react-icons/bs";
+import {ImCheckboxUnchecked} from "react-icons/im";
 
 const CheckOutSchema = yup.object().shape({
   firstName: yup
@@ -89,7 +90,7 @@ export default function CheckOut() {
         })
       );
     })
-    window.location.reload()
+    // window.location.reload()
       navigate('/')
   }
   const navigate = useNavigate(1); 
@@ -245,24 +246,16 @@ export default function CheckOut() {
                       </span>
                     </div>
 
-                    <div className="col-12 py-2 d-flex gap-1">
-                      <input
-                        className="text-warning"
-                        name="zipCode"
-                        type="checkbox"
-                        {...register("zipCode")}
-                      />
-                      <span>Create an account</span>
-                    </div>
 
-                    <div className="col-12 py-2 d-flex gap-1">
-                      <input
-                        className="bg-warning"
-                        name="zipCode"
-                        type="checkbox"
+                    <div className="col-12 py-2 d-flex gap-1 align-items-center" 
                         onClick={() => setShipping(!shipping)}
-                        {...register("zipCode")}
-                      />
+                    >
+                      <button className="border-0 bg-transparent">
+                      {!shipping ?  <ImCheckboxUnchecked className='text-black' />
+                      :<BsCheckSquareFill className="text-warning bg-black round" />
+                     }
+                      </button>
+
                       <span>Ship to different Address</span>
                     </div>
                   </div>

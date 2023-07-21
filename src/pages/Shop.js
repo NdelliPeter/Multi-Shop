@@ -56,7 +56,7 @@ export default function Shop() {
       .catch((err) => console.log(err));
 
     const account = JSON.parse(localStorage.getItem('logIn user'));
-    const email= account.email
+    const email= account?.email
     const local = localStorage.getItem(`${email}`) 
     setBask(local ? JSON.parse(local) : [])
   }, []);
@@ -73,7 +73,7 @@ export default function Shop() {
           products.indexOf(productItem) === products.indexOf(product)
       );
       window.location.reload(<RingLoader />)
-      const email= account.email
+      const email= account?.email
       const put = [drop, ...bask]
       console.log(put);
       setBask(put)

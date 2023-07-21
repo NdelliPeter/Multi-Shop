@@ -139,13 +139,13 @@ export default function Header() {
 
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="dropdown-basic">
-                    USD
+                    XFA
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="#">EUR</Dropdown.Item>
                     <Dropdown.Item href="#">GBP</Dropdown.Item>
-                    <Dropdown.Item href="#">CAD</Dropdown.Item>
+                    <Dropdown.Item href="#">USD</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
 

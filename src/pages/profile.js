@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 
 
-const Profile = () =>{
+export default function Profile () {
 
 
 
@@ -11,8 +11,10 @@ const Profile = () =>{
 
     })
     return(
-        <div>
-            
+        <div className="container-fluid px-4">
+            <div className="">
+
+            </div>
         </div>
     )
 }

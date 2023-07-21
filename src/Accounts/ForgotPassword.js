@@ -84,7 +84,7 @@ export default function ForgotPassword() {
       )
       console.log("oooooooooo", accounts)}
       )
-    navigate("/")
+    navigate("/signIn")
   };
 
   const navigate = useNavigate(-1); 

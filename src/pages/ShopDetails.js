@@ -124,6 +124,9 @@ export default function ShopDetails() {
                   Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit 
                   clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy
                 </p>
+                <button onClick={()=>{basketDrop(item)}} className="bg-warning border-0 py-2 px-3 round">
+                  Add to cart
+                </button>
 
                 <div className="">
 
@@ -140,7 +143,7 @@ export default function ShopDetails() {
         <div className="col-12 my-4">
           <div className="row px-0">
             <div className="col-12 px-0">
-              <h2>CATEGORY PRODUCTS</h2>
+              <h2>RELATED PRODUCTS</h2>
             </div>
             <div className="col-12 ">
               <div className="row">

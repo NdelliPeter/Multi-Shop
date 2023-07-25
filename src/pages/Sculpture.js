@@ -317,7 +317,7 @@ export default function Sculpture() {
                             key={id}
                             className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
                           >
-                            <div className="bg-white round">
+                            <div className="bg-white round shadow">
                               <div className=" col-12 m-0 container_">
                                 <div className="col-12">
                                   <img

@@ -299,7 +299,7 @@ export default function Home() {
                               key={id}
                               className="col-12 col-sm-12 col-md-3 col-lg-3 p-1 "
                             >
-                              <div className="bg-white round">
+                              <div className="bg-white round shadow">
                                 <div className=" col-12 m-0 container_">
                                   <div className="col-12">
                                     <img

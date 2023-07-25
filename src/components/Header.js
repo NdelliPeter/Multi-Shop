@@ -132,7 +132,7 @@ export default function Header() {
 
                   <Dropdown.Menu>
                     {/* <Dropdown.Item href="signIn">Sign In</Dropdown.Item> */}
-                    <Dropdown.Item href="">Profile</Dropdown.Item>
+                    <Dropdown.Item href="profile">Profile</Dropdown.Item>
                     <Dropdown.Item onClick={logout}>logout</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>}

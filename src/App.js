@@ -19,6 +19,7 @@ import ForgotPassword from './Accounts/ForgotPassword';
 import Painting from './pages/Painting'
 import Sculpture from './pages/Sculpture';
 import { RingLoader } from 'react-spinners';
+import Profile from './Accounts/profile';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
         <Route path='contact' element={<Contact />}/>
         <Route path='painting' element={<Painting/> }/>
         <Route path='sculpture' element={<Sculpture/> }/>
+        <Route path='profile' element={<Profile/>} />
 
       </Route>
       <Route path='signUp' element={<SignUp />} />

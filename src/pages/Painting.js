@@ -319,7 +319,7 @@ export default function Painting() {
                             key={id}
                             className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
                           >
-                            <div className="bg-white round">
+                            <div className="bg-white round shadow">
                               <div className=" col-12 m-0 container_">
                                 <div className="col-12">
                                   <img
@@ -343,9 +343,9 @@ export default function Painting() {
                               <button 
                                 onClick={()=>{productDetail(product)}}
                                 className="col-12 border-0 bg-white d-flex py-3 flex-column justify-content-center align-items-center">
-                                <h6>{product.name}</h6>
+                                <h6>{product?.name}</h6>
                                 <p>
-                                  {product.price} XFA{" "}
+                                  {product?.price} XFA{" "}
                                 </p>
                               </button>
                             </div>

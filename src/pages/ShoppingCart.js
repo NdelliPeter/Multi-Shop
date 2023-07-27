@@ -20,7 +20,7 @@ export default function ShoppingCart() {
 
   const increaseQuntity = (product) => {
     product.quantity += 1;
-    window.location.reload(false)
+    window.location.reload(false) 
     axios
       .put(`http://localhost:4000/baskets/${product.id}`, product)
       .then((res) => {
@@ -118,6 +118,7 @@ export default function ShoppingCart() {
   }, []);
 
   const deleteProduct = (productId) => {
+      window.location.reload(false)
     axios.delete(`http://localhost:4000/baskets/${productId}`);
     setBasket(
       basket.filter((product) => {

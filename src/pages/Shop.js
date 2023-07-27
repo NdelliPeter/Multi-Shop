@@ -23,17 +23,55 @@ export default function Shop() {
   const [errorMessage, setErrorMessage] = useState("");
   const [bask, setBask] = useState([])
   const [allPrice, setAllPrice] = useState(true)
-
+  const [p1, setP1] = useState(false)
+  const [p2, setP2] = useState(false)
+  const [p3, setP3] = useState(false)
+  const [filteredProducts, setFilteredProducts] = useState()
   // Filter products
 
 
-  const oneThouosand = () =>{
-    const filter = products.filter((prod)=> prod.price <= 1000);
-    
-    console.log(filter );
-  } 
+  const price1 = () => {
+    const range = { min: 0, max: 5000 }
+    if (p1 === true) {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log(res.data);
+        })
+    } else {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => {
+          // res.data.map((prod) => {
+          //   if(prod) {
+          //     setFilteredProducts(filteredProducts.filter((item) => (item.id !== prod.id)))
+          //   }
+          // })
+          console.log(res.data);
+        })
+    }
 
+  }
+  const price2 = () => {
+    const range = { min: 5000, max: 10000 }
+    if (p2 === true) {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log(res.data);
+        })
+    } else {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => {
+          // res.data.map((prod) => {
+          //   const f = filteredProducts.filter((item) => (item.id !== prod.id))
+          //   setFilteredProducts(f)
+          // })
+          console.log(res.data);
+        })
+    }
+  }
 
+  // console.log('dscvnsvnksjdkncjksdnvsndvdv', filteredProducts);
 
 
   useEffect(() => {
@@ -56,41 +94,41 @@ export default function Shop() {
       .catch((err) => console.log(err));
 
     const account = JSON.parse(localStorage.getItem('logIn user'));
-    const email= account?.email
-    const local = localStorage.getItem(`${email}`) 
+    const email = account?.email
+    const local = localStorage.getItem(`${email}`)
     setBask(local ? JSON.parse(local) : [])
   }, []);
 
   const basketDrop = (product) => {
-  
+
     const cookies = Cookies.get('jwt')
     const account = JSON.parse(localStorage.getItem('logIn user'));
     // console.log(cookies, account);
- 
-    if(cookies && account !== undefined){
+
+    if (cookies && account !== undefined) {
       const drop = products.find(
         (productItem) =>
           products.indexOf(productItem) === products.indexOf(product)
       );
       window.location.reload(<RingLoader />)
-      const email= account?.email
+      const email = account?.email
       const put = [drop, ...bask]
       console.log(put);
       setBask(put)
-      localStorage.setItem(`${email}`,JSON.stringify(put))
+      localStorage.setItem(`${email}`, JSON.stringify(put))
       // setBask(drop)
-     
+
       axios
-      .post("http://localhost:4000/baskets", drop)
-      .then((res) => {
-        setBasket(drop)
-        // localStorage.setItem(`${email}`, JSON.stringify(drop))
-        // setCout(count + 1)
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .post("http://localhost:4000/baskets", drop)
+        .then((res) => {
+          setBasket(drop)
+          // localStorage.setItem(`${email}`, JSON.stringify(drop))
+          // setCout(count + 1)
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     } else {
       migrate("/signIn")
     }
@@ -104,14 +142,14 @@ export default function Shop() {
   const [color, setColor] = useState()
   useEffect(() => {
     setLoading(false)
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoading(false)
     })
-  },5000)
+  }, 5000)
 
 
   const productDetail = (product) => {
-    
+
     const item = products.find(
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
@@ -119,13 +157,13 @@ export default function Shop() {
     // console.log(item);
     localStorage.setItem('item', JSON.stringify(item))
     navigate("/shopDetails")
-    
+
   }
   const navigate = useNavigate(1)
 
   return (
     <div className="container-fluid shopbg">
-            <div className="row px-5">
+      <div className="row px-5">
         <div className="col-12 bg-white p-3 my-4">
           <span>Home / Shop / ShopList </span>
         </div>
@@ -137,11 +175,11 @@ export default function Shop() {
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                <button className="border-0 bg-transparent" onClick={()=>{setAllPrice(!allPrice)}}>
-                      {!allPrice ?  <ImCheckboxUnchecked className='text-black' />
-                      :<BsCheckSquareFill className="text-warning bg-black round" />
-                     }
-                      </button>
+                  <button className="border-0 bg-transparent" onClick={() => { setAllPrice(!allPrice) }}>
+                    {!allPrice ? <ImCheckboxUnchecked className='text-black' />
+                      : <BsCheckSquareFill className="text-warning bg-black round" />
+                    }
+                  </button>
                   <span>All Price</span>
                 </div>
                 <small className="border px-1">{products?.length}</small>
@@ -149,16 +187,24 @@ export default function Shop() {
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>0 - 1000 XFA</span>
+                  <button className="border-0 bg-transparent" onClick={() => { price1(setP1(!p1)) }}>
+                    {!p1 ? <ImCheckboxUnchecked className='text-black' />
+                      : <BsCheckSquareFill className="text-warning bg-black round" />
+                    }
+                  </button>
+                  <span>0 - 5000 XFA</span>
                 </div>
                 <small className="border px-1">150</small>
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>1000-2000 XFA</span>
+                  <button className="border-0 bg-transparent" onClick={() => { price2(setP2(!p2)) }}>
+                    {!p2 ? <ImCheckboxUnchecked className='text-black' />
+                      : <BsCheckSquareFill className="text-warning bg-black round" />
+                    }
+                  </button>
+                  <span>5000-10000 XFA</span>
                 </div>
                 <small className="border px-1">295</small>
               </div>
@@ -332,56 +378,107 @@ export default function Shop() {
               </div> */}
             </div>
 
-            {isLoading ? <LoadingSpinner /> : 
-
-            <div className="col-12 ">
+            {filteredProducts ?
+              <div className="col-12 ">
+                <div className="row align-items-center px-2">
+                  {(filteredProducts?.length ?? 0) >= 1
+                    ? filteredProducts.map((product, id) => {
+                      return (
+                        <div
+                          key={id}
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
+                        >
+                          <div className="bg-white round shadow">
+                            <div className=" col-12 m-0 container_">
+                              <div className="col-12">
+                                <img
+                                  src={product.image}
+                                  alt="image"
+                                  className="img-fluid img"
+                                />
+                              </div>
+                              <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                <HiShoppingCart
+                                  className="productIcon"
+                                  onClick={() => {
+                                    basketDrop(product);
+                                  }}
+                                  disabled={isLoading}
+                                />
+                                <AiOutlineHeart className="productIcon" />
+                                <TfiReload className="productIcon" />
+                                <HiMagnifyingGlass className="productIcon" />
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => { productDetail(product) }}
+                              className="col-12 bg-white d-flex border-0 py-3 flex-column justify-content-center align-items-center">
+                              <h6>{product.name}</h6>
+                              <p>
+                                {product.price} XFA{" "}
+                                {/* <small className="text-though">$163.00</small> */}
+                              </p>
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })
+                    : "No Product found"}
+                </div>
+              </div> :
+              <div className="col-12 ">
                 <div className="row align-items-center px-2">
                   {(products?.length ?? 0) >= 1
                     ? products.map((product, id) => {
-                        return (
-                          <div
-                            key={id}
-                            className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
-                          >
-                            <div className="bg-white round shadow">
-                              <div className=" col-12 m-0 container_">
-                                <div className="col-12">
-                                  <img
-                                    src={product.image}
-                                    alt="image"
-                                    className="img-fluid img"
-                                  />
-                                </div>
-                                <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
-                                  <HiShoppingCart
-                                    className="productIcon"
-                                    onClick={() => {
-                                      basketDrop(product);
-                                    }}
-                                    disabled ={isLoading}
-                                  />
-                                  <AiOutlineHeart className="productIcon" />
-                                  <TfiReload className="productIcon" />
-                                  <HiMagnifyingGlass className="productIcon" />
-                                </div>
+                      return (
+                        <div
+                          key={id}
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
+                        >
+                          <div className="bg-white round shadow">
+                            <div className=" col-12 m-0 container_">
+                              <div className="col-12">
+                                <img
+                                  src={product.image}
+                                  alt="image"
+                                  className="img-fluid img"
+                                />
                               </div>
-                              <button 
-                              onClick={()=>{productDetail(product)}}
-                              className="col-12 bg-white d-flex border-0 py-3 flex-column justify-content-center align-items-center">
-                                <h6>{product.name}</h6>
-                                <p>
-                                  {product.price} XFA{" "}
-                                  {/* <small className="text-though">$163.00</small> */}
-                                </p>
-                              </button>
+                              <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                <HiShoppingCart
+                                  className="productIcon"
+                                  onClick={() => {
+                                    basketDrop(product);
+                                  }}
+                                  disabled={isLoading}
+                                />
+                                <AiOutlineHeart className="productIcon" />
+                                <TfiReload className="productIcon" />
+                                <HiMagnifyingGlass className="productIcon" />
+                              </div>
                             </div>
+                            <button
+                              onClick={() => { productDetail(product) }}
+                              className="col-12 bg-white d-flex border-0 py-3 flex-column justify-content-center align-items-center">
+                              <h6>{product.name}</h6>
+                              <p>
+                                {product.price} XFA{" "}
+                                {/* <small className="text-though">$163.00</small> */}
+                              </p>
+                            </button>
                           </div>
-                        );
-                      })
+                        </div>
+                      );
+                    })
                     : "No Product found"}
                 </div>
               </div>
             }
+
+            {/* {isLoading ? <LoadingSpinner /> :
+
+ 
+            } */}
             {errorMessage && <div className="error">{errorMessage}</div>}
           </div>
         </div>

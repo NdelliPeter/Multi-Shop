@@ -124,7 +124,11 @@ export default function ShopDetails() {
                   Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit 
                   clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no seaNonumy
                 </p>
-                <button onClick={()=>{basketDrop(item)}} className="bg-warning border-0 py-2 px-3 round">
+                <button onClick={()=>{
+                  const i =category.find((prod)=>(prod.id === item.id))
+                  basketDrop(i)
+                }} 
+                className="bg-warning border-0 py-2 px-3 round">
                   Add to cart
                 </button>
 

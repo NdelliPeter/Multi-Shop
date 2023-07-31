@@ -57,7 +57,7 @@ export default function Header() {
   const logout = () => {
     Cookies.remove('jwt')
     localStorage.removeItem('logIn user')
-    window.location.reload(false)
+    // window.location.reload(false)
     axios.get("http://localhost:4000/logout")
     .then((res)=>{
       const respo = res.data

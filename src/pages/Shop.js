@@ -39,20 +39,21 @@ export default function Shop() {
           console.log(res.data);
         })
     } else {
-      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
-        .then((res) => {
-          // res.data.map((prod) => {
-          //   if(prod) {
-          //     setFilteredProducts(filteredProducts.filter((item) => (item.id !== prod.id)))
-          //   }
-          // })
-          console.log(res.data);
-        })
+      setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 0 && prod.price <= 5000)))
+      // axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+      //   .then((res) => {
+      //     // res.data.map((prod) => {
+      //     //   if(prod) {
+      //     //     setFilteredProducts(filteredProducts.filter((item) => (item.id !== prod.id)))
+      //     //   }
+      //     // })
+      //     console.log(res.data);
+      //   })
     }
 
   }
   const price2 = () => {
-    const range = { min: 5000, max: 10000 }
+    const range = { min: 5001, max: 10000 }
     if (p2 === true) {
       axios.get(`http://localhost:4000/filter`, { params: { range: range } })
         .then((res) => {
@@ -60,14 +61,15 @@ export default function Shop() {
           console.log(res.data);
         })
     } else {
-      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
-        .then((res) => {
-          // res.data.map((prod) => {
-          //   const f = filteredProducts.filter((item) => (item.id !== prod.id))
-          //   setFilteredProducts(f)
-          // })
-          console.log(res.data);
-        })
+      setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 5001 && prod.price <= 10000)))
+      // axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+      //   .then((res) => {
+      //     // res.data.map((prod) => {
+      //     //   const f = filteredProducts.filter((item) => (item.id !== prod.id))
+      //     //   setFilteredProducts(f)
+      //     // })
+      //     console.log(res.data);
+      //   })
     }
   }
 

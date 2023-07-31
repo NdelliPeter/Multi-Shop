@@ -20,6 +20,8 @@ import Painting from './pages/Painting'
 import Sculpture from './pages/Sculpture';
 import { RingLoader } from 'react-spinners';
 import Profile from './Accounts/profile';
+import AddProduct from './Accounts/addProductFrom'
+import AboutUser from './Accounts/aboutUser';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,7 +35,10 @@ const router = createBrowserRouter(
         <Route path='contact' element={<Contact />}/>
         <Route path='painting' element={<Painting/> }/>
         <Route path='sculpture' element={<Sculpture/> }/>
-        <Route path='profile' element={<Profile/>} />
+        <Route path='profile' element={<Profile/>}>
+          <Route path='addProduct' element={<AddProduct/>} />
+          <Route path='aboutUser' element={<AboutUser/>} />
+        </Route>
 
       </Route>
       <Route path='signUp' element={<SignUp />} />

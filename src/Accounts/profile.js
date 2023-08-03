@@ -27,7 +27,7 @@ export default function Profile() {
     }, [])
     return (
         <div className="container-fluid bg-light">
-            {(account.role === 1000) ?
+            {(account?.role === 1000) ?
                 <div className="row px-5 py-3">
                     <div className="col-12 col-sm col-md-4 col-lg-4 bg-white shadow px-4 py-3">
                         <div className="d-flex justify-content-center my-3">
@@ -39,19 +39,16 @@ export default function Profile() {
                             <NavLink className='links' to="aboutUser">About</NavLink>
                         </div>
                         <div className="col-12 my-3">
-                            <NavLink className='links' to="">Add Product</NavLink>
+                            <NavLink className='links' to="resetPassword">reset password</NavLink>
                         </div>
                         <div className="col-12 my-3">
-                            <NavLink className='links' to="addProduct">Add Product</NavLink>
-                        </div>
-                        <div className="col-12 my-3">
-                            <NavLink className='links' to="addProduct">Add Product</NavLink>
+                            <NavLink className='links' to="becomeVendor">become a Vendor</NavLink>
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-8 col-lg-8 bg-white px-2 py-3">
                         <Outlet />
                     </div>
-                </div> : (account.role === 2468) ?
+                </div> : (account?.role === 2468) ?
                     <div className="row px-5 py-3">
                         <div className="col-12 col-sm col-md-4 col-lg-4 bg-white shadow px-4 py-3">
                             <div className="d-flex justify-content-center my-3">
@@ -63,14 +60,15 @@ export default function Profile() {
                                 <NavLink className='links' to="aboutUser">About</NavLink>
                             </div>
                             <div className="col-12 my-3">
-                                <NavLink className='links' to="">Add Product</NavLink>
+                                <NavLink className='links' to="resetPassword">Reset Password</NavLink>
+                            </div>
+                            <div className="col-12 my-3">
+                                <NavLink className='links' to="becomeVendor">Become Vendor</NavLink>
                             </div>
                             <div className="col-12 my-3">
                                 <NavLink className='links' to="addProduct">Add Product</NavLink>
                             </div>
-                            {/* <div className="col-12 my-3">
-                            <NavLink className='links' to="addProduct">Add Product</NavLink>
-                        </div> */}
+
                         </div>
                         <div className="col-12 col-sm-12 col-md-8 col-lg-8 bg-white px-2 py-3">
                             <Outlet />

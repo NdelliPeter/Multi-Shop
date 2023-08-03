@@ -35,11 +35,15 @@ export default function Shop() {
     if (p1 === true) {
       axios.get(`http://localhost:4000/filter`, { params: { range: range } })
         .then((res) => {
-          setFilteredProducts(res.data)
-          console.log(res.data);
+          res.data.map((prod)=>{
+            const pro = [prod, filteredProducts]
+            const local = localStorage.setItem('filteredProducts', JSON.stringify(pro))
+            setFilteredProducts(local)
+            console.log(local);
+          })
         })
     } else {
-      setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 0 && prod.price <= 5000)))
+      // setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 0 && prod.price <= 5000)))
       // axios.get(`http://localhost:4000/filter`, { params: { range: range } })
       //   .then((res) => {
       //     // res.data.map((prod) => {
@@ -57,19 +61,28 @@ export default function Shop() {
     if (p2 === true) {
       axios.get(`http://localhost:4000/filter`, { params: { range: range } })
         .then((res) => {
-          setFilteredProducts(res.data)
-          console.log(res.data);
+            res.data.map((prod)=> {
+            const pro = [prod, filteredProducts]
+            const local = localStorage.setItem('filteredProducts', JSON.stringify(pro))
+            setFilteredProducts(local)
+            console.log(local);
+          })
+          console.log('I am here',res.data);
         })
     } else {
-      setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 5001 && prod.price <= 10000)))
-      // axios.get(`http://localhost:4000/filter`, { params: { range: range } })
-      //   .then((res) => {
-      //     // res.data.map((prod) => {
-      //     //   const f = filteredProducts.filter((item) => (item.id !== prod.id))
-      //     //   setFilteredProducts(f)
-      //     // })
-      //     console.log(res.data);
-      //   })
+
+      // setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 5001 && prod.price <= 10000)))
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => {
+          const respond =res.data
+          // respond.map((prod) => {
+          //   const p = localStorage.getItem('filteredProducts')
+          //   const f = p.filter((item) => (item.id !== prod.id))
+          //   console.log(f);
+          //   // setFilteredProducts(f)
+          // })
+          console.log('i am here',respond);
+        })
     }
   }
 
@@ -96,10 +109,12 @@ export default function Shop() {
       .catch((err) => console.log(err));
 
     const account = JSON.parse(localStorage.getItem('logIn user'));
+    const f = JSON.parse(localStorage.getItem('filteredProducts'));
+    setFilteredProducts(f)
     const email = account?.email
     const local = localStorage.getItem(`${email}`)
     setBask(local ? JSON.parse(local) : [])
-  }, []);
+  }, [setFilteredProducts]);
 
   const basketDrop = (product) => {
 
@@ -189,7 +204,7 @@ export default function Shop() {
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <button className="border-0 bg-transparent" onClick={() => { price1(setP1(!p1)) }}>
+                  <button className="border-0 bg-transparent" onClick={() => { price1(); setP1(!p1) }}>
                     {!p1 ? <ImCheckboxUnchecked className='text-black' />
                       : <BsCheckSquareFill className="text-warning bg-black round" />
                     }
@@ -201,7 +216,7 @@ export default function Shop() {
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <button className="border-0 bg-transparent" onClick={() => { price2(setP2(!p2)) }}>
+                  <button className="border-0 bg-transparent" onClick={() => { price2(); setP2(!p2) }}>
                     {!p2 ? <ImCheckboxUnchecked className='text-black' />
                       : <BsCheckSquareFill className="text-warning bg-black round" />
                     }

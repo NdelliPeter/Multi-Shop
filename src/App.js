@@ -22,22 +22,27 @@ import { RingLoader } from 'react-spinners';
 import Profile from './Accounts/profile';
 import AddProduct from './Accounts/addProductFrom'
 import AboutUser from './Accounts/aboutUser';
+import BecomeVendor from './Accounts/becomeVendor';
+import ResetPassword from './Accounts/resetPassword';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Header />}>
       <Route path='/' element={<HomeLayout />} >
         <Route index element={<Home />} />
-        <Route path='shop' element={<Shop />}/>
-        <Route path='shopDetails' element={<ShopDetails />}/>
-        <Route path='shoppingCart' element={<ShoppingCart />}/>
-        <Route path='checkOut' element={<CheckOut />}/>
-        <Route path='contact' element={<Contact />}/>
-        <Route path='painting' element={<Painting/> }/>
-        <Route path='sculpture' element={<Sculpture/> }/>
-        <Route path='profile' element={<Profile/>}>
-          <Route path='addProduct' element={<AddProduct/>} />
-          <Route path='aboutUser' element={<AboutUser/>} />
+        <Route path='shop' element={<Shop />} />
+        <Route path='shopDetails' element={<ShopDetails />} />
+        <Route path='shoppingCart' element={<ShoppingCart />} />
+        <Route path='checkOut' element={<CheckOut />} />
+        <Route path='contact' element={<Contact />} />
+        <Route path='painting' element={<Painting />} />
+        <Route path='sculpture' element={<Sculpture />} />
+        <Route path='profile' element={<Profile />}>
+          <Route path='addProduct' element={<AddProduct />} />
+          <Route path='aboutUser' element={<AboutUser />} />
+          <Route path='becomeVendor' element={<BecomeVendor />} />
+          <Route path='resetPassword' element={<ResetPassword/>} />
+
         </Route>
 
       </Route>
@@ -57,25 +62,25 @@ function App() {
   const [color, setColor] = useState()
   useEffect(() => {
     setLoading(false)
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoading(false)
     })
-  },5000)
+  }, 5000)
 
   return (
     <main>
       {
-        loading?
-        <RingLoader
-        color='gold'
-        loading={loading}
-        // cssOverride={override}
-        size={150}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-      :
-      <RouterProvider router={router} />
+        loading ?
+          <RingLoader
+            color='gold'
+            loading={loading}
+            // cssOverride={override}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+          :
+          <RouterProvider router={router} />
 
       }
     </main>

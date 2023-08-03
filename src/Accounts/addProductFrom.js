@@ -32,7 +32,7 @@ const addProductSchema = yup.object().shape({
 export default function AddProduct() {
 
 
-    const [file, setFile] = useState([])
+    const [file, setFile] = useState()
 
 
     const {
@@ -56,9 +56,13 @@ export default function AddProduct() {
             })
     }
 
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files))
+        const file=e.target.files[0]
+        const base64 = await convert(file)
+        return setFile(base64),
+        console.log(base64)
+
     }
 
     function func() {
@@ -69,20 +73,25 @@ export default function AddProduct() {
         return ff() + ff(true) + ff(true) + ff();
     }
     const id = func()
+    const convert = (file) => {
+        return new Promise((resolve,reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
 
-    const SubmitProduct = (data) => {
+            fileReader.onload = (()=>{
+                resolve(fileReader.result)
+            });
+
+            fileReader.onerror = ((error)=>{
+                reject(error);
+            })
+        })
+    }
+
+    const SubmitProduct = async (data) => {
         data.id = id;
-        // data.image = URL.createObjectURL(data.image)
-        // addProduct(data);
-        // var reader = new FileReader();
-        // reader.readAsDataURL(data.image);
-        // reader.onloadend = function () {
-        //     var base64data = reader.result;
-        //     console.log(base64data);
-        // }
-        const fileToBlob = async (file) => new Blob([new Uint8Array(await file.arrayBuffer())], {type: file.type });
-        const n = fileToBlob(data.image)
-        console.log(n);
+
+        data.image = file
         const a = {
             id: id,
             name: data.name,
@@ -90,8 +99,9 @@ export default function AddProduct() {
             price: data.price,
             image: data.image
         }
-        console.log(data.image[0]);
-        // reset();
+        addProduct(a)
+        console.log(a);
+        reset();
     };
 
     return (
@@ -151,10 +161,10 @@ export default function AddProduct() {
                         <input
                             className="col-12 my-2 p-2"
                             name="image"
-                            placeholder="Doe"
                             type="file"
+                            // onChange={upload}
                             {...register("image")}
-                        // onChange={handleChange}
+                            onChange={handleChange}
                         />
                         <span className="text-danger font-strong">
                             {errors.image?.message}

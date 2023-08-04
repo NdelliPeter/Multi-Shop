@@ -26,67 +26,71 @@ export default function Shop() {
   const [p1, setP1] = useState(false)
   const [p2, setP2] = useState(false)
   const [p3, setP3] = useState(false)
-  const [filteredProducts, setFilteredProducts] = useState()
+  const [filteredProducts, setFilteredProducts] = useState([])
   // Filter products
 
 
-  const price1 = () => {
-    const range = { min: 0, max: 5000 }
-    if (p1 === true) {
+  const price1 = (e) => {
+    const range = { min: 0, max: 10000 }
+    if (e.target.checked) {
       axios.get(`http://localhost:4000/filter`, { params: { range: range } })
         .then((res) => {
-          res.data.map((prod)=>{
-            const pro = [prod, filteredProducts]
-            const local = localStorage.setItem('filteredProducts', JSON.stringify(pro))
-            setFilteredProducts(local)
-            console.log(local);
-          })
+          setFilteredProducts(res.data)
+          console.log(res.data);
         })
     } else {
-      // setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 0 && prod.price <= 5000)))
-      // axios.get(`http://localhost:4000/filter`, { params: { range: range } })
-      //   .then((res) => {
-      //     // res.data.map((prod) => {
-      //     //   if(prod) {
-      //     //     setFilteredProducts(filteredProducts.filter((item) => (item.id !== prod.id)))
-      //     //   }
-      //     // })
-      //     console.log(res.data);
-      //   })
+      setFilteredProducts([])
     }
-
   }
-  const price2 = () => {
-    const range = { min: 5001, max: 10000 }
-    if (p2 === true) {
+  
+  const price2 = (e) => {
+    const range = { min: 10001, max: 20000 }
+    if (e.target.checked) {
       axios.get(`http://localhost:4000/filter`, { params: { range: range } })
-        .then((res) => {
-            res.data.map((prod)=> {
-            const pro = [prod, filteredProducts]
-            const local = localStorage.setItem('filteredProducts', JSON.stringify(pro))
-            setFilteredProducts(local)
-            console.log(local);
-          })
-          console.log('I am here',res.data);
+        .then((res) => { 
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
         })
     } else {
-
-      // setFilteredProducts(filteredProducts.filter((prod)=>(prod.price >= 5001 && prod.price <= 10000)))
-      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
-        .then((res) => {
-          const respond =res.data
-          // respond.map((prod) => {
-          //   const p = localStorage.getItem('filteredProducts')
-          //   const f = p.filter((item) => (item.id !== prod.id))
-          //   console.log(f);
-          //   // setFilteredProducts(f)
-          // })
-          console.log('i am here',respond);
-        })
+      setFilteredProducts([])
     }
   }
-
-  // console.log('dscvnsvnksjdkncjksdnvsndvdv', filteredProducts);
+  const price3 = (e) => {
+    const range = { min: 20001, max: 30000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => { 
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
+  const price4 = (e) => {
+    const range = { min: 30001, max: 40000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => { 
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
+  const price5 = (e) => {
+    const range = { min: 40001, max: 50000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter`, { params: { range: range } })
+        .then((res) => { 
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
 
 
   useEffect(() => {
@@ -167,11 +171,8 @@ export default function Shop() {
 
   const productDetail = (product) => {
 
-    const item = products.find(
-      (productItem) =>
-        products.indexOf(productItem) === products.indexOf(product)
-    );
-    // console.log(item);
+    const item = products.find((productItem) =>productItem.id === product.id);
+    console.log(item);
     localStorage.setItem('item', JSON.stringify(item))
     navigate("/shopDetails")
 
@@ -192,67 +193,47 @@ export default function Shop() {
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <button className="border-0 bg-transparent" onClick={() => { setAllPrice(!allPrice) }}>
-                    {!allPrice ? <ImCheckboxUnchecked className='text-black' />
-                      : <BsCheckSquareFill className="text-warning bg-black round" />
-                    }
-                  </button>
-                  <span>All Price</span>
+                  <input className="text-warning" id="p1" type="checkbox" onClick={price1} />
+                  <span>0 - 10000 XFA</span>
                 </div>
-                <small className="border px-1">{products?.length}</small>
+                {/* <small className="border px-1">150</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <button className="border-0 bg-transparent" onClick={() => { price1(); setP1(!p1) }}>
-                    {!p1 ? <ImCheckboxUnchecked className='text-black' />
-                      : <BsCheckSquareFill className="text-warning bg-black round" />
-                    }
-                  </button>
-                  <span>0 - 5000 XFA</span>
+                  <input type="checkbox" id="p2" onChange={price2} />
+                  <span>10001-20000 XFA</span>
                 </div>
-                <small className="border px-1">150</small>
+                {/* <small className="border px-1">295</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <button className="border-0 bg-transparent" onClick={() => { price2(); setP2(!p2) }}>
-                    {!p2 ? <ImCheckboxUnchecked className='text-black' />
-                      : <BsCheckSquareFill className="text-warning bg-black round" />
-                    }
-                  </button>
-                  <span>5000-10000 XFA</span>
+                  <input type="checkbox" onChange={price3} />
+                  <span>20001-30000 XFA</span>
                 </div>
-                <small className="border px-1">295</small>
+                {/* <small className="border px-1">246</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>2000-3000 XFA</span>
+                  <input type="checkbox" onChange={price4}/>
+                  <span>30001-40000</span>
                 </div>
-                <small className="border px-1">246</small>
+                {/* <small className="border px-1">145</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>3000-4000</span>
+                  <input type="checkbox" onChange={price5}/>
+                  <span>40001-50000 XFA</span>
                 </div>
-                <small className="border px-1">145</small>
-              </div>
-
-              <div className="d-flex my-2 justify-content-between align-items-center">
-                <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>4000-5000 XFA</span>
-                </div>
-                <small className="border px-1">168</small>
+                {/* <small className="border px-1">168</small> */}
               </div>
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="my-3">FILTER BY COLOR</h4>
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
@@ -303,7 +284,7 @@ export default function Shop() {
                 <small className="border px-1">168</small>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* <div>
             <h4 className="my-3">FILTER BY SIZE</h4>
@@ -395,7 +376,7 @@ export default function Shop() {
               </div> */}
             </div>
 
-            {filteredProducts ?
+            {(filteredProducts?.length >= 1)?
               <div className="col-12 ">
                 <div className="row align-items-center px-2">
                   {(filteredProducts?.length ?? 0) >= 1

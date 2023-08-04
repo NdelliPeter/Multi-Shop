@@ -15,16 +15,74 @@ export default function Sculpture() {
   const [products, setProducts] = useState([]);
   const [basket, setBasket] = useState();
   const [bask, setBask] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+
 
 
   const sculpture = products?.filter((prod) => (prod.category === 'sculpture'))
-  // const sculpture = products?.map((prod) => {
-  //   if (prod.category === 'sculpture') {
-  //     return (prod)
-  //   }
-  // })
-
   console.log('poijfkdfndlfkndflknfd', sculpture);
+
+  const price1 = (e) => {
+    const range = { min: 0, max: 10000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter/sculpture`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log(res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
+
+  const price2 = (e) => {
+    const range = { min: 10001, max: 20000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter/sculpture`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
+  const price3 = (e) => {
+    const range = { min: 20001, max: 30000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter/sculpture`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
+  const price4 = (e) => {
+    const range = { min: 30001, max: 40000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter/sculpture`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
+  const price5 = (e) => {
+    const range = { min: 40001, max: 50000 }
+    if (e.target.checked) {
+      axios.get(`http://localhost:4000/filter/sculpture`, { params: { range: range } })
+        .then((res) => {
+          setFilteredProducts(res.data)
+          console.log('I am here', res.data);
+        })
+    } else {
+      setFilteredProducts([])
+    }
+  }
 
   useEffect(() => {
     axios
@@ -45,49 +103,49 @@ export default function Sculpture() {
       })
       .catch((err) => console.log(err));
 
-      const account = JSON.parse(localStorage.getItem('logIn user'));
-      const email= account.email
-      const local = localStorage.getItem(`${email}`) 
-      setBask(local ? JSON.parse(local) : [])
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    const email = account.email
+    const local = localStorage.getItem(`${email}`)
+    setBask(local ? JSON.parse(local) : [])
   }, []);
 
   const basketDrop = (product) => {
-  
+
     const cookies = Cookies.get('jwt')
     const account = JSON.parse(localStorage.getItem('logIn user'));
     // console.log(cookies, account);
- 
-    if(cookies && account !== undefined){
+
+    if (cookies && account !== undefined) {
       const drop = products.find(
         (productItem) =>
           products.indexOf(productItem) === products.indexOf(product)
       );
       window.location.reload(false)
-      const email= account.email
+      const email = account.email
       const put = [drop, ...bask]
       console.log(put);
       setBask(put)
-      localStorage.setItem(`${email}`,JSON.stringify(put))
+      localStorage.setItem(`${email}`, JSON.stringify(put))
       // setBask(drop)
-     
+
       axios
-      .post("http://localhost:4000/baskets", drop)
-      .then((res) => {
-        setBasket(drop)
-        // localStorage.setItem(`${email}`, JSON.stringify(drop))
-        // setCout(count + 1)
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .post("http://localhost:4000/baskets", drop)
+        .then((res) => {
+          setBasket(drop)
+          // localStorage.setItem(`${email}`, JSON.stringify(drop))
+          // setCout(count + 1)
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     } else {
       migrate("/signIn")
     }
   }
 
   const productDetail = (product) => {
-    
+
     const item = products.find(
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
@@ -95,7 +153,7 @@ export default function Sculpture() {
     // console.log(item);
     localStorage.setItem('item', JSON.stringify(item))
     navigate("/shopDetails")
-    
+
   }
 
   const navigate = useNavigate(1)
@@ -110,56 +168,48 @@ export default function Sculpture() {
 
         {/* Filter column */}
         <div className="col-3 d-none d-sm-none d-md-block d-lg-block px-0">
-        <div>
+          <div>
             <h4 className="my-3">FILTER BY PRICE</h4>
             <div className="col-12 px-4 py-3 bg-white">
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" value="true" />
-                  <span>All Price</span>
+                  <input className="text-warning" id="p1" type="checkbox" onClick={price1} />
+                  <span>0 - 10000 XFA</span>
                 </div>
-                <small className="border px-1">{sculpture.length}</small>
-              </div>
-
-              {/* <div className="d-flex my-2 justify-content-between align-items-center">
-                <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>0 - 1000 XFA</span>
-                </div>
-                <small className="border px-1">150</small>
+                {/* <small className="border px-1">150</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>1000-2000 XFA</span>
+                  <input type="checkbox" id="p2" onChange={price2} />
+                  <span>10001-20000 XFA</span>
                 </div>
-                <small className="border px-1">295</small>
+                {/* <small className="border px-1">295</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>2000-3000 XFA</span>
+                  <input type="checkbox" onChange={price3} />
+                  <span>20001-30000 XFA</span>
                 </div>
-                <small className="border px-1">246</small>
+                {/* <small className="border px-1">246</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>3000-4000</span>
+                  <input type="checkbox" onChange={price4} />
+                  <span>30001-40000</span>
                 </div>
-                <small className="border px-1">145</small>
+                {/* <small className="border px-1">145</small> */}
               </div>
 
               <div className="d-flex my-2 justify-content-between align-items-center">
                 <div className="d-flex gap-2">
-                  <input type="checkbox" />
-                  <span>4000-5000 XFA</span>
+                  <input type="checkbox" onChange={price5} />
+                  <span>40001-50000 XFA</span>
                 </div>
-                <small className="border px-1">168</small>
-              </div> */}
+                {/* <small className="border px-1">168</small> */}
+              </div>
             </div>
           </div>
 
@@ -276,10 +326,10 @@ export default function Sculpture() {
             <div className="col-12 d-flex justify-content-between align-items-center">
               <div className="d-flex gap-2 my-3">
                 <BiGridSmall className="bg-white icon" />
-                <GiHamburgerMenu className="bg-white icon" />
+                {/* <GiHamburgerMenu className="bg-white icon" /> */}
               </div>
 
-              <div className="d-flex gap-2 my-3">
+              {/* <div className="d-flex gap-2 my-3">
                 <Dropdown>
                   <Dropdown.Toggle variant="light" id="sortBtn">
                     Sorting
@@ -303,14 +353,16 @@ export default function Sculpture() {
                     <Dropdown.Item href="#">30</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-              </div>
+              </div> */}
             </div>
 
             <div className="col-12 ">
-                <div className="row align-items-center px-2">
-                  {(sculpture?.length ?? 0) >= 1
-                    ? sculpture?.map((product, id) => {
-                      
+              {
+                (filteredProducts?.length >= 1) ?
+                  <div className="row align-items-center px-2">
+                    {(filteredProducts?.length ?? 0) >= 1
+                      ? filteredProducts?.map((product, id) => {
+
 
                         return (
                           <div
@@ -339,8 +391,8 @@ export default function Sculpture() {
                                 </div>
                               </div>
                               <button
-                                onClick={()=>{productDetail(product)}}
-                               className="col-12 d-flex border-0 bg-white py-3 flex-column justify-content-center align-items-center">
+                                onClick={() => { productDetail(product) }}
+                                className="col-12 d-flex border-0 bg-white py-3 flex-column justify-content-center align-items-center">
                                 <h6>{product?.name}</h6>
                                 <p>
                                   {product?.price} XFA{" "}
@@ -350,9 +402,100 @@ export default function Sculpture() {
                           </div>
                         );
                       })
-                    : "No Product found"}
-                </div>
-              </div>
+                      : "No Product found"}
+                  </div> :
+                  <div className="row align-items-center px-2">
+                    {(sculpture?.length ?? 0) >= 1
+                      ? sculpture?.map((product, id) => {
+
+
+                        return (
+                          <div
+                            key={id}
+                            className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
+                          >
+                            <div className="bg-white round shadow">
+                              <div className=" col-12 m-0 container_">
+                                <div className="col-12">
+                                  <img
+                                    src={product?.image}
+                                    alt="image"
+                                    className="img-fluid img"
+                                  />
+                                </div>
+                                <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                                  <HiShoppingCart
+                                    className="productIcon"
+                                    onClick={() => {
+                                      basketDrop(product);
+                                    }}
+                                  />
+                                  <AiOutlineHeart className="productIcon" />
+                                  <TfiReload className="productIcon" />
+                                  <HiMagnifyingGlass className="productIcon" />
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => { productDetail(product) }}
+                                className="col-12 d-flex border-0 bg-white py-3 flex-column justify-content-center align-items-center">
+                                <h6>{product?.name}</h6>
+                                <p>
+                                  {product?.price} XFA{" "}
+                                </p>
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })
+                      : "No Product found"}
+                  </div>
+              }
+              {/* <div className="row align-items-center px-2">
+                {(sculpture?.length ?? 0) >= 1
+                  ? sculpture?.map((product, id) => {
+
+
+                    return (
+                      <div
+                        key={id}
+                        className="col-12 col-sm-12 col-md-6 col-lg-4 p-1  "
+                      >
+                        <div className="bg-white round shadow">
+                          <div className=" col-12 m-0 container_">
+                            <div className="col-12">
+                              <img
+                                src={product?.image}
+                                alt="image"
+                                className="img-fluid img"
+                              />
+                            </div>
+                            <div className="col-12 d-flex gap-2 justify-content-center align-items-center icons">
+                              <HiShoppingCart
+                                className="productIcon"
+                                onClick={() => {
+                                  basketDrop(product);
+                                }}
+                              />
+                              <AiOutlineHeart className="productIcon" />
+                              <TfiReload className="productIcon" />
+                              <HiMagnifyingGlass className="productIcon" />
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => { productDetail(product) }}
+                            className="col-12 d-flex border-0 bg-white py-3 flex-column justify-content-center align-items-center">
+                            <h6>{product?.name}</h6>
+                            <p>
+                              {product?.price} XFA{" "}
+                            </p>
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
+                  : "No Product found"}
+              </div> */}
+            </div>
           </div>
         </div>
       </div>

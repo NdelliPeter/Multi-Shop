@@ -85,14 +85,14 @@ export default function Profile() {
                                 <NavLink className='links' to="aboutUser">About</NavLink>
                             </div>
                             <div className="col-12 my-3">
-                                <NavLink className='links' to="">Add Product</NavLink>
+                                <NavLink className='links' to="Users">Users</NavLink>
                             </div>
                             <div className="col-12 my-3">
-                                <NavLink className='links' to="addProduct">Add Product</NavLink>
+                                <NavLink className='links' to="products">Products</NavLink>
                             </div>
-                            <div className="col-12 my-3">
+                            {/* <div className="col-12 my-3">
                                 <NavLink className='links' to="addProduct">Add Product</NavLink>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-12 col-sm-12 col-md-8 col-lg-8 bg-white px-2 py-3">
                             <Outlet />

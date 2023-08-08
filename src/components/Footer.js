@@ -1,20 +1,22 @@
 import React from "react"
 import './Footer.css'
-import { NavLink } from "react-router-dom"
-import {ImLocation} from 'react-icons/im'
-import {FaEnvelope} from 'react-icons/fa'
-import {BsFillTelephoneFill} from 'react-icons/bs'
-import {MdKeyboardArrowRight} from 'react-icons/md'
-import {AiOutlineTwitter} from 'react-icons/ai'
-import {GrFacebookOption} from 'react-icons/gr'
-import {FaLinkedinIn} from 'react-icons/fa'
-import {AiOutlineInstagram} from 'react-icons/ai'
+import { NavLink, Outlet } from "react-router-dom"
+import { ImLocation } from 'react-icons/im'
+import { FaEnvelope } from 'react-icons/fa'
+import { BsFillTelephoneFill } from 'react-icons/bs'
+import { MdKeyboardArrowRight } from 'react-icons/md'
+import { AiOutlineTwitter } from 'react-icons/ai'
+import { GrFacebookOption } from 'react-icons/gr'
+import { FaLinkedinIn } from 'react-icons/fa'
+import { AiOutlineInstagram } from 'react-icons/ai'
 
 
 
 export default function Footer() {
     return (
-        <footer className="container-fluid bg-dark text-white p-5">
+        <>
+            <Outlet />
+            <footer className="container-fluid bg-dark text-white p-5">
                 <div className="row  ">
                     <div className="col-11 col-sm-11 col-md-6 col-lg-3 my-2">
                         <h3>GET IN TOUCH</h3>
@@ -64,7 +66,7 @@ export default function Footer() {
                         <h3>NEWSLETTER</h3>
 
                         <p>
-                            Dou stet tempor ipsum sit <br/> amet magna ipsum tempor est
+                            Dou stet tempor ipsum sit <br /> amet magna ipsum tempor est
                         </p>
                         <div className=' my-3 d-flex'>
                             <input className=' px-1 EmailAdress' placeholder='Your Email Address' />
@@ -90,6 +92,8 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-        </footer>
+            </footer>
+        </>
+
     )
 }

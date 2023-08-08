@@ -226,9 +226,7 @@ export default function HomeLayout() {
         </div>
       </div>
 
-      <Outlet />
 
-      <Footer />
     </>
   );
 }

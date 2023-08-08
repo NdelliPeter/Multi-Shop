@@ -24,11 +24,12 @@ import AddProduct from './Accounts/addProductFrom'
 import AboutUser from './Accounts/aboutUser';
 import BecomeVendor from './Accounts/becomeVendor';
 import ResetPassword from './Accounts/resetPassword';
+import Footer from './components/Footer';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Header />}>
-      <Route path='/' element={<HomeLayout />} >
+      <Route path='/' element={<Footer />} >
         <Route index element={<Home />} />
         <Route path='shop' element={<Shop />} />
         <Route path='shopDetails' element={<ShopDetails />} />

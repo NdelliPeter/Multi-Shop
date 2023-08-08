@@ -50,6 +50,7 @@ export default function AddProduct() {
         axios.post("http://localhost:4000/products", data)
             .then((res) => {
                 console.log(res.data);
+                alert(`The product ${res.data.name} was added successfully`)
             })
             .catch((err) => {
                 console.log(err);

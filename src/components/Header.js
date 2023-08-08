@@ -7,6 +7,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import axios from "axios";
 import Cookies from "js-cookie";
+import HomeLayout from "./HomeLayout";
 
 
 export default function Header() {
@@ -65,7 +66,7 @@ export default function Header() {
       navigate('/')
     })
 
-    basket.map((prod) =>{ 
+    basket?.map((prod) =>{ 
       axios.delete(`http://localhost:4000/baskets/${prod.id}`);
       setBasket(
         basket.filter((product) => {
@@ -74,7 +75,7 @@ export default function Header() {
       );
     })
 
-    checkout.map((prod) =>{ 
+    checkout?.map((prod) =>{ 
       axios.delete(`http://localhost:4000/checkout/${prod.id}`);
       setCheckout(
         checkout.filter((product) => {
@@ -176,7 +177,7 @@ export default function Header() {
           </nav>
         </div>
       </header>
-
+      <HomeLayout/>
       <Outlet />
     </>
   );

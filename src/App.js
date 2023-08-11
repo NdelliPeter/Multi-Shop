@@ -25,6 +25,8 @@ import AboutUser from './Accounts/aboutUser';
 import BecomeVendor from './Accounts/becomeVendor';
 import ResetPassword from './Accounts/resetPassword';
 import Footer from './components/Footer';
+import Momo from './pages/momo';
+import Paypal from './pages/paypal';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +40,8 @@ const router = createBrowserRouter(
         <Route path='contact' element={<Contact />} />
         <Route path='painting' element={<Painting />} />
         <Route path='sculpture' element={<Sculpture />} />
+        <Route path='momo' element={<Momo />} />
+        <Route path='paypal' element={<Paypal />} />
         <Route path='profile' element={<Profile />}>
           <Route path='addProduct' element={<AddProduct />} />
           <Route path='aboutUser' element={<AboutUser />} />

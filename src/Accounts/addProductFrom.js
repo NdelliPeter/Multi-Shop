@@ -13,19 +13,19 @@ import axios from "axios";
 const addProductSchema = yup.object().shape({
     name: yup
         .string()
-        .trim("Input a valid first name")
-        .required("first name can not be empty"),
+        .trim("Input a valid name")
+        .required("name can not be empty"),
     image: yup
         .string()
-        .trim("Input a valid last name")
-        .required("last name can not be empty"),
+        .trim("Input a valid image")
+        .required("image can not be empty"),
     category: yup
         .string()
         .trim("Input a valid last name")
-        .required("category canot be empty"),
+        .required("category can not be empty"),
     price: yup
         .number()
-        .required('Price should be field')
+        .required('Price can not be empty')
 });
 
 
@@ -117,7 +117,7 @@ export default function AddProduct() {
                         <input
                             className="col-12 my-2 p-2"
                             name="name"
-                            placeholder="John"
+                            placeholder="African Painting"
                             type="sring"
                             {...register("name")}
                         />

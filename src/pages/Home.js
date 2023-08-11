@@ -125,6 +125,7 @@ export default function Home() {
 
   return (
     <>
+    
       <div className="container-fluid py-5 justify-content-between homebg align-items">
         <div className="row justify-content-between homebg  ">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 px-5">
@@ -156,7 +157,7 @@ export default function Home() {
 
               <div className="col-12 col-sm-12 col-md-4 col-lg-4 d-flex flex-column align-items-between">
                 <div className="col-12 yellow">
-                  <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                  <div className="bgimage1 d-flex flex-column justify-content-center align-items-center">
                     <div className="d-flex align-items-center">
                       <div className="content">
                         <h6>SAVE 20%</h6>
@@ -171,7 +172,7 @@ export default function Home() {
                 </div>
 
                 <div className="col-12 mt-3 yellow">
-                  <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                  <div className="bgimage2 d-flex flex-column justify-content-center align-items-center">
                     <div className="d-flex align-items-center">
                       <div className="content">
                         <h6>SAVE 20%</h6>
@@ -349,12 +350,12 @@ export default function Home() {
           <div className="col-12 px-5 py-5">
             <div className="row d-flex justify-content-between">
               <div className="col-12 col-sm-12 col-md-12 col-lg-6 my-2 yellow">
-                <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                <div className="bgimage3 d-flex flex-column justify-content-center align-items-center">
                   <div className="d-flex align-items-center">
                     <div className="content">
-                      <h6>SAVE 20%</h6>
-                      <h4>Special Offer</h4>
-                      <button className="bg-warning py-2 px-3 yellowbtn"
+                      <h6 className="text-shadow">SAVE 20%</h6>
+                      <h4 className="">Special Offer</h4>
+                      <button className="bg-warning py-2 px-3 yellowbtn shadow"
                       onClick={moveToNewPageShop}>
                         Shop Now
                       </button>
@@ -364,12 +365,12 @@ export default function Home() {
               </div>
 
               <div className="col-12 col-sm-12 col-md-12 col-lg-6 my-2 yellow">
-                <div className="bgimage d-flex flex-column justify-content-center align-items-center">
+                <div className="bgimage4 d-flex flex-column justify-content-center align-items-center">
                   <div className="d-flex align-items-center">
                     <div className="content">
-                      <h6>SAVE 20%</h6>
-                      <h4>Special Offer</h4>
-                      <button className="bg-warning py-2 px-3 yellowbtn"
+                      <h6 className="text-shadow">SAVE 20%</h6>
+                      <h4 className="text-shadow">Special Offer</h4>
+                      <button className="bg-warning py-2 px-3 yellowbtn shadow"
                       onClick={moveToNewPageShop}>
                         Shop Now
                       </button>

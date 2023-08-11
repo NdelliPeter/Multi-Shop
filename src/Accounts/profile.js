@@ -49,7 +49,7 @@ export default function Profile() {
                         <Outlet />
                     </div>
                 </div> : (account?.role === 2468) ?
-                    <div className="row px-5 py-3">
+                    <div className="row px-5 py-3 ">
                         <div className="col-12 col-sm col-md-4 col-lg-4 bg-white shadow px-4 py-3">
                             <div className="d-flex justify-content-center my-3">
                                 <FaUserCircle className=" userIcon" />
@@ -70,7 +70,7 @@ export default function Profile() {
                             </div>
 
                         </div>
-                        <div className="col-12 col-sm-12 col-md-8 col-lg-8 bg-white px-2 py-3">
+                        <div className="col-12 col-sm-12 col-md-8 col-lg-8 bg-white px-2 py-3 ">
                             <Outlet />
                         </div>
                     </div> :

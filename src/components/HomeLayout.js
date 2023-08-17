@@ -41,7 +41,7 @@ export default function HomeLayout() {
     }
 
 
-  }, [])
+  }, [setBasket])
 
   const moveToCart = () => {
     navigate('/shoppingCart')

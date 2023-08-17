@@ -102,6 +102,7 @@ export default function SignIn() {
     })
     .catch((err) => {
       console.log(err);
+      alert(err)
     })
 
   };

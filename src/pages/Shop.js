@@ -118,7 +118,7 @@ export default function Shop() {
     const email = account?.email
     const local = localStorage.getItem(`${email}`)
     setBask(local ? JSON.parse(local) : [])
-  }, [setFilteredProducts]);
+  }, [setFilteredProducts, setBasket]);
 
   const basketDrop = (product) => {
 

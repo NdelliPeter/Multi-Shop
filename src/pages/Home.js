@@ -63,7 +63,7 @@ export default function Home() {
       // const email= account.email
       // const local = localStorage.getItem(`${email}`) 
       // setBask(local ? JSON.parse(local) : [])
-  }, []);
+  }, [setBasket]);
 
   const basketDrop = (product) => {
   
@@ -139,7 +139,7 @@ export default function Home() {
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
                     </p>
-                    <button className=" px-2 py-1 slidebtn" onClick={moveToNewPageShop}>Shop Now</button>
+                    <button className=" px-2 py-1 bg-warning slidebtn" onClick={moveToNewPageShop}>Shop Now</button>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel">
@@ -150,7 +150,7 @@ export default function Home() {
                       Lorem rebum magna amet lorem magna erat diam stet. Sadips
                       duo stet amet amet ndiam elitr ipsum diam
                     </p>
-                    <button className=" px-2 py-1 slidebtn" onClick={moveToNewPageShop}>Shop Now</button>
+                    <button className=" px-2 bg-warning py-1 slidebtn" onClick={moveToNewPageShop}>Shop Now</button>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>

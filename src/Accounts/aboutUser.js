@@ -42,6 +42,10 @@ export default function AboutUser() {
                             <h2>Email  </h2>
                             <h5>{account?.email}</h5>
                         </div>
+                        <div className="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <h2>Name</h2>
+                            <h5>{account?.fullname}</h5>
+                        </div>
                     </div> :
                     (account?.role === 2468) ?
                     <div className="row">
@@ -53,6 +57,10 @@ export default function AboutUser() {
                             <h2>Email  </h2>
                             <h5>{account?.email}</h5>
                         </div>
+                        <div className="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <h2>Name</h2>
+                            <h5>{account?.fullname}</h5>
+                        </div>
                     </div> :
                     <div className="row">
                         <div className="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -62,6 +70,10 @@ export default function AboutUser() {
                         <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h2>Email  </h2>
                             <h5>{account?.email}</h5>
+                        </div>
+                        <div className="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <h2>Name</h2>
+                            <h5>{account?.fullname}</h5>
                         </div>
                     </div>
                 }

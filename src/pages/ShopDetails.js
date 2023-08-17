@@ -44,7 +44,7 @@ export default function ShopDetails() {
     const local = localStorage.getItem(`${email}`) 
     setBask(local ? JSON.parse(local) : [])
     }
-  },[])
+  },[setBasket])
 
   const basketDrop = (product) => {
   

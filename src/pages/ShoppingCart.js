@@ -115,7 +115,7 @@ export default function ShoppingCart() {
       // const account = JSON.parse(localStorage.getItem('logIn user'));
       // const email= account.email
 
-  }, []);
+  }, [setBasket]);
 
   const deleteProduct = (productId) => {
       window.location.reload(false)

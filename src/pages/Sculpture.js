@@ -107,7 +107,7 @@ export default function Sculpture() {
     const email = account.email
     const local = localStorage.getItem(`${email}`)
     setBask(local ? JSON.parse(local) : [])
-  }, []);
+  }, [setBasket]);
 
   const basketDrop = (product) => {
 

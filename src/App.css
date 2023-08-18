@@ -52,8 +52,9 @@
 
 .account_lang_curret {
   display: inline-flex;
-  justify-content: space-around;
+  justify-content: end;
   padding-block: 3px;
+  gap: 20px;
 }
 
 #dropdown-basic {

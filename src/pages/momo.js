@@ -58,6 +58,7 @@ export default function Momo() {
             );
         })
         // window.location.reload()
+        alert('Dail *126# to confirm transaction')
         navigate('/')
     }
     const navigate = useNavigate(1);

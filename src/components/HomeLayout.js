@@ -12,7 +12,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillHeart } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiFillCaretRight } from "react-icons/ai";
-import { AiFillCaretDown } from "react-icons/ai";
+import { FaAngleDown } from "react-icons/fa";
 
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Footer from "../components/Footer";
@@ -93,16 +93,16 @@ export default function HomeLayout() {
                   </div>
 
 
-                  <div className="col-lg-3 d-none d-sm-none px-0 d-md-none d-lg-block">
-                    <div className="row px-3 align-items-center">
+                  <div className="col-lg-2 d-none d-sm-none px-0 d-md-none d-lg-block">
+                    <div className="row justify-content-center mx-0 align-items-center bg-warning">
                       <DropdownMenu.Root>
-                        <DropdownMenu.Trigger className="bg-warning col-12 dropdown-categories py-4 px-4 text-dark">
+                        <DropdownMenu.Trigger className="bg-warning col-lg-12 dropdown-categories py-4 px-2 text-dark">
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
                               <GiHamburgerMenu className="mx-2 bolder" />
                               <b>Categories</b>
                             </div>
-                            <AiFillCaretDown />
+                            <FaAngleDown className="bolder" />
                           </div>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Portal>
@@ -169,7 +169,7 @@ export default function HomeLayout() {
                     </NavLink>
                   </div>)
                   }
-                  <div className=" col-7 d-none d-sm-none d-md-none d-lg-flex gap-3">
+                  <div className=" col-8 d-none d-sm-none d-md-none d-lg-flex gap-3">
 
                     <NavLink className=" nestedlink" to="/">
                       Home

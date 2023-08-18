@@ -104,7 +104,7 @@ export default function Sculpture() {
       .catch((err) => console.log(err));
 
     const account = JSON.parse(localStorage.getItem('logIn user'));
-    const email = account.email
+    const email = account?.email
     const local = localStorage.getItem(`${email}`)
     setBask(local ? JSON.parse(local) : [])
   }, [setBasket]);

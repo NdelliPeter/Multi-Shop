@@ -113,7 +113,7 @@ export default function Header() {
                   FAQs
                 </NavLink>
               </div>
-              <div className="col-11 col-sm-11 col-md-8 col-lg-4  account_lang_curret">
+              <div className="col-11 col-sm-11 col-md-8 col-lg-4 d-flex justify-content-lg-end justify-content-md-center   account_lang_curret">
                 {checkAccount ? <Dropdown>
                   <Dropdown.Toggle variant="light" id="dropdown-basic">
                     Account

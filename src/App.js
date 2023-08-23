@@ -27,6 +27,7 @@ import ResetPassword from './Accounts/resetPassword';
 import Footer from './components/Footer';
 import Momo from './pages/momo';
 import Paypal from './pages/paypal';
+import Fabric from './pages/fabric';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
         <Route path='contact' element={<Contact />} />
         <Route path='painting' element={<Painting />} />
         <Route path='sculpture' element={<Sculpture />} />
+        <Route path='fabric' element={<Fabric />} />
         <Route path='momo' element={<Momo />} />
         <Route path='paypal' element={<Paypal />} />
         <Route path='profile' element={<Profile />}>

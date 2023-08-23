@@ -46,6 +46,15 @@ export default function HomeLayout() {
   const moveToCart = () => {
     navigate('/shoppingCart')
   }
+  const toPainting = () => {
+    navigate('/painting')
+  }
+  const toSculpture = () => {
+    navigate('/sculpture')
+  }
+  const toFabric = () => {
+    navigate('/fabric')
+  }
 
   const navigate = useNavigate(1)
 
@@ -109,18 +118,18 @@ export default function HomeLayout() {
                           <DropdownMenu.Content className="DropdownMenuContent">
                             <DropdownMenu.Separator className="DropdownMenuSeparator" />
                             <DropdownMenu.Item
-                              href="painting"
+                            onClick={toPainting}
                             className="DropdownMenuItem">
                               Paintings
                             </DropdownMenu.Item>
                             <DropdownMenu.Separator className="DropdownMenuSeparator" />
                             <DropdownMenu.Item 
-                            href="sculptur"
+                            onClick={toSculpture}
                             className="DropdownMenuItem">
                               Sculptures
                             </DropdownMenu.Item>
                             <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                            <DropdownMenu.Item className="DropdownMenuItem">
+                            <DropdownMenu.Item onClick={toFabric} className="DropdownMenuItem">
                               Fabrics
                             </DropdownMenu.Item>
                           </DropdownMenu.Content>
@@ -132,7 +141,7 @@ export default function HomeLayout() {
 
                   <div className="col-7 col-sm-7 d-flex d-sm-flex d-md-flex d-lg-none px-0 justify-content-end position">
                     <button
-                      className="  togglebtn"
+                      className="togglebtn"
                       onClick={() => setToggle(!toggle)}>
                       <GiHamburgerMenu />
                     </button>

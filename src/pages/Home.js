@@ -122,6 +122,9 @@ export default function Home() {
   const moveToNewPageShop = () => {
     return( navigate("/shop")
     )};
+  const moveToNewPageFabric = () => {
+    return( navigate("/fabric")
+    )};
 
   return (
     <>
@@ -262,7 +265,7 @@ export default function Home() {
                 </div>
               </button>
 
-              <button className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
+              <button onClick={moveToNewPageFabric} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
                 <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
                   <div className="catego-hieght">
                     <img className="img-fluid" src={girl} alt="camera" />

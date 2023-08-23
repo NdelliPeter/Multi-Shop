@@ -60,6 +60,7 @@ export default function Momo() {
         // window.location.reload()
         alert('Dail *126# to confirm transaction')
         navigate('/')
+        window.location.reload(false)
     }
     const navigate = useNavigate(1);
 

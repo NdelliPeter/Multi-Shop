@@ -35,6 +35,7 @@ export default function BecomeVendor() {
         axios.put(`http://localhost:4000/accounts/${account?.id}`, account)
             .then((res) => {
                 console.log(res.data);
+                window.location.reload(false)
             }).catch((err)=>{
                 console.log(err);
             })

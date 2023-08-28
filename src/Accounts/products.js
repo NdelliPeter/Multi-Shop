@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { NavLink } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
+import { FiEdit3 } from "react-icons/fi";
 
 
 
@@ -12,7 +14,7 @@ export default function Products() {
     useEffect(() => {
         axios.get("http://localhost:4000/products")
             .then((res) => {
-                res.data
+                // console.log(res.data);
                 setProducts(res.data)
             })
     },[])
@@ -20,14 +22,15 @@ export default function Products() {
     const deleteProduct = (productId) => {
         window.location.reload(false)
       axios.delete(`http://localhost:4000/products/${productId}`);
-      setBasket(
-        products.filter((product) => {
-          return product.id !== productId;
-        })    
-      );
+    //   setProducts(
+    //     products.filter((product) => {
+    //       return product.id !== productId;
+    //     })    
+    //   );
     };
+    const editProduct = (productId) => {
 
-
+    }
 
 
 
@@ -52,7 +55,7 @@ export default function Products() {
                     </h5>
                 </div>
                 {(products?.length ?? 0) >= 1
-                    ? basket.map((product, id) => {
+                    ? products.map((product, id) => {
                         return (
                             <div
                                 key={id}
@@ -81,7 +84,17 @@ export default function Products() {
                                     <div className="col-3 col-sm-3 col-md-2 col-lg-2 d-flex my-2 justify-content-center align-items-center">
                                         {product?.category}
                                     </div>
-                                    <div className="col-2 d-flex my-2 justify-content-center align-items-center">
+                                    <div className="col-1 d-flex my-2 justify-content-center align-items-center">
+                                        <button
+                                            className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
+                                            onClick={() => {
+                                                editProduct(product?.id);
+                                            }}
+                                        >
+                                            <FiEdit3 />
+                                        </button>
+                                    </div>
+                                    <div className="col-1 d-flex my-2 justify-content-center align-items-center">
                                         <button
                                             className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
                                             onClick={() => {

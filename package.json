@@ -35,6 +35,7 @@
     "react-select": "^5.7.0",
     "react-spinners": "^0.13.8",
     "react-uuid": "^2.0.0",
+    "reactjs-popup": "^2.0.5",
     "stripe": "^11.17.0",
     "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4",

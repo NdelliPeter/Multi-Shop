@@ -95,8 +95,10 @@ export default function SignIn() {
       })
       // setBasket(i)
       navigate("/")
+      window.location.reload(false)
     }else{
       navigate("/")
+      window.location.reload(false)
     }
 
     })

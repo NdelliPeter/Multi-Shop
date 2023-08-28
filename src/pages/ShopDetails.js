@@ -47,39 +47,42 @@ export default function ShopDetails() {
   },[setBasket])
 
   const basketDrop = (product) => {
-  
+
     const cookies = Cookies.get('jwt')
     const account = JSON.parse(localStorage.getItem('logIn user'));
     // console.log(cookies, account);
- 
-    if(cookies && account !== undefined){
+
+    if (cookies && account !== undefined) {
       const drop = products.find(
         (productItem) =>
           products.indexOf(productItem) === products.indexOf(product)
       );
       window.location.reload(false)
-      const email= account.email
-      const put = [drop, ...bask]
-      console.log(put);
-      setBask(put)
-      localStorage.setItem(`${email}`,JSON.stringify(put))
-      // setBask(drop)
-     
-      axios
-      .post("http://localhost:4000/baskets", drop)
-      .then((res) => {
-        setBasket(drop)
-        // localStorage.setItem(`${email}`, JSON.stringify(drop))
-        // setCout(count + 1)
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      const email = account.email
+      basket.find((prod)=>prod.id === drop.id)
+      if (basket.id !== drop.id) {
+        axios
+          .post("http://localhost:4000/baskets", drop)
+          .then((res) => {
+            const put = [drop, ...basket]
+            setBasket(put)
+            localStorage.setItem(`${email}`, JSON.stringify(put))
+            setCout(count + 1)
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }else {
+        console.log('Product already exsist');
+      }
+
     } else {
       migrate("/signIn")
     }
-  }
+
+    // console.log('podvpfnvsdsnvsddcsd', product);
+  };
 
   const productDetail = (product) => {
     

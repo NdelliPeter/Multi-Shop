@@ -14,6 +14,7 @@ import Cookies from "js-cookie";
 export default function Painting() {
   const [products, setProducts] = useState([]);
   const [basket, setBasket] = useState();
+  const [count, setCout] = useState(0)
   const [bask, setBask] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
 
@@ -124,27 +125,30 @@ export default function Painting() {
       );
       window.location.reload(false)
       const email = account.email
-      const put = [drop, ...bask]
-      console.log(put);
-      setBask(put)
-      localStorage.setItem(`${email}`, JSON.stringify(put))
-      // setBask(drop)
+      basket.find((prod)=>prod.id === drop.id)
+      if (basket.id !== drop.id) {
+        axios
+          .post("http://localhost:4000/baskets", drop)
+          .then((res) => {
+            const put = [drop, ...basket]
+            setBasket(put)
+            localStorage.setItem(`${email}`, JSON.stringify(put))
+            setCout(count + 1)
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }else {
+        console.log('Product already exsist');
+      }
 
-      axios
-        .post("http://localhost:4000/baskets", drop)
-        .then((res) => {
-          setBasket(drop)
-          // localStorage.setItem(`${email}`, JSON.stringify(drop))
-          // setCout(count + 1)
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
     } else {
       migrate("/signIn")
     }
-  }
+
+    // console.log('podvpfnvsdsnvsddcsd', product);
+  };
 
   const productDetail = (product) => {
 

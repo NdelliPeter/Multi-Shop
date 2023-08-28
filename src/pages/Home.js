@@ -41,65 +41,70 @@ export default function Home() {
         setProducts(respo);
         console.log(respo);
       })
-      .catch((err) => console.log(err)); 
+      .catch((err) => console.log(err));
     axios
       .get("http://localhost:4000/baskets")
       .then((res) => {
         const respo = res.data;
         const account = JSON.parse(localStorage.getItem('logIn user'));
-        const email= account.email
-        if(account){
-          if(JSON.parse(localStorage.getItem(`${email}`))){
+        const email = account.email
+        if (account) {
+          if (JSON.parse(localStorage.getItem(`${email}`))) {
             setBasket(JSON.parse(localStorage.getItem(`${email}`)))
           }
         }
         setBasket(respo);
         console.log(respo);
       })
-      .catch((err) => console.log(err)); 
-     
-      
-      const account = JSON.parse(localStorage.getItem('logIn user'));
-      // const email= account.email
-      // const local = localStorage.getItem(`${email}`) 
-      // setBask(local ? JSON.parse(local) : [])
+      .catch((err) => console.log(err));
+
+
+    const account = JSON.parse(localStorage.getItem('logIn user'));
+    // const email= account.email
+    // const local = localStorage.getItem(`${email}`) 
+    // setBask(local ? JSON.parse(local) : [])
   }, [setBasket]);
 
   const basketDrop = (product) => {
-  
+
     const cookies = Cookies.get('jwt')
     const account = JSON.parse(localStorage.getItem('logIn user'));
     // console.log(cookies, account);
- 
-    if(cookies && account !== undefined){
+
+    if (cookies && account !== undefined) {
       const drop = products.find(
         (productItem) =>
           products.indexOf(productItem) === products.indexOf(product)
       );
       window.location.reload(false)
-      const email= account.email
-     
-      axios
-      .post("http://localhost:4000/baskets", drop)
-      .then((res) => {
-        const put = [drop, ...basket]
-        setBasket(put)
-        localStorage.setItem(`${email}`, JSON.stringify(put))
-        setCout(count + 1)
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      const email = account.email
+      basket.find((prod)=>prod.id === drop.id)
+      if (basket.id !== drop.id) {
+        axios
+          .post("http://localhost:4000/baskets", drop)
+          .then((res) => {
+            const put = [drop, ...basket]
+            setBasket(put)
+            localStorage.setItem(`${email}`, JSON.stringify(put))
+            setCout(count + 1)
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }else {
+        console.log('Product already exsist');
+      }
+
     } else {
       migrate("/signIn")
     }
-    
+
     // console.log('podvpfnvsdsnvsddcsd', product);
   };
 
   const productDetail = (product) => {
-    
+
     const item = products.find(
       (productItem) =>
         products.indexOf(productItem) === products.indexOf(product)
@@ -107,28 +112,32 @@ export default function Home() {
     // console.log(item);
     localStorage.setItem('item', JSON.stringify(item))
     navigate("/shopDetails")
-    
+
   }
 
   const migrate = useNavigate(-1)
   const navigate = useNavigate(1);
 
   const moveToNewPagePainting = () => {
-    return( navigate("/painting")
-    )};
+    return (navigate("/painting")
+    )
+  };
   const moveToNewPageSculpture = () => {
-    return( navigate("/sculpture")
-    )};
+    return (navigate("/sculpture")
+    )
+  };
   const moveToNewPageShop = () => {
-    return( navigate("/shop")
-    )};
+    return (navigate("/shop")
+    )
+  };
   const moveToNewPageFabric = () => {
-    return( navigate("/fabric")
-    )};
+    return (navigate("/fabric")
+    )
+  };
 
   return (
     <>
-    
+
       <div className="container-fluid py-5 justify-content-between homebg align-items">
         <div className="row justify-content-between homebg  ">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 px-5">
@@ -166,7 +175,7 @@ export default function Home() {
                         <h6>SAVE 20%</h6>
                         <h4>Special Offer</h4>
                         <button className="bg-warning py-2 px-3 yellowbtn"
-                        onClick={moveToNewPageShop}>
+                          onClick={moveToNewPageShop}>
                           Shop Now
                         </button>
                       </div>
@@ -181,7 +190,7 @@ export default function Home() {
                         <h6>SAVE 20%</h6>
                         <h4>Special Offer</h4>
                         <button className="bg-warning py-2 px-3 yellowbtn"
-                        onClick={moveToNewPageShop}>
+                          onClick={moveToNewPageShop}>
                           Shop Now
                         </button>
                       </div>
@@ -233,13 +242,13 @@ export default function Home() {
           <div className=" col-12 px-5">
             <div className="row align-items-center">
               <h2 className="col-12">CATEGORIES</h2>
-              <button onClick={moveToNewPageSculpture} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
-                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
-                  <div className="catego-hieght">
+              <button onClick={moveToNewPageSculpture} className="col-12 col-sm-12 col-md-6 col-lg-3 border-0">
+                <div className="row d-flex align-items-center  mx-1 bg-white ">
+                  <div className=" col-5 px-0 catego-hieght">
                     <img className="img-fluid" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuM3YbbYyz_SqA3hNiL9td-kYzunNmc8knA&usqp=CAU'} alt="camera" />
                   </div>
 
-                  <div className="">
+                  <div className="col-6">
                     <span>
                       <b>Sculptures</b>
                     </span>
@@ -250,12 +259,12 @@ export default function Home() {
               </button>
 
               <button onClick={moveToNewPagePainting} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
-                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
-                  <div className="catego-hieght">
+                <div className="row d-flex align-items-center mx-1 bg-white ">
+                  <div className="col-5 px-0 catego-hieght">
                     <img className="img-fluid" src={'https://i.etsystatic.com/29816960/r/il/7edd48/4074046958/il_fullxfull.4074046958_gpw3.jpg'} alt="camera" />
                   </div>
 
-                  <div className="">
+                  <div className="col-6">
                     <span>
                       <b>Painting</b>
                     </span>
@@ -266,12 +275,12 @@ export default function Home() {
               </button>
 
               <button onClick={moveToNewPageFabric} className="col-12 col-sm-12 col-md-6 col-lg-3 py-2 border-0">
-                <div className="d-flex align-items-center gap-3 px-2 py-3 bg-white ">
-                  <div className="catego-hieght">
-                    <img className="img-fluid" src={girl} alt="camera" />
+                <div className="row d-flex align-items-center mx-1 bg-white ">
+                  <div className="col-5 px-0 catego-hieght">
+                    <img className="img-fluid" src={'https://m.media-amazon.com/images/I/71OEibRMGIL._AC_SL1000_.jpg'} alt="camera" />
                   </div>
 
-                  <div className="">
+                  <div className="col-6">
                     <span>
                       <b>Fabrics</b>
                     </span>
@@ -291,15 +300,15 @@ export default function Home() {
                 <h2>FEATURED PRODUCTS</h2>
               </div>
               {
-                isLoading ? <LoadingSpinner/> :
+                isLoading ? <LoadingSpinner /> :
 
-                <div className="col-12 ">
-                  <div className="row">
-                    {(products?.length ?? 0) >= 1
-                      ? products.map((product, id) => {
+                  <div className="col-12 ">
+                    <div className="row">
+                      {(products?.length ?? 0) >= 1
+                        ? products.map((product, id) => {
                           return (
                             <div
-                              
+
                               key={id}
                               className="col-12 col-sm-12 col-md-3 col-lg-3 p-1 "
                             >
@@ -321,18 +330,18 @@ export default function Home() {
                                       type="button"
                                     />
                                     <AiOutlineHeart className="productIcon"
-                                     type="button" 
-                                     />
-                                    <TfiReload className="productIcon" 
-                                      onClick={()=>{window.location.reload(false)}}
+                                      type="button"
+                                    />
+                                    <TfiReload className="productIcon"
+                                      onClick={() => { window.location.reload(false) }}
                                       type="button" />
                                     <HiMagnifyingGlass className="productIcon"
-                                     type="button" />
+                                      type="button" />
                                   </div>
                                 </div>
-                                <button 
-                                onClick={()=>{productDetail(product)}}
-                                className="col-12 border-0 bg-white d-flex py-3 flex-column justify-content-center align-items-center">
+                                <button
+                                  onClick={() => { productDetail(product) }}
+                                  className="col-12 border-0 bg-white d-flex py-3 flex-column justify-content-center align-items-center">
                                   <h6>{product.name}</h6>
                                   <p>
                                     {product.price} XFA{" "}
@@ -342,9 +351,9 @@ export default function Home() {
                             </div>
                           );
                         })
-                      : "No Product found"}
+                        : "No Product found"}
+                    </div>
                   </div>
-                </div>
               }
 
             </div>
@@ -359,7 +368,7 @@ export default function Home() {
                       <h6 className="text-shadow">SAVE 20%</h6>
                       <h4 className="">Special Offer</h4>
                       <button className="bg-warning py-2 px-3 yellowbtn shadow"
-                      onClick={moveToNewPageShop}>
+                        onClick={moveToNewPageShop}>
                         Shop Now
                       </button>
                     </div>
@@ -374,7 +383,7 @@ export default function Home() {
                       <h6 className="text-shadow">SAVE 20%</h6>
                       <h4 className="text-shadow">Special Offer</h4>
                       <button className="bg-warning py-2 px-3 yellowbtn shadow"
-                      onClick={moveToNewPageShop}>
+                        onClick={moveToNewPageShop}>
                         Shop Now
                       </button>
                     </div>
@@ -385,7 +394,7 @@ export default function Home() {
           </div>
           <div className="col-12 px-5 ">
             <div className="row d-flex justify-content-center align-items-center" >
-            {/* <Carousel className="col-12 d-flex jus  tity-content-center align-items-center">
+              {/* <Carousel className="col-12 d-flex jus  tity-content-center align-items-center">
               <Carousel.Item className="logo col-3">
                 <img
                   className="img-fluid"
@@ -457,7 +466,7 @@ export default function Home() {
                 />
               </Carousel.Item>
             </Carousel> */}
-            {/* <OwlCarousel
+              {/* <OwlCarousel
             className="owl-items"
             items="4"
             autoplay
@@ -484,7 +493,7 @@ export default function Home() {
             </OwlCarousel>; */}
 
             </div>
-            
+
           </div>
         </div>
       </div>

@@ -28,6 +28,8 @@ import Footer from './components/Footer';
 import Momo from './pages/momo';
 import Paypal from './pages/paypal';
 import Fabric from './pages/fabric';
+import Users from './Accounts/users';
+import Products from './Accounts/products';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -49,6 +51,8 @@ const router = createBrowserRouter(
           <Route path='aboutUser' element={<AboutUser />} />
           <Route path='becomeVendor' element={<BecomeVendor />} />
           <Route path='resetPassword' element={<ResetPassword/>} />
+          <Route path='users' element={<Users />} />
+          <Route path='products' element={<Products/>} />
 
         </Route>
 

@@ -25,10 +25,6 @@ const SignUpSchema = yup.object().shape({
     .max(10)
     .trim("Please input cannot contain just spaces")
     .required("Please input user name"),
-  // role: yup
-  //   .string()
-  //   .trim("Please input cannot contain just spaces")
-  //   .required("Please input role"),
   email: yup
     .string()
     .email("please input a valid email")
@@ -39,11 +35,6 @@ const SignUpSchema = yup.object().shape({
     .max(12)
     .matches(passwordRules, { message: "Password should include uppercase, lowercase, special character and number" })
     .required("password cannot be empty"),
-  // confirmPassword: yup
-  //   .string()
-  //   .test("passwords-match", "Passwords must match", function (value) {
-  //     return this.parent.password === value;
-  //   }),
 });
 
 export default function SignUp() {

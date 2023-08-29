@@ -57,15 +57,7 @@ export default function Edit(props) {
             <div className="row justify-content-between align-items-center popup-body">
                 <div className="col-12 d-flex justify-content-between align-items-center">
                     <h2 className="col-11">Edit User</h2>
-                    {/* <button
-                        className="col-1 bg-danger text-white d-flex align-items-center p-2 quantitybtn"
-                        onClick={() => {
-                            props.setTrigger(false);
-                        }}
-                    >
-                        <FaTimes />
-                    </button> */}
-                    <div className="col-2 d-flex my-2 justify-content-center align-items-center">
+                    <div className="col-2 d-flex py-5 my-2 justify-content-center align-items-center">
                         <button
                             className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
                             onClick={() => {

@@ -86,7 +86,7 @@ export default function Products() {
                                     </div>
                                     <div className="col-1 d-flex my-2 justify-content-center align-items-center">
                                         <button
-                                            className="bg-danger text-white d-flex align-items-center p-2 quantitybtn"
+                                            className="bg-primary text-white d-flex align-items-center p-2 quantitybtn"
                                             onClick={() => {
                                                 editProduct(product?.id);
                                             }}

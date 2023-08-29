@@ -92,7 +92,7 @@ export default function Users() {
                                             className="bg-primary text-white d-flex align-items-center p-2 quantitybtn"
                                             onClick={() => {
                                                 editProduct(product?.id);
-                                                setOpen(true)
+                                                setOpen(true) 
                                             }}
                                         >
                                             <FiEdit3 />

@@ -50,9 +50,9 @@ const router = createBrowserRouter(
           <Route path='addProduct' element={<AddProduct />} />
           <Route path='aboutUser' element={<AboutUser />} />
           <Route path='becomeVendor' element={<BecomeVendor />} />
-          <Route path='resetPassword' element={<ResetPassword/>} />
+          <Route path='resetPassword' element={<ResetPassword />} />
           <Route path='users' element={<Users />} />
-          <Route path='products' element={<Products/>} />
+          <Route path='products' element={<Products />} />
 
         </Route>
 
@@ -80,20 +80,7 @@ function App() {
 
   return (
     <main>
-      {
-        loading ?
-          <RingLoader
-            color='gold'
-            loading={loading}
-            // cssOverride={override}
-            size={150}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-          :
-          <RouterProvider router={router} />
-
-      }
+      <RouterProvider router={router} />
     </main>
   );
 }

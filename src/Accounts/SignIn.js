@@ -176,7 +176,7 @@ export default function SignIn() {
           </span>
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Don't have an account yet?</small>
-            <Button onClick={moveToNewPage}>SignUp</Button>
+            <button className="text-white navbtn" onClick={moveToNewPage}>SignUp</button>
           </div>
         </form>
       </div>

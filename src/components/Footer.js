@@ -22,19 +22,19 @@ export default function Footer() {
                         <h3>GET IN TOUCH</h3>
 
                         <p>
-                            No dolore ipsum accusam no lorem. Invidunt sed clita kasd et dolor sed dolor. Rebum temor no vero est magna amet no
+                            You can get to us though the following:
                         </p>
                         <div className="d-flex gap-2">
                             <ImLocation className="text-warning" />
-                            <div>123 Street, New York, USA</div>
+                            <div>Buea, South west, Cameroon</div>
                         </div>
                         <div className="d-flex gap-2">
                             <FaEnvelope className="text-warning" />
-                            <div>mail@domain.com</div>
+                            <div>africanart@gamil.com.com</div>
                         </div>
                         <div className="d-flex gap-2">
                             <BsFillTelephoneFill className="text-warning" />
-                            <div>+237 123 456 789</div>
+                            <div>+237 682 737 298</div>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@ export default function Footer() {
                         <NavLink className='footerLink d-flex align-items-center' to="/"><MdKeyboardArrowRight /> Home</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="shop"><MdKeyboardArrowRight /> Our Shop</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="shopDetails"><MdKeyboardArrowRight /> Shop Detail</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center' to="shoppingCart"><MdKeyboardArrowRight /> Shopping Cart</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shoppingCart"><MdKeyboardArrowRight /> Cart</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="checkOut"><MdKeyboardArrowRight /> Checkout</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="contact"><MdKeyboardArrowRight /> Contact Us</NavLink>
 
@@ -56,7 +56,7 @@ export default function Footer() {
                         <NavLink className='footerLink d-flex align-items-center' to="/"><MdKeyboardArrowRight /> Home</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="shop"><MdKeyboardArrowRight /> Our Shop</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="shopDetails"><MdKeyboardArrowRight /> Shop Detail</NavLink>
-                        <NavLink className='footerLink d-flex align-items-center' to="shoppingCart"><MdKeyboardArrowRight /> Shopping Cart</NavLink>
+                        <NavLink className='footerLink d-flex align-items-center' to="shoppingCart"><MdKeyboardArrowRight /> Cart</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="checkOut"><MdKeyboardArrowRight /> Checkout</NavLink>
                         <NavLink className='footerLink d-flex align-items-center' to="contact"><MdKeyboardArrowRight /> Contact Us</NavLink>
 
@@ -78,10 +78,10 @@ export default function Footer() {
                         <h5>FOLLOW US</h5>
                         <div className="d-flex gap-1 pt-3">
                             <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
-                                <AiOutlineTwitter className="text-dark" />
+                                <AiOutlineTwitter  className="text-dark" />
                             </div>
                             <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
-                                <GrFacebookOption className="text-dark" />
+                                <GrFacebookOption  className="text-dark" />
                             </div>
                             <div className=" d-flex p-3 bg-warning justify-content-center align-items-center">
                                 <FaLinkedinIn className="text-dark" />

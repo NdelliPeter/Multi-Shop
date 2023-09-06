@@ -14,14 +14,14 @@
 .rounded{
     margin: 0rem;
     position: fixed;
-    top: 60%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 .passBox{
     border: 1px solid black;
     border-radius: 3px;
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
 
 }
 .pass{
@@ -32,14 +32,17 @@
     /* border-radius: 3px; */
 
 }
+.pass :active{
+    border: none;
+}
 .eyebtn{
 
     border: none;
-    /* border: 1px solid black;
-    border-left: none;
+    /* border: 1px solid black; */
+    /* border-left: none;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; */
-    margin-left: -20px;
+    margin-left: -8px;
     background-color: white;
 }
 .forgotbtn{

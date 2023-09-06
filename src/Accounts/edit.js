@@ -29,10 +29,10 @@ const EditSchema = yup.object().shape({
     //     .max(12)
     //     .matches(passwordRules, { message: "Password should include uppercase, lowercase, special character and number" })
     //     .required("password cannot be empty"),
-    role: yup
-        .string()
-        .trim("Please input cannot contain just spaces")
-        .require("Please input role")
+    // role: yup
+    //     .string()
+    //     .trim("Please input cannot contain just spaces")
+    //     .require("Please input role")
 });
 
 export default function Edit(props) {

@@ -48,7 +48,7 @@ const router = createBrowserRouter(
         <Route path='paypal' element={<Paypal />} />
         <Route path='profile' element={<Profile />}>
           <Route path='addProduct' element={<AddProduct />} />
-          <Route path='aboutUser' element={<AboutUser />} />
+          <Route index element={<AboutUser />} />
           <Route path='becomeVendor' element={<BecomeVendor />} />
           <Route path='resetPassword' element={<ResetPassword />} />
           <Route path='users' element={<Users />} />

@@ -186,7 +186,7 @@ export default function SignUp() {
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
-                className="col-10 ms-1 pass"
+                className="col-10 ms-1 px-1 pass"
                 type={passwordType} 
                 onChange={handlePasswordChange} 
                 name="password"
@@ -229,7 +229,7 @@ export default function SignUp() {
           </span>
           <div className="col-12 my-2 d-flex justify-content-between align-items-center">
             <small>Already have an account</small>
-            <Button onClick={moveToNewPage}>SignIn</Button>
+            <button className=" text-white navbtn" onClick={moveToNewPage}>SignIn</button>
           </div>
         </form>
         </div>

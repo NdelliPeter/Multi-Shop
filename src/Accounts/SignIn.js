@@ -6,8 +6,7 @@ import Cookies from "js-cookie";
 
 import * as yup from "yup";
 import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import {  useNavigate } from "react-router-dom";
 import {AiFillEyeInvisible} from "react-icons/ai";
 import {AiFillEye} from "react-icons/ai";
 
@@ -89,7 +88,7 @@ export default function SignIn() {
     console.log(user);
     const input = JSON.parse(localStorage.getItem(`${user.email}`))
     if (input) {
-      input.map((i)=> {
+      input.map((i) => {
         axios.post(`http://localhost:4000/baskets`, i)
 
       })
@@ -110,7 +109,7 @@ export default function SignIn() {
   };
 
   const SignInSubmit = (data) => {
-    // reset();
+    reset();
     checkAccount(data);
     // console.log(data);
   };
@@ -137,7 +136,7 @@ export default function SignIn() {
           <h1>Sign In</h1> 
 
           <input
-            className="col-12 my-2"
+            className="col-12 my-2 p-2"
             name="email_or_username"
             type="string"
             placeholder="user name or email"
@@ -149,7 +148,7 @@ export default function SignIn() {
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
-                className="col-10 ms-1 pass"
+                className="col-10 ms-1 p-2 pass"
                 type={passwordType} 
                 onChange={handlePasswordChange} 
                 name="password"
@@ -167,7 +166,7 @@ export default function SignIn() {
           </p>
        
            <button className="forgotbtn" onClick={forgotPassword}>Forgotten password?</button>
-          <button className="col-12 mt-4 signInBtn" type="submit">
+          <button className="col-12 mt-4 my-4 signInBtn" type="submit">
             {" "}
             SIGN IN
           </button>

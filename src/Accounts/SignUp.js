@@ -4,11 +4,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import SignUpSchema from "../Schema/SignUpSchema";
-import { v4 as uuid} from 'uuid'
 import * as yup from "yup";
 import axios from "axios";
-import { Button } from "react-bootstrap";
 import {AiFillEyeInvisible} from "react-icons/ai";
 import {AiFillEye} from "react-icons/ai";
 
@@ -142,7 +139,7 @@ export default function SignUp() {
           <h1>Sign Up</h1>
 
           <input
-            className="col-12 my-2"
+            className="col-12 my-2 p-2"
             name="fullname"
             type="string"
             placeholder="Full Name"
@@ -153,7 +150,7 @@ export default function SignUp() {
           </span>
 
           <input
-            className="col-12 my-2"
+            className="col-12 my-2 p-2"
             name="userName"
             type="string"
             placeholder="userName"
@@ -173,7 +170,7 @@ export default function SignUp() {
           </select> */}
 
           <input
-            className="col-12 my-2"
+            className="col-12 my-2 p-2"
             name="email"
             type="email"
             placeholder="email"
@@ -186,7 +183,7 @@ export default function SignUp() {
           <div className="col-12 my-2 passBox ">
             <div className="row px-2">
               <input
-                className="col-10 ms-1 px-1 pass"
+                className="col-10 ms-1 px-1 p-2 pass"
                 type={passwordType} 
                 onChange={handlePasswordChange} 
                 name="password"
@@ -202,26 +199,7 @@ export default function SignUp() {
             {errors.password?.message}
           </span>
 
-          {/* <div className="col-12 my-2 passBox ">
-            <div className="row px-2">
-              <input
-                className="col-10 ms-1 pass"
-                type={passwordType} 
-                onChange={handlePasswordChange} 
-                name="confirmPassword"
-                placeholder="confirm password"
-                {...register("confirmPassword")}
-              />
-              <button className="col-2 eyebtn " onClick={togglePassword}>
-                { passwordType==="password"? <i className="bi bi-eye-slash"><AiFillEyeInvisible/></i> :<i className="bi bi-eye"><AiFillEye/></i> }
-              </button>
-            </div>            
-          </div>
-          <span className="text-danger font-strong">
-            {errors.confirmPassword?.message}
-          </span> */}
-
-          <button className="col-12 mt-4 signUpBtn" href="home" type="submit">
+          <button className="col-12 my-4  signUpBtn" href="home" type="submit">
             SIGN UP
           </button>
           <span className="text-danger font-strong">

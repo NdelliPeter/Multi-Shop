@@ -141,15 +141,15 @@ export default function Contact() {
               <div className="col-12 bg-white p-3 mt-5">
                 <div className="d-flex gap-2">
                   <ImLocation className="text-warning" />
-                  <div>123 Street, New York, USA</div>
+                  <div>Buea, South west, Cameroon</div>
                 </div>
                 <div className="d-flex gap-2">
                   <FaEnvelope className="text-warning" />
-                  <div>mail@domain.com</div>
+                  <div>africanart@gmail.com</div>
                 </div>
                 <div className="d-flex gap-2">
                   <BsFillTelephoneFill className="text-warning" />
-                  <div>+237 123 456 789</div>
+                  <div>+237 623 456 789</div>
                 </div>
               </div>
             </div>
